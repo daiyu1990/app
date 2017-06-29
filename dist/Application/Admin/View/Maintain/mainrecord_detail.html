@@ -1,0 +1,101 @@
+<include file="Public:header"/>
+<!-- begin #content -->
+		<div id="content" class="content content_waring">	
+			<h1 class="page-header page_warging">
+			    	<a>维保管理 </a>》<a>维保记录</a>》<a>报修详情</a>
+			    	<!--<a onclick="javascript:history.go(-1);" class="organ_back">-->
+			    		<!--<i class="engin_back"></i>-->
+    					<!--<span class="engin_add_text">返回</span>-->
+			    	<!--</a>-->
+			</h1>
+			<!--总标题-->
+			<div class="equip_head engin_head">
+				任务详情
+			</div>
+			<!--基本信息-->
+			<div class="equip_info">
+				<div class="equip_title engin_title">
+					<i class="equip_i"></i>
+					<span>基本信息</span>
+					<a href="/Admin/Maintain/mainrecord_edit/id/{$info.id}" class="detail-edit engin_locat">
+						<i class="detail-edt"></i>
+						<span class="dei">编辑</span>
+					</a>
+				</div>
+				<div class="equip_infomation">
+					<!--设备基本信息表格-->
+						<div class="detail-body clearfix">
+							<div class="equip_list clearfix">
+								<ul class="equip_ul">
+									<li style="width:50% ;">
+										<div class="equip_iteml">任务编号</div>
+										<div class="equip_itemr omg">{$info.code}</div>
+									</li>
+									<li style="width:50% ;">
+										<div class="equip_iteml">设备类型</div>
+										<div class="equip_itemr omg">{$info.facility_type}</div>
+									</li>
+									<li style="width:50% ;">
+										<div class="equip_iteml">产权编号</div>
+										<div class="equip_itemr omg">{$info.beian_code}</div>
+									</li>
+									<li style="width:50% ;">
+										<div class="equip_iteml">设备编号</div>
+										<div class="equip_itemr omg">{$info.facility_number}</div>
+									</li>
+									<li style="width:100% ;">
+										<div class="equip_iteml">设备地址</div>
+										<div class="equip_itemr omg">{$info.address}</div>
+									</li>
+									<li style="width:100% ;">
+										<div class="equip_iteml">问题描述</div>
+										<div class="equip_itemr omg">{$info.wenti}</div>
+									</li>
+									<li style="width:100% ;">
+										<div class="equip_iteml">任务名称</div>
+										<div class="equip_itemr omg">{$info.name}</div>
+									</li>
+									<li style="width:50% ;">
+										<div class="equip_iteml">任务级别</div>
+										<div class="equip_itemr omg">{$info.level}</div>
+									</li>
+									<li style="width:50% ;">
+										<div class="equip_iteml">任务类型</div>
+										<div class="equip_itemr omg">{$info.type}</div>
+									</li>
+									<li style="width:50% ;">
+										<div class="equip_iteml">联系人</div>
+										<div class="equip_itemr omg">{$info.contact}</div>
+									</li>
+									<li style="width:50% ;">
+										<div class="equip_iteml">联系电话</div>
+										<div class="equip_itemr omg">{$info.mobile}</div>
+									</li>
+									<!--<li style="width:40% ;">-->
+										<!--<div class="equip_iteml">单位名称</div>-->
+										<!--<div class="equip_itemr omg">中国建筑第二工程局有限公司</div>-->
+									<!--</li>-->
+
+									<li style="width:50% ;">
+										<div class="equip_iteml">任务指派单位</div>
+										<div class="equip_itemr omg">{$info.company_name}</div>
+									</li>
+									<li style="width:50% ;">
+										<div class="equip_iteml">任务状态</div>
+										<div class="equip_itemr omg">{$info.status}</div>
+									</li>
+									<li style="width:50% ;">
+										<div class="equip_iteml">任务开始日期</div>
+										<div class="equip_itemr omg">{$info.start}</div>
+									</li>
+									<li style="width:50% ;">
+										<div class="equip_iteml">任务截止日期</div>
+										<div class="equip_itemr omg">{$info.end}</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+				</div><!--equip_infomation-->
+			</div><!--equip_info-->	
+		</div><!--content-->	
+<include file="Public:footer"/>

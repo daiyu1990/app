@@ -1,0 +1,117 @@
+<script language="javascript" type="text/javascript" src="__PUBLIC__/assets/date/WdatePicker.js"></script>
+<div class="panel panel-inverse" data-sortable-id="form-stuff-1">
+    <div class="panel-body">
+        <form class="form-horizontal" method='post' action='{:U("File/".ACTION_NAME)}' enctype="multipart/form-data">
+            <div class="form-group" style="">
+                <label class="col-md-3 control-label">设备编号：</label>
+                <label class="col-md-5 control-label"  style="text-align: left;">{$data.facility_number}</label>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label">资料编号：</label>
+                <label class="col-md-5 control-label" style="text-align: left;">{$data.data_number}</label>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label">资料名称：</label>
+                <label class="col-md-5 control-label" style="text-align: left;">{$data.data_name}</label>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label">资料类型：</label>
+                <label class="col-md-5 control-label" style="text-align: left;">{$data.data_type}</label>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label">上传的资料：</label>
+                <label class="col-md-5 control-label" style="text-align: left;">
+                    <img id="pic" width="100" height="50" src="__ROOT__{$data.file_path}"/>
+                </label>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- end panel -->
+<script type='text/javascript'>
+    $(function () {
+        var x = 0;
+        var y = 0;
+        $("#pic").mouseover(function (e) { //鼠标移动到图片上添加事件，显示放大图片
+            $(this).attr({width:'300',height:'200'});
+        });
+        $("#pic").mouseout(function () { //鼠标从图片移开图片隐藏
+            $(this).attr({width:'100',height:'50'});
+        });
+    })
+    var addPage = {
+        init:function(){
+            this.bind();
+        },
+        bind:function(){
+            var _this = this;
+            $(document).on('click','#chose',function(){
+                var that = $(this);
+                $('.layui-layer-iframe,.layui-layer-shade').remove();
+                _this.openLayer(that.text(),"{:U('Auth/add',array('do'=>'choice_icon'))}",'','');
+
+                return false;
+            })
+            $('form').validator({
+                theme:'yellow_top',
+                msgClass:'n-right',
+                msgIcon:'',
+                msgMaker: function(opt){
+                    if(!opt.msg){
+                        return '';
+                    }
+                    return '<span class="msg-wrap n-error" role="alert"><span class="n-msg">'+opt.msg+'</span></span>'
+                },
+                fields: {
+                    'facilityid': "设备编号:required;",
+                    'data_number': "资料编号:required;",
+                    'data_name': "资料名称:required;",
+                    'data_typeid': "资料类型:required;"
+                },
+                valid: function(form){
+                    var loading = layer.load(1, {
+                        shade: [0.1,'#fff'] //0.1透明度的白色背景
+                    });
+                    $(form).ajaxSubmit({
+                        dataType:'json',
+                        success:function(res){
+                            layer.close(loading);
+                            if(res.status !=1){
+                                var confirm_alert = layer.confirm(res.msg, {
+                                    btn: ['确定'], //按钮
+                                    closeBtn:0
+                                }, function() {
+                                    layer.close(confirm_alert);
+
+                                });
+                            } else {
+                                layer.closeAll();
+                                Page.renderTable();
+                            }
+                        }
+                    });
+                }
+            });
+        },
+        openLayer: function(title,url,width,height){
+            if(width == ''){
+                width = '1200px';
+            }
+            if(height == ''){
+                height = '650px';
+            }
+            layer.open({
+                type: 2,
+                title: title,
+                area: [width, height], //宽高
+                closeBtn: 1, //不显示关闭按钮
+                shift: 2,
+                shadeClose: true, //开启遮罩关闭
+                content: url
+            });
+        },
+    }
+    $(function(){
+        addPage.init();
+    })
+</script>

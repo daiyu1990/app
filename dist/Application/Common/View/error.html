@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{:L('jump_error_tip')}</title>
+	<style>
+		/*return tip*/
+		.return-tip{width:600px; height:300px;margin:195px auto 200px;text-align: center;padding-top:90px;}
+		.return-tip h1{font-size:18px; font-weight: normal;padding-bottom: 20px;}
+		.return-tip span{color:#999999;}
+		.return-tip span u{padding: 0 3px;font-size: 14px;}
+		.return-tip.cucceed {background: url(../../Public/assets/img/return-succeed.png) no-repeat top center ;}
+		.return-tip.cucceed h1{color:#62be2d;}
+		.return-tip.error {background: url(../../Public/assets/img/return-error.png) no-repeat top center ;}
+		.return-tip.error h1{color:#f1501a;}
+		.return-tip.alert {background: url(../../Public/assets/img/return-alert.png) no-repeat top center ;}
+	</style>
+</head>
+<body style="background:#f1f2f7">
+
+<div class="return-tip error">
+	<h1>{$error}</h1>
+    <span>{:L('jump_wait')} <b id='wait'><?php echo($waitSecond); ?></b> {:L('jump_seconds')}，{:L('jump_auto')}<u><a id="href" href="<?php echo($jumpUrl); ?>">{:L('jump')}</a></u></span>
+</div>
+
+<!--subfooter Str-->
+<div class="sub-footer" style='text-align:center'>
+ 	Copyright © Adexpress,All right reserved
+</div>
+<!--subfooter Str-->
+<script type="text/javascript">
+(function(){
+var wait = document.getElementById('wait'),href = document.getElementById('href').href;
+var interval = setInterval(function(){
+    var time = --wait.innerHTML;
+    if(time <= 0) {
+        location.href = href;
+        clearInterval(interval);
+    };
+}, 1000);
+})();
+</script>
+</body>
+</html>

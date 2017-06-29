@@ -1,0 +1,224 @@
+<include file="Public:header"/>
+<!-- begin #content -->
+<div id="content" class="content content_waring">
+     <h1 class="page-header page_warging">
+    	<!--{$title}-->
+    	<a>档案管理 </a>》<a>{$title}</a>
+    	<!--<a class="organ-add">-->
+    		<!--<i class="engin_add"></i>-->
+    		<!--<span class="engin_add_text"></span>-->
+    	<!--</a>-->
+    </h1>
+    <div class="row">
+        <!-- begin col-12 -->
+        <div class="col-md-12">
+            <!-- begin panel -->
+            <div class="panel panel-inverse">
+                <div class="panel-body">
+                    <div class="row organ-form_waring">
+                        <div class="clearfix fl oragan_infrl">
+
+
+                            <label class="organ-item">
+                                <span class="organ-itemt">资质名称：</span>
+                                <input id="name" type="text" class="organ-info" placeholder="输入资质名称"/>
+                            </label>
+                            <label class="organ-item">
+	                            <span class="organ-itemt">资质类型：</span>
+                                <select id="type" class="organ-info cenz check_inpldt" >
+                                    <option value="">全部</option>
+                                    <option value="1">企业资质</option>
+                                    <option value="2">个人资质</option>
+                                </select>
+	                       </label>
+                            <label class="organ-item">
+                                <span class="organ-itemt">资质等级：</span>
+                                <select id="level" class="organ-info cenz check_inpldt" >
+	                                <option value="">全部</option>
+	                                <option value="1">初级</option>
+	                                <option value="2">中级</option>
+	                                <option value="3">高级</option>
+	                            </select>
+                            </label>
+                            <label class="organ-item">
+                                <span class="organ-itemt">关联企业/人员：</span>
+                                <input id="guanlian" type="text" class="organ-info" placeholder="输入企业或人员名称"/>
+                            </label>
+
+                        </div>
+                        <div class="organ-formlt fl oagan_checkt">
+                            <a id="search" class="refer_equiplist refer">查询</a>
+                        </div>
+                    </div>
+                    <table id="data-table" class="table tj_table engin_table table-striped" style="margin-top: 12px;">
+                  		<thead>
+		                    <tr>
+
+			                    <th>选择</th>
+                                <th>序号</th>
+			                    <th>证书编号</th>
+			                    <th>资质类型</th>
+			                    <th>资质名称</th>
+			                    <th>资质等级</th>
+			                    <th>关联企业/人员</th>
+			                    <th>证书到期日期</th>
+			                    <th>资质状态</th>
+			                    <th>查看</th>
+			                    <th>编辑</th>
+		                    </tr>
+                  		</thead>
+						<tbody>
+
+						</tbody>
+                    </table>
+					<div class="paging_lister">
+                                <button id="del" class="btn btn-default btn-sm" style="margin-top:25px;float:left; background-color: #3c3c3c; color: white;">删除选中</button>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- end #content -->
+
+<script src="__PUBLIC__/assets/js/laydate/laydate.js"></script>
+<script>
+    var Page = {
+        init: function(){
+            this.bind();
+            this.renderTable();
+        },
+        bind: function(){
+            var _this = this;
+            //状态
+
+
+
+            $(document).on('click','#del',function(){
+
+                var id='';
+                $('.check_all').each(function(){
+                    if($(this).is(':checked')){
+                        id+=','+$(this).val();
+                    }
+                })
+
+                if(id==''){
+                    layer.msg('请至少选择一项', {time: 1500});
+                    return false;
+                }else{
+                    id = id.replace(',','');
+                    layer.load(1, {
+                        shade: [0.1,'#fff'] //0.1透明度的白色背景
+                    });
+
+                    $.ajax({
+                            <?php if(ACTION_NAME == 'aptitude_list'): ?>
+                            url : '{:U('File/aptitude_list')}',
+                            <?php else: ?>
+                            url : '{:U('File/c_aptitude_list')}',
+                            <?php endif; ?>
+                        dataType:'json',
+                        type:'post',
+                        data:{
+                            'do':'del',
+                            'id':id
+                        },
+                        success:function(e){
+                            layer.closeAll();
+                            if(e.status!=1){
+                                layer.msg('删除失败，请重试', {time: 1500});
+                                return false;
+                            }
+
+                            layer.msg('删除成功', {time: 1500});
+                            _this.renderTable();
+                        }
+                    })
+
+                }
+            })
+
+
+            $(document).on('click','#search',function(){
+
+                var name = $('#name').val();
+                var type = $('#type').val();
+                var level = $('#level').val();
+                var guanlian = $('#guanlian').val();
+
+                _this.name = name;
+                _this.type = type;
+                _this.level = level;
+                _this.guanlian = guanlian;
+
+
+                _this.renderTable();
+            })
+
+
+        },
+        name:'',
+        type:'',
+        level:'',
+        guanlian:'',
+
+
+        renderTable: function(){
+            layer.load(1, {
+                shade: [0.1,'#fff'] //0.1透明度的白色背景
+            });
+            var _this = this;
+            if(this.tableInit){
+                $('#data-table').DataTable().ajax.reload();
+                return;
+            }
+            this.tableInit = true;
+            _this.table = $('#data-table').DataTable({
+                "ajax": {
+                            <?php if(ACTION_NAME == 'aptitude_list'): ?>
+                            url : '{:U('File/aptitude_list',array('do'=>'listTableData'))}',
+                            <?php else: ?>
+                            url : '{:U('File/c_aptitude_list',array('do'=>'listTableData'))}',
+                            <?php endif; ?>
+                        data: function(){
+                            return {
+
+                                name:_this.name,
+                                type:_this.type,
+                                level:_this.level,
+                                guanlian:_this.guanlian,
+
+
+                            }
+                        }
+                    },
+                    "dom":'f<t>ip',
+                //'searching':true,
+                //多语言配置
+                "language": Base.oLanguage,
+                //默认排序列
+                "aaSorting": [[ 0, "asc" ]],
+                "drawCallback": function(){
+                    layer.closeAll();
+                },
+                // "searching":false,
+                // "deferLoading":10000,
+                "initComplete":function(row, data, start, end, display){
+                    $('#manage-right').append($('#data-table_filter'));
+                },
+                });
+
+
+                }
+    }
+    $(document).ready(function() {
+        Page.init();
+    });
+</script>
+<include file="Public:footer"/>

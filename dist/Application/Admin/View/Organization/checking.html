@@ -1,0 +1,154 @@
+<include file="Public:header"/>
+<!-- begin #content -->
+<div id="content" class="content content_waring">
+    <h1 class="page-header page_warging">
+    	<a>人员管理 </a>》<a>{$title}</a>
+    </h1>
+    <div class="row">
+        <!-- begin col-12 -->
+        <div class="col-md-12">
+            <!-- begin panel -->
+            <div class="panel panel-inverse">
+                <div class="panel-body">
+                    <div class="row organ-form_waring">
+                        <div class="clearfix fl oragan_infrl">
+                            <label class="organ-item">
+                                <span class="organ-itemt">人员姓名：</span>
+                                <select id="type" class="organ-info cent check_inpldt" >
+                                    <option value="">全部</option>
+                                    <?php foreach($type as $k=>$v){ ?>
+                                        <option value="{$v['val']}">{$v['name']}</option>
+                                    <?php } ?>
+                                </select>
+                            </label>
+                             <label class="organ-item">
+                                <span class="organ-itemt">人员编号：</span>
+                                <input type="text" id="code" class="organ-info cent" placeholder="请输入人员编号"/>
+                            </label>
+                            <label class="organ-item">
+                                <span class="organ-itemt">身份证号：</span>
+                                <select id="type" class="organ-info cent check_inpldt" >
+                                    <option value="">全部</option>
+                                    <?php foreach($type as $k=>$v){ ?>
+                                        <option value="{$v['val']}">{$v['name']}</option>
+                                    <?php } ?>
+                                </select>
+                            </label>
+                           	 <label class="organ-item">
+                                <span class="organ-itemt">打卡类型：</span>
+                                <select id="type" class="organ-info cent check_inpldt" >
+                                    <option value="">全部</option>
+                                    <?php foreach($type as $k=>$v){ ?>
+                                        <option value="{$v['val']}">{$v['name']}</option>
+                                    <?php } ?>
+                                </select>
+                            </label>
+                            <label class="organ-item">
+								    <div class="btn-group">
+		                               <label style="display: block; float: left; " for="from"><span  class="fl organ-itemt datail-date">打卡时间：</span></label>
+	                                   <label class="start-tims">
+	                                        <span class="engine_date_position"><i class="fa engine_date"></i></span>
+	                                        <input id="from" name="from" onclick="laydate()" placeholder='开始日期' value="" class="fl organ-info_engin picker-date">
+	                                   </label>
+	                                    <label class="engin_label" for="to">－</label>
+	                                    <label class="start-tims">
+	                                        <span class="engine_date_position"><i class="fa engine_date"></i></span>
+	                                        <input id="to" name="from" onclick="laydate()" placeholder='截止日期' value="" class="fl organ-info_engin picker-date">
+	                                   </label>
+		                            </div>
+								</label>
+                        </div>
+                        <!--<div class="organ-formlt fl oagan_checkt">
+                            <a class="refer_equiplist refer" id="search">查询</a>
+                        </div>-->
+                    </div>
+                    <table id="data-table" class="table tj_table engin_table table-striped" style="margin-top: 12px;">
+		            	<thead>
+		                    <tr>
+
+		                        <th>选择</th>
+                                <th>序号</th>
+		                        <th>人员编号</th>
+		                        <th>姓名</th> 
+		                        <th>打卡时间</th>
+		                        <th>打卡地点</th>
+		                        <th>打卡类型</th> 
+		                    </tr>
+		            	</thead>
+						<tbody>
+							<tr>
+								<td>	
+									<label class="select-check">
+										<input type="checkbox" class="fl check-item">
+									</label>
+			                        </td>
+			                        <td><span >1</span></td>
+			                        <td>324456576876</td>
+			                        <td>李XX</td>
+			                        <td>2017/02/06 16:45:23</td>
+			                        <td>AAAAAAAA</td>
+			                        <td>上班打卡</td>
+			                </tr>
+			                <tr>
+								<td>	
+									<label class="select-check">
+										<input type="checkbox" class="fl check-item">
+									</label>
+			                        </td>
+			                        <td><span >1</span></td>
+			                        <td>324456576876</td>
+			                        <td>李XX</td>
+			                        <td>2017/02/06 16:45:23</td>
+			                        <td>AAAAAAAA</td>
+			                        <td>上班打卡</td>
+			                </tr>
+			                <tr>
+								<td>	
+									<label class="select-check">
+										<input type="checkbox" class="fl check-item">
+									</label>
+			                        </td>
+			                        <td><span >1</span></td>
+			                        <td>324456576876</td>
+			                        <td>李XX</td>
+			                        <td>2017/02/06 16:45:23</td>
+			                        <td>AAAAAAAA</td>
+			                        <td>上班打卡</td>
+			                </tr>
+                        </tbody>
+                    </table>
+                    <div class="paging_lister">
+                                <?php if(session('userinfo.uid')==1): ?>
+                                <button id="del" class="btn btn-default btn-sm" style="margin-top:25px;float:left; background-color: #3c3c3c; color: white;">删除选中</button>
+                                <?php endif; ?>
+                                <!--<ul class="pagination pagination-sm">-->
+                                    <!--<li>-->
+                                        <!--<a href="#" aria-label="Previous">-->
+                                            <!--<span aria-hidden="true">&laquo;</span>-->
+                                        <!--</a>-->
+                                    <!--</li>-->
+                                    <!--<li><a href="#" style="background: #2164ff; color:#fff;">1</a></li>-->
+                                    <!--<li><a href="#">2</a></li>-->
+                                    <!--<li><a href="#">3</a></li>-->
+                                    <!--<li><a href="#">4</a></li>-->
+                                    <!--<li><a href="#">5</a></li>-->
+                                    <!--<li>-->
+                                        <!--<a href="#" aria-label="Next">-->
+                                            <!--<span aria-hidden="true">&raquo;</span>-->
+                                        <!--</a>-->
+                                    <!--</li>-->
+                                <!--</ul>-->
+
+                                <!--<p style="margin-top:25px;float:right;">每页10条，共{}条</p>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- end #content -->
+
+<script src="__PUBLIC__/assets/js/laydate/laydate.js"></script>
+
+<include file="Public:footer"/>

@@ -1,0 +1,241 @@
+<include file="Public:header"/>
+<!-- begin #content -->
+		<div id="content" class="content content_waring">	
+			<h1 class="page-header page_warging">
+			    	<a>设备管理 </a>》<a>设备列表</a>》<a>设备详情</a>
+			    	<!--<a onclick="javascript:history.go(-1);" class="organ_back">-->
+			    		<!--<i class="engin_back"></i>-->
+    					<!--<span class="engin_add_text">返回</span>-->
+			    	<!--</a>-->
+			</h1>
+			<!--总标题-->
+			<div class="equip_head engin_head">
+				设备详情
+			</div>
+			<!--基本信息-->
+			<div class="equip_info ">
+				<div class="equip_title engin_title">
+					<i class="equip_i"></i>
+					<span>基本信息</span>
+					<a href="/Admin/Facility/fac_edit/id/{$info.id}" class="detail-edit engin_locat">
+						<i class="detail-edt"></i>
+						<span class="dei">编辑</span>
+					</a>
+				</div>
+				<div class="equip_infomation">
+					<!--设备基本信息表格-->
+						<div class="detail-body clearfix">
+							<div class="equip_list clearfix">
+								<ul class="equip_ul">
+									<li>
+										<div class="equip_iteml">设备编号</div>
+										<div class="equip_itemr">{$info.facility_number}
+											<?php if($info['status']==1): ?>
+											<img id="img" src="__PUBLIC__/assets/demo/image/certifiedli.png"/>
+											<?php else: ?>
+											<img id="img" src="__PUBLIC__/assets/demo/image/uncertifiedli.png"/>
+											<?php endif; ?>
+										</div>
+									</li>
+									<li class="engin_lide">
+										<div class="equip_iteml">设备类型</div>
+										<div class="equip_itemr omg">{$info.facility_type}</div>
+									</li>
+									<li class="engin_lide">
+										<div class="equip_iteml">设备型号</div>
+										<div class="equip_itemr omg">{$info.facility_model_number}</div>
+									</li>
+									<li>
+										<div class="equip_iteml">制造许可证号</div>
+										<div class="equip_itemr">{$info.manufacturing_licence_number}</div>
+									</li>
+									<li>
+										<div class="equip_iteml">设备制造单位</div>
+										<div class="equip_itemr">{$info.company_name}</div>
+									</li>
+									<li>
+										<div class="equip_iteml">出厂日期</div>
+										<div class="equip_itemr">{$info.factory_date}</div>
+									</li>
+									<li>
+										<div class="equip_iteml">登记日期</div>
+										<div class="equip_itemr">{$info.record_date}</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!--完成-->
+
+				</div><!--equip_infomation-->
+			</div><!--equip_info-->
+			<!--设备参数-->
+			<div class="equip_info equip_infos" style="padding:0 20px 20px 20px !important ;">
+				<div class="equip_title engin_title">
+					<i class="equip_i"></i>
+					<span>设备参数</span>
+
+				</div>
+				<div class="equip_infomation">
+					<!--设备参数表格-->
+						<div class="detail-body clearfix">
+							<div class="table">
+								<table class="layui-table" lay-skin="line">
+									<thead>
+										<tr>
+											<th>序号</th>
+											<th></th>
+											<th>参数类别</th>
+											<th>参数名称</th>
+											<th>参数值</th>
+											<th>备注</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php foreach($info['param'] as $k=>$v){ ?>
+										<tr>
+											<td>{$k+1}</td>
+											<td></td>
+											<td>{$v.type}</td>
+											<td>{$v.name}</td>
+											<td>{$v.value}</td>
+											<td>{$v.mark}</td>
+										</tr>
+										<?php } ?>
+									</tbody>
+								</table>
+							</div>
+							<?php if($info['status']==0 && ACTION_NAME=='c_fac_detail'): ?>
+							<div class="add_finish equip_finish">
+								<a href="" data="1" class="opass equipfinish check">通过审核</a>
+								<a href="" data="2" class="opass equipfinish check">驳回请求</a>
+							</div>
+							<?php endif; ?>
+						</div>
+				</div><!--equip_infomation-->
+			</div><!--equip_info-->
+			<!--终端信息-->
+			<!--<div class="equip_info equip_infot">-->
+				<!--<div class="equip_title engin_title">-->
+					<!--<i class="equip_i"></i>-->
+					<!--<span>终端信息</span>-->
+				<!--</div>-->
+				<!--<div class="equip_infomation">-->
+					<!--<div class="equip_list clearfix">-->
+						<!--<ul class="equip_ul">-->
+							<!--<li>-->
+								<!--<div class="equip_iteml">终端编号</div>-->
+								<!--<div class="equip_itemr">VGDFGFHFGHJHKHJKLJ</div>-->
+							<!--</li>-->
+							<!--<li>-->
+								<!--<div class="equip_iteml">终端型号</div>-->
+								<!--<div class="equip_itemr">TXL-860</div>-->
+							<!--</li>-->
+						<!--</ul>-->
+					<!--</div>-->
+				<!--</div>&lt;!&ndash;equip_infomation&ndash;&gt;-->
+			<!--</div>&lt;!&ndash;equip_info&ndash;&gt;-->
+			<!--&lt;!&ndash;备案信息&ndash;&gt;-->
+			<!--<div class="equip_info equip_infot">-->
+				<!--<div class="equip_title engin_title">-->
+					<!--<i class="equip_i"></i>-->
+					<!--<span>备案信息</span>-->
+				<!--</div>-->
+				<!--<div class="equip_infomation">-->
+					<!--<div class="equip_list clearfix">-->
+						<!--<ul class="equip_ul">-->
+							<!--<li>-->
+								<!--<div class="equip_iteml">产权编号</div>-->
+								<!--<div class="equip_itemr">赣AA-T02805</div>-->
+							<!--</li>-->
+							<!--<li>-->
+								<!--<div class="equip_iteml">产权单位</div>-->
+								<!--<div class="equip_itemr">宜春市中天机械设备租赁有限公司</div>-->
+							<!--</li>-->
+							<!--<li>-->
+								<!--<div class="equip_iteml">检测报告编号</div>-->
+								<!--<div class="equip_itemr">LGNC-1705-5947</div>-->
+							<!--</li>-->
+							<!--<li>-->
+								<!--<div class="equip_iteml">检测单位</div>-->
+								<!--<div class="equip_itemr">将西方圆设备检测有限公司</div>-->
+							<!--</li>-->
+						<!--</ul>-->
+					<!--</div>-->
+				<!--</div>&lt;!&ndash;equip_infomation&ndash;&gt;-->
+			<!--</div>&lt;!&ndash;equip_info&ndash;&gt;-->
+
+			<!--&lt;!&ndash;项目信息&ndash;&gt;-->
+			<!--<div class="equip_info equip_infot">-->
+				<!--<div class="equip_title engin_title">-->
+					<!--<i class="equip_i"></i>-->
+					<!--<span>项目信息</span>-->
+				<!--</div>-->
+				<!--<div class="equip_infomation">-->
+					<!--<div class="equip_list clearfix">-->
+						<!--<ul class="equip_ul">-->
+							<!--<li>-->
+								<!--<div class="equip_iteml">项目名称</div>-->
+								<!--<div class="equip_itemr">南仓希尔顿酒店二期</div>-->
+							<!--</li>-->
+							<!--<li>-->
+								<!--<div class="equip_iteml">使用单位</div>-->
+								<!--<div class="equip_itemr">中国建筑第二工程局有限公司</div>-->
+							<!--</li>-->
+							<!--<li>-->
+								<!--<div class="equip_iteml">工地自编号</div>-->
+								<!--<div class="equip_itemr">1#</div>-->
+							<!--</li>-->
+							<!--<li>-->
+								<!--<div class="equip_iteml">监理单位</div>-->
+								<!--<div class="equip_itemr">江西方圆检测工程监理有限公司</div>-->
+							<!--</li>-->
+
+							<!--<li>-->
+								<!--<div class="equip_iteml">项目地址</div>-->
+								<!--<div class="equip_itemr">江西省南昌市青山湖区高新大道天沐国际A座2901</div>-->
+							<!--</li>-->
+							<!--<li>-->
+								<!--<div class="equip_iteml">政府监管单位</div>-->
+								<!--<div class="equip_itemr">江西省宜春市建筑工程局安全监督管理站</div>-->
+							<!--</li>-->
+						<!--</ul>-->
+					<!--</div>-->
+				<!--</div>&lt;!&ndash;equip_infomation&ndash;&gt;-->
+			<!--</div>&lt;!&ndash;equip_info&ndash;&gt;-->
+		</div><!--content-->
+<script>
+	$(document).on('click','.check',function(){
+		layer.load(1, {
+			shade: [0.1,'#fff'] //0.1透明度的白色背景
+		});
+
+		var html = $(this).parent();
+		var data = $(this).attr('data');
+		var content = $(this).text();
+
+		$.ajax({
+			url:"{:U('Admin/Facility/c_fac_detail')}",
+			dataType:'json',
+			type:'post',
+			data:{
+				'do':'check',
+				'id':"{$info.id}",
+				'data':data
+			},
+			success:function(e){
+				layer.closeAll();
+				if(e.status!=1){
+					layer.msg('操作失败，请重试', {time: 1500});
+					return false;
+				}
+
+				layer.msg('已'+content, {time: 1500});
+				html.remove();
+				$('#img').attr('src','/Public/assets/demo/image/certifiedli.png');
+			}
+		})
+
+		return false;
+	})
+</script>
+<include file="Public:footer"/>

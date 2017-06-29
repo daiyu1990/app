@@ -1,0 +1,55 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<title></title> 
+<script src="js/jquery-1.12.1.min.js"></script> 
+<script> 
+var isopen = false; 
+var newImg; 
+var w = 200; //将图片宽度+200 
+var h = 200; // 将图片高度 +200 
+$(document).ready(function(){ 
+$("img").bind("click", function(){ 
+newImg = this; 
+if (!isopen) 
+{ 
+isopen = true; 
+$(this).width($(this).width() + w); 
+$(this).height($(this).height() + h); 
+moveImg(10, 10); 
+} 
+else 
+{ 
+isopen = false; 
+$(this).width($(this).width() - w); 
+$(this).height($(this).height() - h); 
+moveImg(-10, -10); 
+} 
+
+}); 
+}); 
+//移位 
+i = 0; 
+function moveImg(left,top) 
+{ 
+var offset = $(newImg).offset(); 
+$(newImg).offset({ top: offset.top + top, left: offset.left + left}); 
+if (i == 10) 
+{ 
+i =0; 
+return; 
+} 
+setTimeout("moveImg("+left+","+top+")", 10); 
+i++; 
+} 
+</script> 
+</head> 
+
+<body> 
+<div id="imgBox" style="width:100px; height:100px; background:#cccccc"> 
+<img id="img1" style="width:100px;height:100px; " alt="" src="image/upbig.png" /> 
+</div> 
+</div> 
+</body> 
+</html> 

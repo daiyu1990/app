@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>人员列表1</title>
+		<link rel="stylesheet" href="css/staff.css" type="text/css">
+		<link rel="stylesheet" href="css/reset.css"  type="text/css"/>
+		<link rel="stylesheet" href="css/css/bootstrap.min.css" type="text/css">
+		<link rel="stylesheet" href="js/bootstrap/dist/css/bootstrap.min.css">
+		<script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
+		<!--<script type="text/javascript" src="js/bootstrap/dist/js/bootstrap.min.js" ></script>-->
+	</head>
+	<body style="background:#e8edf1 ">
+		<!-- begin #content -->
+		
+		<div id="content" class="content">
+		    <!-- begin page-header -->
+		    <div class="organ-header">
+		    	<span class="organ-index">
+
+		    		<a>人员管理 </a>》<a>人员列表</a>
+		    	</span>
+		    	<a class="organ-add">添加组织</a>
+		    </div>
+		    <!-- end page-header -->
+		    <!-- begin page-form -->
+			<div class="row organ-form">
+				
+					<div class="clearfix fl oragan_infrl">
+						<label class="organ-item">
+
+							<span class="organ-itemt">组织机构名称：</span>
+							<input type="text" class="organ-info" />
+						</label>
+						<label class="organ-item">
+							<span class="organ-itemt">组织机构名称：</span>
+							<input type="text" class="organ-info" />
+						</label>
+						<label class="organ-item">
+							<span class="organ-itemt">组织机构名称：</span>
+							<input type="text" class="organ-info" />
+						</label>
+					<label class="organ-item">
+						<span class="organ-itemt">组织机构类别：</span>
+						<select class="organ-info cent">
+							<option>全部</option>
+							
+						</select>
+					</label>
+					<label class="organ-item">
+						<span class="organ-itemt" style="text-indent: 56px;">地区：</span>
+						<select class="organ-info">
+							<option>省（全部）</option>
+						</select>
+						<select class="organ-info organ-infot">
+							<option>市（全部）</option>
+						</select>
+					</label>
+				</div>
+					<div class="organ-formlt fl oagan_checkt">
+						<a class="refer">查询</a>
+					</div>
+				</div>
+
+		
+			<!-- end page-form -->
+		    <!-- begin row -->
+		    <div class="row">
+		        <!-- begin col-12 -->
+		        <div class="col-md-12">
+		            <!-- begin panel -->
+		            <div class="panel panel-inverse">
+		                <div class="panel-body">
+		                   <!--表格内容部分-->
+
+		                    <table id="alist" class="tj_table table">
+
+		                        <thead>
+		                        <th>选择</th>
+		                        <th>组织机构名称</th>
+		                        <th>组织机构类型</th>
+
+		                         <!--<th>地区（省）</th>
+		                        <th>地区（市）</th>-->
+		                        <th>地区</th>
+		                        <th>操作者</th>
+		                        <th>认证状态</th>
+		                        
+		                       	<th class="yin">进度</th>
+		                        <th class="yin">操作者</th>
+		                        <th class="yin">认证状态</th>
+
+		                        <th>查看</th>
+		                        <th>编辑</th>
+		                     
+		                        </thead>
+		                        <tbody>
+		                        <tr>
+			                        <td>
+			                        	<label class="select-check">
+
+			                        		<input type="checkbox" class="fl check-item">
+
+			                        		<span class="fl">1</span>
+			                        	</label>
+			                        </td>
+			                        <td>江西飞达电器储备有限公司</td>
+			                        <td>终端制造单位</td>
+
+			                       <!--<td>江西</td>
+			                        <td>九江</td>-->
+			                        <td>江西-九江</td>
+			                        <td>王大锤</td>
+			                        <td>已认证</td>
+			                        
+			                        <td class="yin">进行中</td>
+			                        <td class="yin">王大锤</td>
+			                        <td class="yin">已认证</td>
+			                        
+			                        <td><!--查看--><a href="parsonlist.html" id="organ_check"><i class="organ-look"></i></a></td>
+			                        <td><!--编辑--><a href="man_edit.html" id="organ_item"><i class="organ-editt"></i></a></td>
+
+		                     	</tr>
+		                     	<tr>
+			                        <td>
+			                        	<label class="select-check">
+			                        		<input type="checkbox" class="fl check-item" name="laozjao">
+			                        		<span class="fl">1</span>
+			                        	</label>
+			                        </td>
+			                        <td>江西飞达电器储备有限公司</td>
+			                        <td>终端制造单位</td>
+
+			                        <!--<td>江西</td>
+			                        <td>九江</td>-->
+			                        <td>江西-九江</td>
+			                        <td>王大锤</td>
+			                        <td>已认证</td>
+			                        
+			                        <td class="yin">进行中</td>
+			                        <td class="yin">王大锤</td>
+			                        <td class="yin">已认证</td>
+			                        
+			                        <td><!--查看--><a href="parsonlist.html" id="organ_check"><i class="organ-look"></i></a></td>
+			                        <td><!--编辑--><a href="man_edit.html" id="organ_item"><i class="organ-editt"></i></a></td>
+
+		                     	</tr>
+		                     	<tr>
+			                        <td>
+			                        	<label class="select-check">
+			                        		<input type="checkbox" class="fl check-item" name="laozjao">
+			                        		<span class="fl">1</span>
+			                        	</label>
+			                        </td>
+			                        <td>江西飞达电器储备有限公司</td>
+			                        <td>终端制造单位</td>
+
+			                        <!--<td>江西</td>
+			                        <td>九江</td>-->
+			                        <td>江西-九江</td>
+			                        <td>王大锤</td>
+			                        <td>已认证</td>
+			                        
+			                        <td class="yin">进行中</td>
+			                        <td class="yin">王大锤</td>
+			                        <td class="yin">已认证</td>
+			                        
+			                        <td><!--查看--><a href="parsonlist.html" id="organ_check"><i class="organ-look"></i></a></td>
+			                        <td><!--编辑--><a href="man_edit.html" id="organ_item"><i class="organ-editt"></i></a></td>
+		                     	</tr>
+		                        </tbody>
+		                    </table>
+		                    <!--页面底部编辑及分页-->
+		                    <div class="organ-footer row">
+		                    	<div class="fl organ_footlf col-3">
+			                    	<label class="organ_label">
+			                    		<input id="checkAll" type="checkbox" class="organ-checkAll check-item"  />
+			                    		<button class="check_all" id="check-all">全选</button>
+			                    	</label>
+			                    	<a href="javascript:;" class="remove_select" id="unSelect" >删除选中</a>
+		                    	</div>
+		                    	<div class="fl organ_footrg col-9">
+			                    	<nav aria-label="Page navigation">
+									  <ul class="pagination gpagination">
+									    <li>
+									      <a href="#" aria-label="Previous">
+									        <span aria-hidden="true">&laquo;</span>
+									      </a>
+									    </li>
+									    <li><a href="#">1</a></li>
+									    <li><a href="#">2</a></li>
+									    <li><a href="#">3</a></li>
+									    <li><a href="#">4</a></li>
+									    <li><a href="#">5</a></li>
+									    <li>
+									      <a href="#" aria-label="Next">
+									        <span aria-hidden="true">&raquo;</span>
+									      </a>
+									    </li>
+									    
+									  </ul>
+									</nav>
+								</div>
+		                    </div>
+		                </div>
+		            </div>
+		            <!-- end panel -->
+		        </div>
+		        <!-- end col-12 -->
+		    </div>
+		    <!-- end row -->
+		</div>
+<!-- end #content -->
+	</body>
+</html>
+<script>
+
+$(function () {
+	//全选或全不选
+	$("#checkAll").click(function(){   
+    	if(this.checked){   
+        	$("#alist :checkbox").prop("checked", true);  
+    	}else{   
+			$("#alist :checkbox").prop("checked", false);
+    	}   
+ 	}); 
+	//全选  
+    $("#check-all").click(function () {
+
+         $("#alist :checkbox,#checkAll").prop("checked", true);  
+    });  
+	//全不选
+    $("#unSelect").click(function () {  
+         $("#alist :checkbox,#checkAll").prop("checked", false);  
+    });  
+
+	
+	//设置全选复选框
+	$("#alist :checkbox").click(function(){
+		allchk();
+	});
+ 
+}); 
+function allchk(){
+	var chknum = $("#alist :checkbox").size();//选项总个数
+	var chk = 0;
+	$("#alist :checkbox").each(function () {  
+
+        if($(this).prop("checked")==true){
+			chk++;
+		}
+    });
+	if(chknum==chk){//全选
+
+		$("#checkAll").prop("checked",true);
+	}else{//不全选
+		$("#checkAll").prop("checked",false);
+	}
+}
+
+</script>

@@ -1,0 +1,224 @@
+<include file="Public:header"/>
+<!-- begin #content -->
+<div id="content" class="content content_waring">
+    <h1 class="page-header page_warging">
+    	<a>工程管理 </a>》<a>{$title}</a>
+    	<a href="{:U('Admin/Equipment/DTU_add')}" class="organ-add">
+    		<i class="engin_add"></i>
+    		<span class="engin_add_text">添加DTU</span>
+    	</a>
+    </h1>
+    <div class="row">
+        <!-- begin col-12 -->
+        <div class="col-md-12">
+            <!-- begin panel -->
+            <div class="panel panel-inverse">
+                <div class="panel-body">
+                    <div class="row organ-form_waring">
+                        <div class="clearfix fl oragan_infrl">
+                            <label class="organ-item">
+                                <span class="organ-itemt">DTU类型：</span>
+                                <select id="type" class="organ-info cenz check_inpldt" >
+                                    <option value="">全部</option>
+                                    <?php foreach($type as $k=>$v){ ?>
+
+                                        <option value="{$v.val}">{$v.name}</option>
+
+                                    <?php } ?>
+                                </select>
+                            </label>
+                            <label class="organ-item">
+                                <span class="organ-itemt">DTU编号：</span>
+                                <input type="text" id=code class="organ-info" placeholder="输入DTU编号"/>
+                            </label>
+
+                            <label class="organ-item">
+								    <div class="btn-group">
+		                               <label style="display: block; float: left; " for="from"><span  class="fl organ-itemt datail-date">出厂日期：</span></label>
+	                                   <label class="start-tims">
+	                                        <span class="engine_date_position"><i class="fa engine_date"></i></span>
+	                                        <input id="start" name="from" onclick="laydate()" placeholder='开始日期' value="" class="fl organ-info_engin picker-date">
+	                                   </label>
+	                                    <label class="engin_label" for="to">－</label>
+	                                    <label class="start-tims">
+	                                        <span class="engine_date_position"><i class="fa engine_date"></i></span>
+	                                        <input id="end" name="from" onclick="laydate()" placeholder='截止日期' value="" class="fl organ-info_engin picker-date">
+	                                   </label>
+		                            </div>
+							</label>
+                        </div>
+                        <div class="organ-formlt fl oagan_checkt">
+                            <a id="search" class="refer_equiplist refer">查询</a>
+                        </div>
+                    </div>
+                    <table id="data-table" class="table tj_table engin_table table-striped" style="margin-top: 12px;">
+		            	<thead>
+		                    <tr>
+                                <th>选择</th>
+		                        <th>序号</th>
+		                        <th>DTU编号</th>
+		                        <th>DTU类型</th>
+		                        <th>DTU型号</th>
+		                        <th>DTU制造单位</th>
+		                        <th>关联PLC编号</th>
+		                        <th>关联设备编号</th>
+		                        <th>关联设备类型</th>
+		                        <th>审核状态</th>
+		                        <th>查看</th>
+		                        <th>编辑</th>
+		                    </tr>
+		            	</thead>
+						<tbody>
+
+                        </tbody>
+                    </table>
+                    <div class="paging_lister">
+                                <button id="del" class="btn btn-default btn-sm" style="margin-top:25px;float:left; background-color: #3c3c3c; color: white;">删除选中</button>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- end #content -->
+
+<script src="__PUBLIC__/assets/js/laydate/laydate.js"></script>
+<script>
+    var Page = {
+        init: function(){
+            this.bind();
+            this.renderTable();
+        },
+        bind: function(){
+            var _this = this;
+            //状态
+
+            $(document).on('click','#del',function(){
+
+                var id='';
+                $('.check-item').each(function(){
+                    if($(this).is(':checked')){
+                        id+=','+$(this).val();
+                    }
+                })
+
+                if(id==''){
+                    layer.msg('请至少选择一项', {time: 1500});
+                    return false;
+                }else{
+                    id = id.replace(',','');
+                    layer.load(1, {
+                        shade: [0.1,'#fff'] //0.1透明度的白色背景
+                    });
+
+                    $.ajax({
+                            <?php if(ACTION_NAME == 'DTU_list'): ?>
+                            url : "{:U('Equipment/DTU_list')}",
+                            <?php else: ?>
+                            url : "{:U('Equipment/c_DTU_list')}",
+                            <?php endif; ?>
+                        dataType:'json',
+                        type:'post',
+                        data:{
+                            'do':'del',
+                            'id':id
+                        },
+                        success:function(e){
+                            layer.closeAll();
+                            if(e.status!=1){
+                                layer.msg('删除失败，请重试', {time: 1500});
+                                return false;
+                            }
+
+                            layer.msg('删除成功', {time: 1500});
+                            _this.renderTable();
+                        }
+                    })
+
+                }
+            })
+
+
+            $(document).on('click','#search',function(){
+
+                var code = $('#code').val();
+                var type = $('#type').val();
+                var start = $('#start').val();
+                var end = $('#end').val();
+
+                if(start!='' && end!='' && start>end){
+                    layer.msg('开始时间不能晚于截止时间', {time: 2000});
+                    return false;
+                }
+
+                _this.code = code;
+                _this.type = type;
+                _this.start = start;
+                _this.end = end;
+
+
+                _this.renderTable();
+            })
+
+
+        },
+        code:'',
+        type:'',
+        start:'',
+        end:'',
+
+        renderTable: function(){
+            layer.load(1, {
+                shade: [0.1,'#fff'] //0.1透明度的白色背景
+            });
+            var _this = this;
+            if(this.tableInit){
+                $('#data-table').DataTable().ajax.reload();
+                return;
+            }
+            this.tableInit = true;
+            _this.table = $('#data-table').DataTable({
+                "ajax": {
+                            <?php if(ACTION_NAME == 'DTU_list'): ?>
+                            url : '{:U('Equipment/DTU_list',array('do'=>'listTableData'))}',
+                            <?php else: ?>
+                            url : '{:U('Equipment/c_DTU_list',array('do'=>'listTableData'))}',
+                            <?php endif; ?>
+                        data: function(){
+                            return {
+
+                                code:_this.code,
+                                type:_this.type,
+                                start:_this.start,
+                                end:_this.end,
+
+                            }
+                        }
+                    },
+                    "dom":'f<t>ip',
+                //'searching':true,
+                //多语言配置
+                "language": Base.oLanguage,
+                //默认排序列
+                "aaSorting": [[ 0, "asc" ]],
+                "drawCallback": function(){
+                    layer.closeAll();
+                },
+                // "searching":false,
+                // "deferLoading":10000,
+                "initComplete":function(row, data, start, end, display){
+                    $('#manage-right').append($('#data-table_filter'));
+                },
+                });
+
+
+                }
+    }
+    $(document).ready(function() {
+        Page.init();
+    });
+</script>
+<include file="Public:footer"/>

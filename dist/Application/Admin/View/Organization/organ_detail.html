@@ -1,0 +1,191 @@
+<include file="Public:header"/>
+<!-- begin #content -->
+		<div id="content" class="content content_waring">	
+			<h1 class="page-header page_warging">
+			    	<a>人员管理 </a>》<a>组织列表</a>》<a>查看详情</a>
+			    	<!--<a onclick="javascript:history.go(-1);" class="organ_back">-->
+			    		<!--<i class="engin_back"></i>-->
+    					<!--<span class="engin_add_text">返回</span>-->
+			    	<!--</a>-->
+			</h1>
+			<!--总标题-->
+			<div class="equip_head engin_head">
+				组织机构详情
+			</div>
+			<!--基本信息-->
+			<div class="equip_info ">
+				<div class="equip_title engin_title">
+					<i class="equip_i"></i>
+					<span>组织基本信息</span>
+					<a href="/Admin/Organization/organ_edit/id/{$info.id}" class="detail-edit engin_locat">
+						<i class="detail-edt"></i>
+						<span class="dei">编辑</span>
+					</a>
+				</div>
+				<div class="equip_infomation">
+					<!--设备基本信息表格-->
+						<div class="detail-body clearfix">
+							<div class="detail-table">
+								<ul class="tab-l">
+									<li>组织机构名称</li>
+									<li>组织机构简称</li>
+									<li>地区</li>
+									<li>机构地址</li>
+									<li>组织机构类别</li>
+									<li>组织机构代码</li>
+									<li>组织机构简码</li>
+									<li>法人</li>
+								</ul>
+								<ul class="tab-r">
+									<li>{$info.name}
+										<?php if($info['status']==3): ?>
+										<img id="img" src="__PUBLIC__/assets/demo/image/certifiedli.png"/>
+										<?php else: ?>
+										<img id="img" src="__PUBLIC__/assets/demo/image/uncertifiedli.png"/>
+										<?php endif; ?>
+									</li>
+									<li>{$info.jiancheng}</li>
+									<li>{$info.diqu}</li>
+									<li>{$info.address}</li>
+									<li>{$info.type}</li>
+									<li>{$info.company_code}</li>
+									<li>{$info.jian_code}</li>
+									<li>{$info.faren}</li>
+								</ul>
+							</div>
+							<div class="detail-table">
+								<ul class="tab-l">
+									<li style="line-height:114px ; height: 114px;">企业营业执照</li>
+									<li>企业执照注册号</li>
+									<li>联系人</li>
+									<li>联系人手机号</li>
+									<li>邮箱地址</li>
+									<li>法人手机号</li>
+								</ul>
+								<ul class="tab-r">
+									<li style="line-height:114px ; height: 114px;"><img style="margin-left:-20px;width:230px;height: 94px;" src="{$info.license}"></li>
+									<li>{$info.license_code}</li>
+									<li>{$info.contact}</li>
+									<li>{$info.mobile}</li>
+									<li>{$info.email}</li>
+									<li>{$info.faren_mobile}</li>
+								</ul>
+							</div>
+						</div>
+						<!--完成-->
+
+				</div><!--equip_infomation-->
+			</div><!--equip_info-->
+			<!--关联信息-->
+
+			<div class="equip_info">
+				<div class="equip_title engin_title">
+					<i class="equip_i"></i>
+					<span>企业资质</span>
+				</div>
+				<div class="equip_infomation">
+					<!--设备参数表格-->
+					<div class="detail-body clearfix">
+						<div class="table">
+							<table class="layui-table" lay-skin="line">
+								<thead>
+								<tr>
+									<th>序号</th>
+									<th>证书编号</th>
+									<th>证书名称</th>
+									<th>资质等级</th>
+									<th>证书到期日期</th>
+									<th>证书正面</th>
+									<th>证书背面</th>
+								</tr>
+								</thead>
+								<tbody>
+								<?php foreach($info['apt'] as $k=>$v){ ?>
+								<tr>
+									<td>{$k+1}</td>
+									<td>{$v.code}</td>
+									<td>{$v.name}</td>
+									<td>{$v.level}</td>
+									<td>{$v.daoqi}</td>
+									<td>
+										<div><img src="{$v.zheng}" class="zoomify"></div>
+									</td>
+									<td>
+										<div><img src="{$v.fan}" class="zoomify"></div>
+									</td>
+								</tr>
+								<?php } ?>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+			<div class="equip_info">
+				<div class="equip_title engin_title">
+					<i class="equip_i"></i>
+					<span>下级部门</span>
+
+				</div>
+			<div class="detail-ftall clearfix row">
+				<?php foreach($info['section'] as $k=>$v){ ?>
+				<div class="col-md-3 ie_item">
+					<div class="detail-ftitem">
+						<div class="detail-log">部门{$k+1}</div>
+						<span>{$v['code']}</span>
+						<p>{$v['name']}</p>
+					</div>
+				</div>
+				<?php } ?>
+			</div>
+				<?php if(ACTION_NAME == 'c_organ_detail' && $info['status']==1): ?>
+				<div class="add_finish equip_finish" style="margin-top:30px; ">
+					<a href="" data="3" class="opass equipfinish check">通过审核</a>
+					<a href="" data="2" class="opass equipfinish check">驳回请求</a>
+				</div>
+				<?php endif; ?>
+			</div><!--equip_info-->
+		</div><!--content-->
+<script>
+	$(document).on('click','.check',function(){
+		layer.load(1, {
+			shade: [0.1,'#fff'] //0.1透明度的白色背景
+		});
+
+		var html = $(this).parent();
+		var data = $(this).attr('data');
+		var content = $(this).text();
+
+		$.ajax({
+			url:"{:U('Admin/Organization/c_organ_detail')}",
+			dataType:'json',
+			type:'post',
+			data:{
+				'do':'check',
+				'id':"{$info.id}",
+				'data':data
+			},
+			success:function(e){
+				layer.closeAll();
+				if(e.status!=1){
+					layer.msg('操作失败，请重试', {time: 1500});
+					return false;
+				}
+
+				layer.msg('已'+content, {time: 1500});
+				html.remove();
+				$('#img').attr('src','/Public/assets/demo/image/certifiedli.png');
+			}
+		})
+
+		return false;
+	})
+</script>
+<script type="text/javascript">
+	$('.table tr td img').zoomify();
+	$('.tab-r li img').zoomify();
+</script>
+<include file="Public:footer"/>

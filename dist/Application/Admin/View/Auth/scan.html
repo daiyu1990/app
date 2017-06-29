@@ -1,0 +1,66 @@
+<include file="Public:header"/>
+   <!-- begin #content -->
+    <div id="content" class="content">
+      <!-- begin page-header -->
+      <h1 class="page-header">{$title}</h1>
+      <!-- end page-header -->   
+      <!-- begin row -->
+      <div class="row">
+                <!-- begin col-6 -->
+          <div class="col-md-12 admin-grid index-chart">
+              <!-- begin panel -->
+                    <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
+                        <div class="panel-body">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">模块</label>
+                                    <div class="col-md-5">
+                                        <a href="javascript:;" id="updateall">全部更新</a>
+                                    </div>
+                                </div>
+                                <volist name='modules' id='vo'>
+                                    <if condition="($vo neq '.') and ($vo neq '..') and ($vo neq 'README.md') and ($vo neq 'index.html') and ($vo neq 'Runtime') and ($vo neq '.DS_Store')">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">{$vo}</label>
+                                    <div class="col-md-5">
+                                        <a href="{:U('Admin/Auth/scan',array('do'=>'scan','m'=>$vo))}" class="update">更新</a>
+                                    </div>
+                                </div>
+                                </if>
+                                </volist>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-2">
+                                  <a href='{:U('Auth/index')}' class='btn btn-sm btn-default m-r-5 btn-block'>返 回</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end panel -->
+                </div>
+                <!-- end col-6 -->
+            </div>
+            <!-- end row -->
+    </div>
+    <!-- end #content -->
+    <script type='text/javascript'>
+        $(function(){
+            $('#updateall').click(function(){
+                $('a.update').click();
+            })
+            $('a.update').click(function(){
+                var updateObj = $(this);
+                updateObj.html('<img width="16" height="16" src="/Public/assets/img/l1.gif" />');
+                $.getJSON($(this).attr('href'),{},function(data){
+                    if(data.state==1){
+                        updateObj.html('更新完成！');
+                    }else{
+                        alert(data.msg);
+                        updateObj.html(data.msg)
+                    }
+                })
+                return false;
+            })
+        })
+    </script>
+ <include file="Public:footer"/>

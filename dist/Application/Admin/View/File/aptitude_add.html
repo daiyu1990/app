@@ -1,0 +1,374 @@
+<include file="Public:header"/>
+<!-- begin #content -->
+	<div id="content" class="content content_waring">	
+			<h1 class="page-header page_warging">
+			    	<a>档案管理 </a>》<a>资质管理</a>
+			    	<a onclick="javascript:history.go(-1);" class="organ_back">
+			    		<i class="engin_back"></i>
+    					<span class="engin_add_text">返回</span>
+			    	</a>
+			</h1>
+			<!--总标题-->
+			<div class="equip_head engin_head">
+				新增资质
+			</div>
+			<!--tab切换-->
+            <ul id="myTab" class="nav nav-tabs" style="margin-top: 10px; background-color: #ccc; width:166px ;">
+                <li class="active">
+                    <a href="#person_quality"  data-toggle="tab" >人员资质</a>
+                </li>
+                <li>
+                    <a href="#fac_quality" data-toggle="tab">企业资质</a>
+                </li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+            	<!--人员资质选项-->
+            	<div class="tab-pane fade in active" id="person_quality">
+					<!--基本信息-->
+					<div class="equip_info equip_infot">
+					<div class="equip_title engin_title">
+						<i class="equip_i"></i>
+						<span>基本信息</span>
+					</div>
+					<div class="equip_infomation">
+						<!--设备基本信息表格-->
+							<div class="detail-body check_bd clearfix">
+									<div class="check-infol">
+										<div class="cheitm">
+											<label class="ifro_item">
+												<span class="info_man">联系人：</span>
+												<input type="text" class="check_inp" />
+											</label>
+										</div>
+										<div class="cheitm">
+											<label class="ifro_item">
+												<span class="info_man">手机号：</span>
+												<input type="text" class="check_inp" />
+											</label>
+										</div>
+										<div class="cheitm">
+											<label class="ifro_item">
+												<span class="info_man">组织机构名称：</span>
+												<select class="check_inp">
+													<option>西安先驰科技有限公司</option>
+												</select>
+											</label>
+										</div>
+										<div class="cheitm">
+											<label class="ifro_item">
+												<span class="info_man">部门：</span>
+												<input type="text" class="check_inp" />
+											</label>
+										</div>
+										<div class="cheitm">
+											<label class="ifro_item id_relative">
+												<span class="info_man">身份证正面：</span>
+												<input type="file" class="check_inp check_upload" />
+												<span class="idcardupload">选择文件</span>
+											</label>
+										</div>
+									</div>
+									<div class="check-infol">
+										<div class="cheitm">
+											<label class="ifro_item">
+												<span class="info_man">员工编号：</span>
+												<input type="text" class="check_inp" />
+											</label>
+										</div>
+										<div class="cheitm">
+											<label class="ifro_item">
+												<span class="info_man">身份证号：</span>
+												<input type="text" class="check_inp" />
+											</label>
+										</div>
+										<div class="cheitm">
+											<label class="ifro_item">
+												<span class="info_man">组织机构类别：</span>
+												<input type="text" class="check_inp" />
+											</label>
+										</div>
+										<div class="cheitm">
+											<label class="ifro_item">
+												<span class="info_man">职位：</span>
+												<input type="text" class="check_inp" />
+											</label>
+										</div>
+										<div class="cheitm">
+											<label class="ifro_item id_relative">
+												<span class="info_man">身份证反面：</span>
+												<input type="file" class="check_inp check_upload" />
+												<span class="idcarduploadrg">选择文件</span>
+											</label>
+										</div>
+									</div>
+							</div>				
+					</div><!--equip_infomation-->
+				</div><!--equip_info-->
+					<!--人员资质标题-->
+					<div class="equip_info equip_infot">
+						<div class="equip_title engin_title">
+							<i class="equip_i"></i>
+							<span>人员资质</span>
+							<a class="organ-add">
+					    		<i class="engin_add"></i>
+					    		<span class="engin_add_text" id="new_builds">新建人员资质</span>
+					    	</a>
+						</div>
+						
+						<div class="equip_infomation">
+						<!--设备参数表格-->
+							<div class="detail-body engin_edit_box clearfix">
+								<div class="table">
+									<table class="layui-table fac_table" lay-skin="line">
+										<thead>
+											<tr>
+												<th>序号</th>
+												<th>证书编号</th>
+												<th>证书名称</th>
+												<th>资质等级</th>
+												<th>证书到期日期</th>
+												<th>证书正面</th>
+												<th>证书反面</th>
+												<th>删除</th>
+											</tr>
+										</thead>
+										<tbody class="fac_tbody">
+											<tr>
+												<td>1</td>
+												<td>
+													<input type="text" class="fac_edittr_input fac_edittr_inputs" placeholder="输入证书编号"  />
+												</td>
+												<td>
+													<input type="text" class="fac_edittr_input fac_edittr_inputs" placeholder="输入证书名称"  />
+												</td>
+												<td>
+													<select class="fac_edittr_input fac_edittr_inputs organ-info cenz check_inp check_inps" >
+					                                    <option value="">选择资质等级</option>
+					                                    <option value="">优秀</option>
+					                                    <option value="">良好</option>
+				                                </select>
+												</td>
+												<td>
+													<input onclick="laydate()" name="start_time"  placeholder='输入到期日期' value="" class="fac_edittr_input fac_edittr_inputs check_inp check_inp_date picker-date"></td>
+												<td>
+													<input type="file" class="check_inp check_upload" />
+													<span class="idcarduploadrg">选择文件</span>
+												</td>
+												<td>
+													<input type="file" class="check_inp check_upload" />
+													<span class="idcarduploadrg">更改文件</span>
+												</td>
+												<td class="del_edittim"><i class="del_edits" id="detail_del"></i></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>	
+							</div><!--detail-body-->
+						</div><!--equip_infomation-->	
+					</div><!--equip_info-->
+					<!--完成-->
+					<div class="add_finish equip_finish_as">
+						<a href="javascript:0" id="save" class="opass equipfinish engin_finish">保存</a>
+						<a href="#" class="opass equipfinish engin_finish_exit">取消</a>
+					</div>
+					<!--人员资质-->
+				</div><!--person_quality-->		
+				<!--企业资质选项-->
+		        <div class="tab-pane fade" id="fac_quality">
+						<!--组织基本信息-->
+						<div class="equip_info equip_infot">
+							<div class="equip_title engin_title">
+								<i class="equip_i"></i>
+								<span>组织基本信息</span>
+							</div>
+							<div class="equip_infomation">
+								<!--设备基本信息表格-->
+									<div class="detail-body check_bd clearfix">
+											<ul class="check-infol">
+												<li class="cheitm">
+													<label class="ifro_item">
+														<span class="info_man">组织机构名称：</span>
+														<input type="text" class="check_inp" />
+													</label>
+												</li>
+												<li class="cheitm">
+													<label class="ifro_item">
+														<span class="info_man">组织机构简称：</span>
+														<select class="check_inp" />
+															<option value=""></option>
+													        <option value="">好寂寞画江湖</option>
+													        <option value="">混合过年好</option>
+														</select>
+													</label>
+												</li>
+												<li class="cheitm layui-form-item">
+													<label class="ifro_item layui_itemt layui-form-label">
+														<span class="info_man">地区：</span>
+													
+													<div class="layui-input-inline layui_ele">
+												      <select name="quiz1" class="check_inp check_inplds" >
+												        <option value="">请选择省</option>
+												        <option value="浙江" selected="">浙江省</option>
+												        <option value="江西">江西省</option>
+												        <option value="福建">福建省</option>
+												      <select>
+												    </div>
+												    <div class="layui-input-inline layui_ele">
+												      <select name="quiz2" class="check_inp check_inplds" >
+												        <option value="">请选择市</option>
+												        <option value="杭州">杭州</option>
+												        <option value="宁波" disabled="">宁波</option>
+												        <option value="温州">温州</option>
+												        <option value="温州">台州</option>
+												        <option value="温州">绍兴</option>
+												      <select>
+												    </div>
+												    </label>
+												</li>
+												<li class="cheitm">
+													<label class="ifro_item">
+														<span class="info_man">机构地址：</span>
+														<input type="text" class="check_inp" />
+													</label>
+												</li>
+												<li class="cheitm">
+													<label class="ifro_item">
+														<span class="info_man">组织机构类别：</span>
+														<select class="check_inp" />
+															<option value=""></option>
+													        <option value="">好寂寞画江湖</option>
+													        <option value="">混合过年好</option>
+														</select>
+													</label>
+												</li>
+												<li class="cheitm">
+													<label class="ifro_item">
+														<span class="info_man">组织机构代码：</span>
+														<input type="text" class="check_inp" />
+													</label>
+												</li>
+											</ul>
+											<ul class="check-infol">
+												<li class="cheitm">
+													<label class="ifro_item id_relative">
+														<span class="info_man">企业营业执照：</span>
+														<input type="file" class="check_inp check_upload" />
+														<span class="idcardupload">选择文件</span>	
+													</label>
+												</li>
+												<li class="cheitm">
+													<label class="ifro_item">
+														<span class="info_man">企业执照注册号：</span>
+														<input type="text" class="check_inp" />
+													</label>
+												</li>
+												<li class="cheitm">
+													<label class="ifro_item">
+														<span class="info_man">联系人：</span>
+														<input type="text" class="check_inp" />
+													</label>
+												</li>
+												<li class="cheitm">
+													<label class="ifro_item">
+														<span class="info_man">手机号：</span>
+														<input type="text" class="check_inp" />
+													</label>
+												</li>
+												<li class="cheitm">
+													<label class="ifro_item">
+														<span class="info_man">邮箱地址：</span>
+														<input type="text" class="check_inp" />
+													</label>
+												</li>
+												<li class="cheitm">
+													<label class="ifro_item">
+														<span class="info_man">组织机构简码：</span>
+														<input type="text" class="check_inp" />
+													</label>
+												</li>
+											</ul>
+									</div><!--detail-body-->				
+							</div><!--equip_infomation-->
+						</div><!--equip_info-->
+						<!--企业资质-->
+						<div class="equip_info equip_infot">
+							<div class="equip_title engin_title">
+								<i class="equip_i"></i>
+								<span>企业资质</span>
+								<a class="organ-add">
+						    		<i class="engin_add"></i>
+						    		<span class="engin_add_text" id="new_builds">新建企业资质</span>
+						    	</a>
+							</div>
+							<div class="equip_infomation">
+								<!--设备参数表格-->
+									<div class="detail-body engin_edit_box clearfix">
+										<div class="table">
+											<table class="layui-table fac_table" lay-skin="line">
+												<thead>
+													<tr>
+														<th>序号</th>
+														<th>证书编号</th>
+														<th>证书名称</th>
+														<th>资质等级</th>
+														<th>证书到期日期</th>
+														<th>证书正面</th>
+														<th>证书反面</th>
+														<th>删除</th>
+													</tr>
+												</thead>
+												<tbody class="fac_tbody">
+													<tr>
+														<td>1</td>
+														<td>
+															<input type="text" class="fac_edittr_input fac_edittr_inputs" placeholder="输入证书编号"  />
+														</td>
+														<td>
+															<input type="text" class="fac_edittr_input fac_edittr_inputs" placeholder="输入证书名称"  />
+														</td>
+														<td>
+															<select class="fac_edittr_input fac_edittr_inputs organ-info cenz check_inp check_inps" >
+							                                    <option value="">选择资质等级</option>
+							                                    <option value="">优秀</option>
+							                                    <option value="">良好</option>
+						                                </select>
+														</td>
+														<td>
+															<input onclick="laydate()" name="start_time"  placeholder='输入到期日期' value="" class="fac_edittr_input fac_edittr_inputs check_inp check_inp_date picker-date"></td>
+														<td>
+															<input type="file" class="check_inp check_upload" />
+															<span class="idcarduploadrg">选择文件</span>
+														</td>
+														<td>
+															<input type="file" class="check_inp check_upload" />
+															<span class="idcarduploadrg">更改文件</span>
+														</td>
+														<td class="del_edittim"><i class="del_edits" id="detail_del"></i></td>
+													</tr>
+												</tbody>
+											</table>
+										</div><!--table-->
+									</div><!--detail-body	-->
+							</div><!--equip_infomation-->
+						</div><!--equip_info-->
+						<!--完成-->
+						<div class="add_finish equip_finish_as">
+							<a href="javascript:0" id="save" class="opass equipfinish engin_finish">保存</a>
+							<a href="#" class="opass equipfinish engin_finish_exit">取消</a>
+						</div>
+				</div><!--fac_quality-->
+            </div><!--tab-content-->
+	</div><!--content-->	
+<include file="Public:footer"/>
+<script src="__PUBLIC__/assets/js/laydate/laydate.js"></script>
+<script>
+	$(function(){
+		$(document).on('click','#detail_del',function(){
+			$(this).parent('.detail-ftitems').remove();
+		})
+		$(document).on('click','#add_detail',function(){
+		
+			$(this).parent('#detail_alls').find('.detailedit_add').children('#detail_adds').remove();
+		})
+	})
+</script>

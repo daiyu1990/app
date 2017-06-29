@@ -1,0 +1,315 @@
+<include file="Public:header"/>
+<!-- begin #content -->
+<div id="content" class="content content_waring">
+     <h1 class="page-header page_warging">
+    	<!--{$title}-->
+    	<a>设备管理 </a>》<a>{$title}</a>
+    	<a href="{:U('Admin/Facility/fac_add')}" class="organ-add">
+    		<i class="engin_add"></i>
+    		<span class="engin_add_text">新增设备</span>
+    	</a>
+    </h1>
+    <div class="row">
+        <!-- begin col-12 -->
+        <div class="col-md-12">
+            <!-- begin panel -->
+            <div class="panel panel-inverse">
+                <div class="panel-body">
+                    <div class="row organ-form_waring">
+                        <div class="clearfix fl oragan_infrl">
+                            <label class="organ-item">
+                                <span class="organ-itemt">设备类型：</span>
+                                <select id="type" class="organ-info cenz check_inpldt" >
+                                    <option value="">全部</option>
+                                    <option value="1">塔式起重机</option>
+                                    <option value="2">施工升降机</option>
+                                </select>
+                            </label>
+                            <label class="organ-item">
+                                <span class="organ-itemt">产权编号：</span>
+                                <input id="chanquan" type="text" class="organ-info" placeholder="输入产权编号"/>
+                            </label>
+                            <label class="organ-item">
+                                <span class="organ-itemt">设备编号：</span>
+                                <input id="shebei_code" type="text" class="organ-info" placeholder="输入设备编号"/>
+                            </label>
+                            <label class="organ-item">
+                                <span class="organ-itemt">审核状态：</span>
+                                <select id="status" class="organ-info cenz check_inpldt" >
+                                    <option value="">全部</option>
+                                    <option value="0">待审核</option>
+                                    <option value="1">已审核</option>
+                                    <option value="2">已驳回</option>
+                                </select>
+                            </label>
+                            <!--<label class="organ-item">-->
+                                <!--<span class="organ-itemt">使用单位：</span>-->
+                                <!--<input id="use_company" type="text" class="organ-info" placeholder="输入使用单位"/>-->
+                            <!--</label>-->
+                            <!--<label class="organ-item">-->
+                                <!--<span class="organ-itemt">所在地区：</span>-->
+                                <!--<div class="layui-input-inline">-->
+                                    <!--<select id="sheng" name="quiz1" class="organ-info check_inpld" >-->
+                                        <!--<option value="">省（全部）</option>-->
+                                        <!--<?php foreach($sheng as $k=>$v){ ?>-->
+                                        <!--<option value="{$v['id']}">{$v['name']}</option>-->
+                                        <!--<?php } ?>-->
+                                    <!--</select>-->
+                                <!--</div>-->
+                                <!--<div class="layui-input-inline">-->
+                                    <!--<select id="shi" name="quiz2" class="organ-info check_inpld" >-->
+                                        <!--<option value="">请先选择省份</option>-->
+                                    <!--</select>-->
+                                <!--</div>-->
+                            <!--</label>-->
+							<!--<label class="organ-item">-->
+								    <!--<div class="btn-group">-->
+		                               <!--<label style="display: block; float: left; " for="from"><span  class="fl organ-itemt datail-date">登记日期：</span></label>-->
+	                                   <!--<label class="start-tims">-->
+	                                        <!--<span class="engine_date_position"><i class="fa engine_date"></i></span>-->
+	                                        <!--<input id="from" name="from" onclick="laydate()" placeholder='开始日期' value="" class="fl organ-info_engin picker-date">-->
+	                                   <!--</label>-->
+	                                    <!--<label class="engin_label" for="to">－</label>-->
+	                                    <!--<label class="start-tims">-->
+	                                        <!--<span class="engine_date_position"><i class="fa engine_date"></i></span>-->
+	                                        <!--<input id="to" name="from" onclick="laydate()" placeholder='截止日期' value="" class="fl organ-info_engin picker-date">-->
+	                                   <!--</label>-->
+		                            <!--</div>-->
+							<!--</label>-->
+                        </div>
+                        <div class="organ-formlt fl oagan_checkt">
+                            <a id="search" class="refer_equiplist refer">查询</a>
+                        </div>
+                    </div>
+                    <table id="data-table" class="table tj_table engin_table table-striped" style="margin-top: 12px;">
+                  		<thead>
+		                    <tr>
+			                    <th>选择</th>
+                                <th>序号</th>
+                                <th>设备编号</th>
+			                    <th>产权编号</th>
+			                    <th>设备类型</th>
+			                    <th>设备型号</th>
+			                    <!--<th>使用单位</th>-->
+			                    <!--<th>地区</th>-->
+			                    <th>审核状态</th>
+			                    <th>设备状态</th>
+			                    <th>查看</th>
+			                    <th>编辑</th>
+			                    <th>状态</th>
+		                    </tr>
+                  		</thead>
+						<tbody>
+
+                        </tbody>
+                    </table>
+					<div class="paging_lister">
+                                <button id="del" class="btn btn-default btn-sm" style="margin-top:25px;float:left; background-color: #3c3c3c; color: white;">删除选中</button>
+
+                                <!--<ul class="pagination pagination-sm">-->
+                                    <!--<li>-->
+                                        <!--<a href="#" aria-label="Previous">-->
+                                            <!--<span aria-hidden="true">&laquo;</span>-->
+                                        <!--</a>-->
+                                    <!--</li>-->
+                                    <!--<li><a href="#" style="background: #2164ff; color:#fff;">1</a></li>-->
+                                    <!--<li><a href="#">2</a></li>-->
+                                    <!--<li><a href="#">3</a></li>-->
+                                    <!--<li><a href="#">4</a></li>-->
+                                    <!--<li><a href="#">5</a></li>-->
+                                    <!--<li>-->
+                                        <!--<a href="#" aria-label="Next">-->
+                                            <!--<span aria-hidden="true">&raquo;</span>-->
+                                        <!--</a>-->
+                                    <!--</li>-->
+                                <!--</ul>-->
+
+                                <!--<p style="margin-top:25px;float:right;">每页10条，共{}条</p>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- end #content -->
+
+<script src="__PUBLIC__/assets/js/laydate/laydate.js"></script>
+<script>
+    var Page = {
+        init: function(){
+            this.bind();
+            this.renderTable();
+        },
+        bind: function(){
+            var _this = this;
+            //状态
+
+
+            $(document).on('click','#del',function(){
+
+                var id='';
+                $('.check-item').each(function(){
+                    if($(this).is(':checked')){
+                        id+=','+$(this).val();
+                    }
+                })
+
+                if(id==''){
+                    layer.msg('请至少选择一项', {time: 1500});
+                    return false;
+                }else{
+                    id = id.replace(',','');
+                    layer.load(1, {
+                        shade: [0.1,'#fff'] //0.1透明度的白色背景
+                    });
+
+                    $.ajax({
+                            <?php if(ACTION_NAME == 'fac_list'): ?>
+                            url : '{:U('Facility/fac_list')}',
+                            <?php else: ?>
+                            url : '{:U('Facility/c_fac_list')}',
+                            <?php endif; ?>
+                        dataType:'json',
+                        type:'post',
+                        data:{
+                            'do':'del',
+                            'id':id
+                        },
+                        success:function(e){
+                            layer.closeAll();
+                            if(e.status!=1){
+                                layer.msg('删除失败，请重试', {time: 1500});
+                                return false;
+                            }
+
+                            layer.msg('删除成功', {time: 1500});
+                            _this.renderTable();
+                        }
+                    })
+
+                }
+            })
+
+            $(document).on('click','#search',function(){
+
+                var type = $('#type').val();
+                var chanquan = $('#chanquan').val();
+                var shebei = $('#shebei_code').val();
+                var status = $('#status').val();
+
+
+
+
+
+
+                _this.type = type;
+                _this.chanquan = chanquan;
+                _this.shebei = shebei;
+                _this.status = status;
+
+
+                _this.renderTable();
+            })
+
+            $('#sheng').change(function(){
+                var sheng = $('#sheng').val();
+                if(sheng==''){
+                    $('#shi').html("<option value=''>请先选择省份</option>");
+                    return false;
+                }if(sheng=='47494' || sheng=='47495'){
+                    $('#shi').html("<option value='0'>---</option>");
+                    return false;
+                }else{
+                    layer.load(1, {
+                        shade: [0.1,'#fff'] //0.1透明度的白色背景
+                    });
+                    $.ajax({
+                        url:"{:U('Admin/Engineering/engin_add')}",
+                        dataType:'json',
+                        type:'post',
+                        data:{
+                            'sheng':sheng,
+                            'do':'get_shi'
+                        },
+                        success:function(e){
+                            if(e.status !=1){
+                                layer.closeAll();
+                                layer.msg(e.msg, {time: 1500});
+                                return false;
+                            }
+
+                            var html = "<option value=''>请选择城市</option>";
+
+                            for(i=0;i<e.data.length;i++){
+                                html+='<option value="'+ e.data[i].id+'">'+e.data[i].name+'</option>';
+                            }
+
+                            $('#shi').html(html);
+                            layer.closeAll();
+                        }
+                    })
+                }
+
+            })
+        },
+        type:'',
+        chanquan:'',
+        shebei:'',
+        status:'',
+
+
+        renderTable: function(){
+            layer.load(1, {
+                shade: [0.1,'#fff'] //0.1透明度的白色背景
+            });
+            var _this = this;
+            if(this.tableInit){
+                $('#data-table').DataTable().ajax.reload();
+                return;
+            }
+            this.tableInit = true;
+            _this.table = $('#data-table').DataTable({
+                "ajax": {
+                            <?php if(ACTION_NAME == 'fac_list'): ?>
+                            url : '{:U('Facility/fac_list',array('do'=>'listTableData'))}',
+                            <?php else: ?>
+                            url : '{:U('Facility/c_fac_list',array('do'=>'listTableData'))}',
+                            <?php endif; ?>
+                        data: function(){
+                            return {
+
+                                type:_this.type,
+                                chanquan:_this.chanquan,
+                                shebei:_this.shebei,
+                                status:_this.status,
+
+                            }
+                        }
+                    },
+                    "dom":'f<t>ip',
+                //'searching':true,
+                //多语言配置
+                "language": Base.oLanguage,
+                //默认排序列
+                "aaSorting": [[ 0, "asc" ]],
+                "drawCallback": function(){
+                    layer.closeAll();
+                },
+                // "searching":false,
+                // "deferLoading":10000,
+                "initComplete":function(row, data, start, end, display){
+                    $('#manage-right').append($('#data-table_filter'));
+                },
+                });
+
+
+                }
+    }
+    $(document).ready(function() {
+        Page.init();
+    });
+</script>
+<include file="Public:footer"/>

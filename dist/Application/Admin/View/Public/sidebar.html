@@ -1,0 +1,51 @@
+<!--begin #sidebar--> 
+    <div id="sidebar" class="sidebar">
+      <!-- begin sidebar scrollbar -->
+      <div data-scrollbar="true" data-height="100%">
+        <!-- begin sidebar nav -->
+        <ul class="nav">
+          <php>
+              $groupid = session('userinfo.groupid');
+              $groupinfo = D('Group')->find($groupid);
+              $leftmenu = D('Auth')->getLeftMenu($groupinfo['rules']);
+              $cur = MODULE_NAME.'/'.CONTROLLER_NAME.'/'.ACTION_NAME;
+              $one_menu = D('Auth')->where(array('name'=>$cur))->find();
+              if($one_menu['pid']){
+                $top_menu = D('Auth')->find($one_menu['pid']);
+              }
+          </php>
+          <volist name='leftmenu' id='vo'>
+          <li class="{$vo['tree']?'has-sub':''} {:($one_menu['pid'] == $vo['id'] && $vo['tree']) || ($vo['id'] == $one_menu['id']) || ($top_menu['pid'] == $vo['id'])?'active':''}  {$vo['is_open']?'expand':''}">
+            <a href="{$vo['tree']?'javascript:;':U($vo['name'])}">
+              <if condition="!empty($vo['tree'])">
+              <b class="caret pull-right"></b>
+              </if>
+              <i class="fa {$vo.class}"></i> <span>{$vo.title}</span>
+            </a>
+            <if condition="!empty($vo['tree'])">
+            <ul class="sub-menu" {$vo['is_open']?"style='display:block'":''}>
+              <volist name="vo['tree']" id='v'>
+                <li {:($v['name'] == $cur) || ($top_menu['name'] == $v['name'])?'class="active"':''}><a href="{:U($v['name'])}">{$v.title}</a></li>
+              </volist>
+            </ul>
+            </if>
+          </li>
+          </volist>
+              <!--<li><a href="/Admin/facility/detailAdd">组织机构添加</a></li>
+              <li><a href="/Admin/facility/detailEdit">组织机构编辑</a></li>
+              <li><a href="/Admin/facility/detail">组织机构详情</a></li>
+              <li><a href="/Admin/facility/manAdd">人员添加</a></li>
+              <li><a href="/Admin/facility/manEdit">人员编辑</a></li>
+              <li><a href="/Admin/facility/manList">人员列表</a></li>
+              <li><a href="/Admin/facility/parsonlist">个人信息详情</a></li>-->
+             
+              <!-- begin sidebar minify button -->
+          <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
+              <!-- end sidebar minify button -->
+        </ul>
+        <!-- end sidebar nav -->
+      </div>
+      <!-- end sidebar scrollbar -->
+    </div>
+    <div class="sidebar-bg"></div>
+    <!-- end #sidebar

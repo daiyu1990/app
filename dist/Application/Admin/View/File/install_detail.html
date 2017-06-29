@@ -1,0 +1,301 @@
+<include file="Public:header"/>
+<!-- begin #content -->
+		<div id="content" class="content content_waring">	
+			<h1 class="page-header page_warging">
+			    	<a>设备管理 </a>》<a>设备列表</a>》<a>安拆告知详情</a>
+			    	<!--<a onclick="javascript:history.go(-1);" class="organ_back">-->
+			    		<!--<i class="engin_back"></i>-->
+    					<!--<span class="engin_add_text">返回</span>-->
+			    	<!--</a>-->
+			</h1>
+			<!--总标题-->
+			<div class="equip_head engin_head">
+				设备安拆告知详情
+				<?php if(ACTION_NAME == 'c_install_detail' && $info['status']==0): ?>
+				<a data="1" class="opass equipfinish finish_record check">通过审核</a>
+				<a data="2" class="opass equipfinish finish_record check">驳回请求</a>
+				<?php endif; ?>
+			</div>
+			<!--设备信息-->
+			<div class="equip_info">
+				<div class="equip_title engin_title">
+					<i class="equip_i"></i>
+					<span>设备信息</span>
+					<a href="/Admin/File/install_edit/id/{$info.id}" class="detail-edit engin_locat">
+						<i class="detail-edt"></i>
+						<span class="dei">编辑</span>
+					</a>
+				</div>
+				<div class="equip_infomation">
+					<!--设备基本信息表格-->
+						<div class="detail-body clearfix">
+							<div class="equip_list clearfix">
+								<ul class="equip_ul">
+									<li>
+										<div class="equip_iteml">产权备案编号</div>
+										<div class="equip_itemr">{$info.beian_code}</div>
+									</li>
+									<li>
+										<div class="equip_iteml">产权单位名称</div>
+										<div class="equip_itemr omg">{$info.chanquan}</div>
+									</li>
+									<li>
+										<div class="equip_iteml">设备编号</div>
+										<div class="equip_itemr omg">{$info.facility_number}</div>
+									</li>
+									<li>
+										<div class="equip_iteml">设备类型</div>
+										<div class="equip_itemr">{$info.facility_type}</div>
+									</li>
+									<li>
+										<div class="equip_iteml">设备型号</div>
+										<div class="equip_itemr">{$info.facility_model_number}</div>
+									</li>
+									<li>
+										<div class="equip_iteml">出厂日期</div>
+										<div class="equip_itemr">{$info.factory_date}</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+				</div><!--equip_infomation-->
+			</div><!--equip_info-->
+			<!--告知信息-->
+			<div class="equip_info equip_infot">
+				<div class="equip_title engin_title">
+					<i class="equip_i"></i>
+					<span>告知信息</span>
+					<!--<a href="install_add.html" class="detail-edit engin_locat">
+						<i class="detail-edt"></i>
+						<span class="dei">编辑</span>
+					</a>-->
+				</div>
+				<div class="equip_infomation">
+					<!--设备基本信息表格-->
+						<div class="detail-body clearfix">
+							<div class="equip_list clearfix">
+								<ul class="equip_ul">
+
+									<li>
+										<div class="equip_iteml">安拆告知编号</div>
+										<div class="equip_itemr omg">{$info.code}</div>
+									</li>
+									<li>
+										<div class="equip_iteml">安拆类型</div>
+										<div class="equip_itemr omg">{$info.type}</div>
+									</li>
+									<li style="width: 100%;">
+										<div class="equip_iteml">设备安装位置</div>
+										<div class="equip_itemr">{$info.address}</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+				</div><!--equip_infomation-->
+			</div><!--equip_info-->
+			<!--工程信息-->
+			<div class="equip_info equip_infot">
+				<div class="equip_title engin_title">
+					<i class="equip_i"></i>
+					<span>工程信息</span>
+					<!--<a href="install_add.html" class="detail-edit engin_locat">
+						<i class="detail-edt"></i>
+						<span class="dei">编辑</span>
+					</a>-->
+				</div>
+				<div class="equip_infomation">
+					<!--设备基本信息表格-->
+						<div class="detail-body clearfix">
+							<div class="equip_list clearfix">
+								<ul class="equip_ul">
+									<li>
+										<div class="equip_iteml">工地名称</div>
+										<div class="equip_itemr">{$info.engin_name}</div>
+									</li>
+									<li>
+										<div class="equip_iteml">工程编号</div>
+										<div class="equip_itemr omg">{$info.engin_code}</div>
+									</li>
+									<li style="width: 100%;">
+										<div class="equip_iteml">工程地址</div>
+										<div class="equip_itemr omg">{$info.diqu}</div>
+									</li>
+
+								</ul>
+							</div>
+						</div>
+				</div><!--equip_infomation-->
+			</div><!--equip_info-->
+			<!--施工信息-->
+			<div class="equip_info equip_infot">
+				<div class="equip_title engin_title">
+					<i class="equip_i"></i>
+					<span>施工信息</span>
+					<!--<a href="install_add.html" class="detail-edit engin_locat">
+						<i class="detail-edt"></i>
+						<span class="dei">编辑</span>
+					</a>-->
+				</div>
+				<div class="equip_infomation">
+					<!--设备基本信息表格-->
+						<div class="detail-body clearfix">
+							<div class="equip_list clearfix">
+								<ul class="equip_ul">
+									<li>
+										<div class="equip_iteml">施工单位</div>
+										<div class="equip_itemr omg">{$info.work_company}</div>
+									</li>
+									<li>
+										<div class="equip_iteml">施工时间</div>
+										<div class="equip_itemr">{$info.work_time}</div>
+									</li>
+
+
+								</ul>
+							</div>
+						</div>
+				</div><!--equip_infomation-->
+			</div><!--equip_info-->
+			<!--资料核查-->
+			<div class="equip_info equip_infot">
+				<div class="equip_title engin_title">
+					<i class="equip_i"></i>
+					<span>资料核查</span>
+					<!--<a href="fac_add.html" class="detail-edit engin_locat">
+						<i class="detail-edt"></i>
+						<span class="dei">编辑</span>
+					</a>-->
+				</div>
+				<div class="equip_infomation">
+					<!--设备参数表格-->
+						<div class="detail-body clearfix">
+							<div class="table">
+								<table class="layui-table" lay-skin="line">
+									<thead>
+										<tr>
+											<th>序号</th>
+											<th>申报材料名称</th>
+											<th>文件</th>
+										</tr>
+									</thead>
+									<tbody>
+									<?php foreach($info['param'] as $k=>$v){ ?>
+										<tr>
+											<td>{$k+1}</td>
+											<td>{$v.name}</td>
+											<td><a href="/Admin/File/install_download/id/{$v.id}"><i class="organ-look"></i></a></td>
+										</tr>
+									<?php } ?>
+									</tbody>
+								</table>
+							</div>
+						</div>
+				</div><!--equip_infomation-->
+			</div><!--equip_info-->
+			<!--作业人员登记-->
+			<div class="equip_info equip_infot">
+				<div class="equip_title engin_title">
+					<i class="equip_i"></i>
+					<span>作业人员登记</span>
+					<!--<a href="fac_add.html" class="detail-edit engin_locat">
+						<i class="detail-edt"></i>
+						<span class="dei">编辑</span>
+					</a>-->
+				</div>
+				<div class="equip_infomation">
+					<!--设备参数表格-->
+						<div class="detail-body clearfix">
+							<div class="table">
+								<table class="layui-table" lay-skin="line">
+									<thead>
+										<tr>
+											<th>序号</th>
+											<th>姓名</th>
+											<th>岗位</th>
+											<th>身份证号</th>
+											<th>手机号</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php foreach($info['oper'] as $k=>$v){ ?>
+										<tr>
+											<td>{$k+1}</td>
+											<td>{$v.name}</td>
+											<td>{$v.gangwei}</td>
+											<td>{$v.IDcard}</td>
+											<td>{$v.mobile}</td>
+										</tr>
+										<?php } ?>
+									</tbody>
+								</table>
+							</div>
+						</div>
+				</div><!--equip_infomation-->
+			</div><!--equip_info-->
+			<!--审核登记-->
+			<div class="equip_info equip_infot" style="padding:0 20px 20px 20px !important ;">
+				<div class="equip_title engin_title">
+					<i class="equip_i"></i>
+					<span>审核登记</span>
+				</div>
+				<div class="equip_infomation">
+					<div class="equip_list clearfix">
+						<ul class="equip_ul">
+							<li>
+								<div class="equip_iteml">备案审核结果</div>
+								<div class="equip_itemr">{$info.beian_status}</div>
+							</li>
+							<li>
+								<div class="equip_iteml">备案日期</div>
+								<div class="equip_itemr">{$info.beian_time}</div>
+							</li>
+							<li style="width:100% !important ;">
+								<div class="equip_iteml">附件</div>
+								<?php if($info['file']!=''): ?>
+								<div class="equip_itemr"><a href="/Admin/File/installs_download/id/{$info.id}" id="organ_check"><i class="organ-look"></i></a>点击查看</div>
+								<?php else: ?>
+								<div class="equip_itemr">无</div>
+								<?php endif; ?>
+							</li>	
+						</ul>
+					</div>
+				</div><!--equip_infomation-->
+			</div><!--equip_info-->
+		</div><!--content-->
+<script>
+	$(document).on('click','.check',function(){
+		layer.load(1, {
+			shade: [0.1,'#fff'] //0.1透明度的白色背景
+		});
+
+		var data = $(this).attr('data');
+		var content = $(this).text();
+
+		$.ajax({
+			url:"{:U('Admin/File/c_install_detail')}",
+			dataType:'json',
+			type:'post',
+			data:{
+				'do':'check',
+				'id':"{$info.id}",
+				'data':data
+			},
+			success:function(e){
+				layer.closeAll();
+				if(e.status!=1){
+					layer.msg('操作失败，请重试', {time: 1500});
+					return false;
+				}
+
+				layer.msg('已'+content, {time: 1500});
+				$('.check').each(function(){
+					$(this).remove();
+				})
+				$('#img').attr('src','/Public/assets/demo/image/certifiedli.png');
+			}
+		})
+
+		return false;
+	})
+</script>
+<include file="Public:footer"/>

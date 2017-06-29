@@ -1,0 +1,62 @@
+              <!-- begin panel -->
+              <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
+                <div class="panel-body">
+                    <form class="form-horizontal" method='post' action='{:U("Code/".ACTION_NAME)}'>
+                      <input type='hidden' name='do' value='save'/>
+                      <input type='hidden' name='id' value='{$info.id}'/>
+                      <div class="form-group">
+                        <label class="col-md-3 control-label">选项名称</label>
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control" name='name' value='{$info.name}' placeholder="选项名称" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">选项代码</label>
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control" name='code' value='{$info.code}' placeholder="选项代码" />
+                        </div>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label class="col-md-3 control-label">是否系统级参数</label>
+                        <div class="col-lg-5">
+                            <label class='checkbox-inline'>
+                                <input type="checkbox" name='is_system' {$info['is_system']==1?'checked':''} value="1">
+                                是
+                            </label> 
+                        </div>
+                    </div>
+ -->                    <div class="form-group">
+                        <label class="col-md-3 control-label">排序</label>
+                        <div class="col-lg-5">
+                            <input type="number" min='1' class="form-control" name='ord' value='{$info.ord|default=1}' placeholder="排序" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label"></label>
+                        <div class="col-md-9">
+                            <button type="submit" class="btn btn-sm btn-success">提交信息</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- end panel -->
+        <script type='text/javascript'>
+          $(function(){
+            $('form').validator({
+                theme:'yellow_top',
+                msgClass:'n-right',
+                msgIcon:'',
+                msgMaker: function(opt){
+                  if(!opt.msg){
+                    return '';
+                }
+                return '<span class="msg-wrap n-error" role="alert"><span class="n-msg">'+opt.msg+'</span></span>'
+            },
+            fields: {
+                'name': "选项名称:required;",
+                'code': "选项代码:required;"
+            }
+        });
+        })
+    </script>

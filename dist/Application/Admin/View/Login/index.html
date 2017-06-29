@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{$title}</title>
+    <link rel="stylesheet" href="/Public/assets/css/login/reset.css">
+    <link rel="stylesheet" href="/Public/assets/css/login/common.css">
+
+    <!--<link href="__PUBLIC__/assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />-->
+    <!--<link href="__PUBLIC__/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />-->
+    <!--<link href="__PUBLIC__/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />-->
+    <!--<link href="__PUBLIC__/assets/css/animate.min.css" rel="stylesheet" />-->
+    <!--<link href="__PUBLIC__/assets/css/style.min.css" rel="stylesheet" />-->
+    <!--<link href="__PUBLIC__/assets/css/style-responsive.min.css" rel="stylesheet" />-->
+    <!--<link href="__PUBLIC__/assets/css/theme/default.css" rel="stylesheet" id="theme" />-->
+</head>
+<body>
+    <div class="login_back">
+        <div class="middle_content_block">
+            <div class="content">
+                <div class="title">
+                    <h1>飞达建筑起重机械</h1>
+                    <span>安全监管物联网平台</span>
+                </div>
+                <div id="person_user" class="detail_content">
+                    <form id="form1" action="{:U('Admin/Login/index')}" method="POST">
+                        <input type="hidden" value="login" name="do" >
+                        <div class="login_welcome">
+                            <span>登录</span>
+                        </div>
+                        <div class="login_block">
+                            <label for="login_username">
+                               <b class="username_icon"></b> <input type="text" id="login_username" name="username" placeholder="请输入姓名或手机号">
+                            </label>
+                            <label for="login_password">
+                                <b class="password_icon"></b>  <input type="password" id="login_password" name="password" placeholder="请输入密码">
+                            </label>
+                            <div class="center_code_container">
+                                <b class="code_icon"></b>
+                                <input type="text" id="login_code" name="verify" placeholder="请输入验证码">
+                                <div class="code_set">
+                                    <img src="{:U('Login/verify')}" id='verify_img' alt="{$Think.lang.click_refresh}"  onClick="this.src='{:U('Login/verify')}?'+Math.random()" title="{$Think.lang.click_refresh}" style="vertical-align: top;"><span id="msg_holder"></span>
+                                </div>
+                            </div>
+                            <input id="login_check" type="submit" value="登录">
+                            <div class="forget_relay">
+                                <a href="__URL__/forgot">忘记密码</a>
+                                <p><span>还没注册帐号?</span> <a href="__URL__/register">立即注册</a></p>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="login_other">
+                        <p class="other_title"><b class="one"></b> 微信扫码登录 <b class="two"></b></p>
+                        <div class="other_icon">
+                            <img src="/Public/assets/images/login/weixin.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <!--weixin-->
+                <div id="weixin" style="display: none" class="detail_content">
+                    <form id="form2" action="#">
+                        <div class="login_welcome">
+                            <span>登录</span>
+                        </div>
+                    </form>
+                    <div class="weixin_block">
+                        <div class="weixin_content">
+                            <div>
+                                <img src="/Public/assets/images/login/check_code_img.png" alt="">
+                            </div>
+                            <p>微信扫一扫立即登录</p>
+                            <a class="come_user_page" href="#">帐号登录</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/Public/assets/js/jquery-2.1.1.js"></script>
+
+    <script src="__PUBLIC__/assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+    <script src="__PUBLIC__/assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
+    <script src="__PUBLIC__/assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+    <script src="__PUBLIC__/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="assets/crossbrowserjs/html5shiv.js"></script>
+    <script src="assets/crossbrowserjs/respond.min.js"></script>
+    <script src="assets/crossbrowserjs/excanvas.min.js"></script>
+    <![endif]-->
+    <script src="__PUBLIC__/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="__PUBLIC__/assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+    <!-- ================== END BASE JS ================== -->
+
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    <script src="__PUBLIC__/assets/js/apps.min.js"></script>
+    <!-- ================== END PAGE LEVEL JS ================== -->
+    <js file="__PUBLIC__/assets/js/nice-validator-0.8.1/jquery.validator.js"/>
+    <js file="__PUBLIC__/assets/js/nice-validator-0.8.1/local/zh-CN.js"/>
+    <css file="__PUBLIC__/assets/js/nice-validator-0.8.1/jquery.validator.css"/>
+    <js file="__PUBLIC__/assets/js/layer/layer.js"/>
+    <js file="__PUBLIC__/assets/js/jquery.form.js" />
+    <script>
+        $('.other_icon img').click(function(){
+            $('#person_user').slideUp(200);
+            $('#weixin').slideDown(200);
+        });
+        $('.come_user_page').click(function(){
+            $('#person_user').slideDown(200);
+            $('#weixin').slideUp(200);
+        })
+
+
+        $('#login_check').click(function(){
+            var username = $('#login_username').val();
+            if(username == ''){
+                layer.msg('请输入用户名或手机号', {time: 1500});
+                $('#login_username').focus();
+                return false;
+            }
+
+            var password = $('#login_password').val();
+            if(password == ''){
+                layer.msg('请输入密码', {time: 1500});
+                $('#login_password').focus();
+                return false;
+            }
+
+            var code = $('#login_code').val();
+            if(code == ''){
+                layer.msg('请输入验证码', {time: 1500});
+                $('#login_code').focus();
+                return false;
+            }
+            layer.load(1, {
+                shade: [0.1,'#000'] //0.1透明度的白色背景
+            });
+
+            $.ajax({
+                url:"{:U('Admin/Login/check')}",
+                dataType:'json',
+                type:'post',
+                data:{
+
+                    'code':code,
+                },
+                success:function(e){
+                    if(e.error){
+                        layer.closeAll();
+                        layer.msg(e.error, {time: 1500});
+//                        window.location.reload();
+                    }else{
+                        $('#form1').ajaxSubmit({
+                            dataType:'json',
+                            success:function(res){
+                                layer.closeAll();
+                                if(res.status !=1){
+                                    layer.confirm(res.msg, {
+                                        btn: ['确定'], //按钮
+                                        closeBtn:0
+                                    }, function() {
+                                        layer.closeAll();
+                                        // $('#username,#password,#verify').val('')
+                                        window.location.reload();
+                                    });
+                                } else {
+                                    window.location.href=res.url;
+                                }
+                            }
+                        });
+                    }
+                }
+            })
+
+
+            return false;
+        })
+        window.onload=function(){
+            $('body').addClass('set_come');
+            //$('body').css('height',$(window).height());
+        }
+    </script>
+</body>
+</html>

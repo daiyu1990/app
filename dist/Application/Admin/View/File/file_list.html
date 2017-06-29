@@ -1,0 +1,609 @@
+<include file="Public:header"/>
+<!-- begin #content -->
+<div id="content" class="content content_waring">
+    <h1 class="page-header page_warging"><!--{$title}-->
+        档案管理>>技术资料
+        <a class="organ-add">
+            <i class="engin_add"></i>
+            <!--<span class="engin_add_text" id="new" type="1" data-toggle="modal" data-target=".newmodal">新增设备资料</span>-->
+            <span class="engin_add_text" id="new" type="1" data-toggle="modal" >新增设备资料</span>
+        </a>
+    </h1>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-inverse">
+                <div class="panel-body">
+                    <div class="row organ-form_waring">
+
+
+                        <div class="clearfix fl oragan_infrl"  id="search1">
+                            <label class="organ-item">
+                                <span class="organ-itemt">资料名称：</span>
+                                <input type="text" id="name1" class="organ-info" placeholder="输入资料名称"/>
+                            </label>
+
+                            <label class="organ-item">
+                                <span class="organ-itemt">设备编号：</span>
+                                <input type="text" id="fac_code" class="organ-info" placeholder="输入设备编号"/>
+                            </label>
+                            <label class="organ-item">
+                                <span class="organ-itemt">设备类型：</span>
+                                <select id="fac_type" class="organ-info check_inpldt">
+                                    <option value="">全部</option>
+                                    <option value="1">塔式起重机</option>
+                                    <option value="2">施工升降机</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="clearfix fl oragan_infrl" id="search2" style="display: none;">
+                            <label class="organ-item">
+                                <span class="organ-itemt">资料名称：</span>
+                                <input type="text" id="name2" class="organ-info" placeholder="输入资料名称"/>
+                            </label>
+
+                            <label class="organ-item">
+                                <span class="organ-itemt">终端编号：</span>
+                                <input type="text" id="ter_code" class="organ-info" placeholder="输入终端编号"/>
+                            </label>
+                            <label class="organ-item">
+                                <span class="organ-itemt">终端类型：</span>
+                                <select id="ter_type" class="organ-info check_inpldt">
+                                    <option value="">全部</option>
+                                    <option value="1">塔式起重机安全监控系统</option>
+                                    <option value="2">施工升降机安全监控系统</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="clearfix fl oragan_infrl" id="search3" style="display: none;">
+                            <label class="organ-item">
+                                <span class="organ-itemt">资料名称：</span>
+                                <input type="text" id="name3" class="organ-info" placeholder="输入资料名称"/>
+                            </label>
+
+                            <label class="organ-item">
+                                <span class="organ-itemt">企业名称：</span>
+                                <input type="text" class="organ-info" placeholder="输入企业名称"/>
+                            </label>
+
+                        </div>
+                        <div class="organ-formlt fl oagan_checkt">
+                            <a id="search" class="refer_equiplist refer">查询</a>
+                        </div>
+                    </div>
+                    <!--tab切换-->
+                    <ul id="myTab" class="nav nav-tabs" style="margin-top: 10px; background-color: #ccc">
+                        <li class="active">
+                            <a href="#shebei" class="type" for="1" data="1" >设备资料</a>
+                        </li>
+                        <li>
+                            <a href="#zongduan" class="type" for="2" data="0"  >终端资料</a>
+                        </li>
+                        <li>
+                            <a href="#qiye" class="type" for="3" data="0"  >企业资料</a>
+                        </li>
+                    </ul>
+                    <!--设备资料-->
+                    <div id="myTabContent" class="tab-content">
+                        <div class="tab-pane fade in active" id="shebei">
+                            <table id="data-table"  class="table tj_table engin_table table-striped" style="margin-top: 0px!important">
+                                <thead>
+                                <tr>
+                                    <th class="class_waring" >
+
+                                        选择
+                                    </th>
+                                    <th>序号</th>
+                                    <th class="class_waring" >资料编号</th>
+                                    <th class="class_waring" >资料名称</th>
+                                    <th id="t_name" class="class_waring" >关联设备编号</th>
+                                    <th id="t_type" class="class_waring" >关联设备类型</th>
+                                    <th class="class_waring" >审核状态</th>
+                                    <th class="class_waring" >编辑</th>
+                                    <?php if(ACTION_NAME == c_file_list): ?>
+                                    <th class="class_waring" >审核</th>
+                                    <?php endif; ?>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                            <div class="paging_lister">
+                                <button id="del" class="btn btn-default btn-sm" style="margin-top:25px;float:left; background-color: #3c3c3c; color: white;">删除选中</button>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- end #content -->
+
+<script src="__PUBLIC__/assets/js/laydate/laydate.js"></script>
+<script>
+    var Page = {
+        init: function(){
+            this.bind();
+            this.renderTable();
+        },
+        bind: function(){
+            var _this = this;
+            //状态
+
+            $(document).on('click','#del',function(){
+
+                var id='';
+                $('.check_all').each(function(){
+                    if($(this).is(':checked')){
+                        id+=','+$(this).val();
+                    }
+                })
+
+                if(id==''){
+                    layer.msg('请至少选择一项', {time: 1500});
+                    return false;
+                }else{
+                    id = id.replace(',','');
+                    layer.load(1, {
+                        shade: [0.1,'#fff'] //0.1透明度的白色背景
+                    });
+
+                    $.ajax({
+                            <?php if(ACTION_NAME == 'file_list'): ?>
+                            url : '{:U('File/file_list')}',
+                            <?php else: ?>
+                            url : '{:U('File/c_file_list')}',
+                            <?php endif; ?>
+                        dataType:'json',
+                        type:'post',
+                        data:{
+                            'do':'del',
+                            'id':id
+                        },
+                        success:function(e){
+                            layer.closeAll();
+                            if(e.status!=1){
+                                layer.msg('删除失败，请重试', {time: 1500});
+                                return false;
+                            }
+
+                            layer.msg('删除成功', {time: 1500});
+                            _this.renderTable();
+                        }
+                    })
+
+                }
+            })
+
+
+            $(document).on('click','#cancel',function(){
+                layer.closeAll();
+                return false;
+            })
+
+            $(document).on('click','#save',function(){
+                var type=$(this).attr('type');
+//                alert(type);return false;
+
+                    var load = layer.load(1, {
+                        shade: [0.1,'#fff'] //0.1透明度的白色背景
+                    });
+                    $('#form_add').ajaxSubmit({
+                        dataType:'json',
+                        success:function(res){
+                            layer.close(load);
+                            if(res.status !=1){
+                                layer.msg('保存失败，请重试', {time: 1500});
+                                return false;
+                            }else{
+
+                                layer.closeAll();
+                                layer.msg('保存成功', {time: 1500});
+                                _this.renderTable();
+                            }
+                        }
+                    });
+
+                    return false;
+
+            })
+
+
+            $(document).on('click','.check',function(){
+                var id=$(this).attr('for');
+                var data=$(this).attr('data');
+                var content = $(this).text();
+
+                var load = layer.load(1, {
+                    shade: [0.1,'#fff'] //0.1透明度的白色背景
+                });
+                $.ajax({
+                            <?php if(ACTION_NAME == 'file_list'): ?>
+                            url : '{:U('File/file_list')}',
+                            <?php else: ?>
+                            url : '{:U('File/c_file_list')}',
+                            <?php endif; ?>
+                    dataType:'json',
+                    type:'post',
+                    data:{
+                        'do':'check',
+                        'id':id,
+                        'data':data
+                    },
+                    success:function(e){
+                        layer.close(load);
+                        if(e.status!=1){
+                            layer.msg('操作失败，请重试', {time: 1500});
+                            return false;
+                        }
+                        layer.closeAll();
+                        layer.msg('已'+content, {time: 1500});
+                        _this.renderTable();
+                    }
+                })
+
+                return false;
+
+            })
+
+
+            $(document).on('click','.shenhe',function(){
+                var id=$(this).attr('data');
+                var type=$('#new').attr('type');
+                        layer.load(1, {
+                            shade: [0.1,'#fff'] //0.1透明度的白色背景
+                        });
+
+                        $.ajax({
+                            <?php if(ACTION_NAME == 'file_list'): ?>
+                            url : '{:U('File/file_list')}',
+                            <?php else: ?>
+                            url : '{:U('File/c_file_list')}',
+                            <?php endif; ?>
+                            dataType:'json',
+                            type:'post',
+                            data:{
+                                'do':'getDetail',
+                                'id':id,
+                            },
+                            success:function(e){
+                                layer.closeAll();
+                                if(e.status!=1){
+                                    layer.msg('获取资料信息失败，请重试', {time: 1500});
+                                    return false;
+                                }
+
+                                var html = '<div class="modal-body">'+
+                                                '<ul class="equipdata_adds equip_ul">'+
+                                                    '<li>'+
+                                                        '<div class="equip_iteml">资料名称</div>'+
+                                                        '<div class="equip_itemr">'+ e.data.name+'</div>'+
+                                                    '</li>'+
+                                                    '<li>';
+                                                    if(type==1){
+                                                        html+='<div class="equip_iteml">关联设备编号</div>';
+                                                    }else if(type==2){
+                                                        html+='<div class="equip_iteml">关联终端编号</div>';
+                                                    }else{
+                                                        html+='<div class="equip_iteml">关联公司名称</div>';
+                                                    }
+
+                                                     html+='<div class="equip_itemr omg">'+ e.data.connet+'</div>'+
+                                                    '</li>'+
+                                                    '<li>';
+                                                    if(type==1){
+                                                        html+='<div class="equip_iteml">关联设备类型</div>';
+                                                    }else if(type==2){
+                                                        html+='<div class="equip_iteml">关联终端类型</div>';
+                                                    }else{
+                                                        html+='<div class="equip_iteml">关联公司类型</div>';
+                                                    }
+                                                       html+= '<div class="equip_itemr">'+ e.data.b_type+'</div>'+
+                                                    '</li>'+
+                                                    '<li style="border-bottom: 1px solid #e6e6e6;">'+
+                                                        '<div class="equip_iteml" style="border-bottom: none; height:47px;">审核状态</div>'+
+                                                        '<div class="equip_itemr">'+e.data.status+'</div>'+
+                                                    '</li>';
+                                                    if(e.data.status_code==0){
+                                                        html+='<div class="add_finish equip_finish">'+
+                                                                '<a href="" data="1" for="'+ e.data.id+'" class="opass equipfinish check">通过审核</a>'+
+                                                                '<a href="" data="2" for="'+ e.data.id+'" class="opass equipfinish check" style="background:#b3b3b3 ;">驳回请求</a>'+
+                                                                '</div>';
+                                                    }
+
+                                                html+='</ul>'+
+                                            '</div>';
+                                layer.open({
+                                    title: '审核资料',
+                                    type: 1,
+                                    skin: 'layui-layer-demo', //加上边框
+                                    anim: 5,
+                                    area: ['600px', '400px'], //宽高
+                                    content: html
+                                });
+                                return false;
+
+
+                            }
+                        })
+            })
+
+
+
+            $(document).on('click','.bianji',function(){
+
+                var id=$(this).attr('data');
+                layer.load(1, {
+                    shade: [0.1,'#fff'] //0.1透明度的白色背景
+                });
+
+                $.ajax({
+                    <?php if(ACTION_NAME == 'file_list'): ?>
+                    url : '{:U('File/file_list')}',
+                    <?php else: ?>
+                    url : '{:U('File/c_file_list')}',
+                    <?php endif; ?>
+                    dataType:'json',
+                    type:'post',
+                    data:{
+                        'do':'getOne',
+                        'id':id,
+                    },
+                    success:function(e){
+                        layer.closeAll();
+                        if(e.status!=1){
+                            layer.msg('获取资料信息失败，请重试', {time: 1500});
+                            return false;
+                        }
+
+                        var html = '<div class="modal-body">'+
+                                '<form id="form_add" class="form-horizontal"  method="post" enctype="multipart/form-data" action="'+"/Admin/File/{:ACTION_NAME}"+'">'+
+                                '<input type="hidden" name="do" value="edit">'+
+                                '<input type="hidden" name="id" value="'+ e.data.id+'">'+
+                                '<input type="hidden" name="type" value="'+ e.data.type+'">'+
+                                '<div class="form-group">'+
+                                '<label for="inputname" class="col-sm-3 control-label"><i class="required_fieldsf">*</i>资料名称：</label>'+
+                                '<div class="col-sm-9">'+
+                                '<input name="name" class="form-control" value="'+ e.data.name +'" id="name" placeholder="输入资料名称">'+
+                                '</div>'+
+                                '</div>'+
+                                '<div class="form-group">'+
+                                '<label for="inputfile" class="col-sm-3 control-label"><i class="required_fieldsf">*</i>上传文件：</label>'+
+                                '<div class="col-sm-4">'+
+                                '<input type="file" name="file" class="form-control" id="file">'+
+                                '</div>'+
+                                '<p class="help-block col-sm-5">文件不大于5M</p>'+
+                                '</div>'+
+
+                                '<div class="form-group">';
+
+                        if(e.data.type==1){
+                            html+='<label for="inputshebeiid" class="col-sm-3 control-label"><i class="required_fieldsf">*</i>设备编号：</label>'+
+                                    '<div class="col-sm-9">'+
+                                    '<input type="text" name="connet" value="'+ e.data.connet +'" class="form-control" id="connet" placeholder="输入关联的设备编号">'+
+                                    '</div>'+
+                                    '</div>';
+                        }else if(e.data.type==2){
+                            html+='<label for="inputshebeiid" class="col-sm-3 control-label"><i class="required_fieldsf">*</i>终端编号：</label>'+
+                                    '<div class="col-sm-9">'+
+                                    '<input type="text" name="connet" value="'+ e.data.connet +'" class="form-control" id="connet" placeholder="输入关联的终端编号">'+
+                                    '</div>'+
+                                    '</div>';
+                        }
+                        html+='<div class="form-group">'+
+                                '<label  class="col-sm-3 control-label"></label>'+
+                                '<a id="save" type="edit" href="" class="opass equipfinish">保存</a>'+
+                                '<a href="" id="cancel" class="opass equipfinish">取消</a>'+
+                                '</div>'+
+
+                                '</form>'+
+                                '</div>';
+                        layer.open({
+                            title: '修改资料',
+                            type: 1,
+                            skin: 'layui-layer-demo', //加上边框
+                            anim: 5,
+                            area: ['420px', '300px'], //宽高
+                            content: html
+                        });
+                        return false;
+
+                    }
+                })
+            })
+
+
+            $(document).on('click','#new',function(){
+                var type = $(this).attr('type');
+
+                var html = '<div class="modal-body">'+
+                                '<form id="form_add" class="form-horizontal"  method="post" enctype="multipart/form-data" action="'+"/Admin/File/{:ACTION_NAME}"+'">'+
+                                    '<input type="hidden" name="do" value="add">'+
+                                    '<input type="hidden" name="type" value="'+type+'">'+
+                                    '<div class="form-group">'+
+                                        '<label for="inputname" class="col-sm-3 control-label"><i class="required_fieldsf">*</i>资料名称：</label>'+
+                                        '<div class="col-sm-9">'+
+                                            '<input name="name" class="form-control" id="name" placeholder="输入资料名称">'+
+                                        '</div>'+
+                                    '</div>'+
+                                    '<div class="form-group">'+
+                                        '<label for="inputfile" class="col-sm-3 control-label"><i class="required_fieldsf">*</i>上传文件：</label>'+
+                                        '<div class="col-sm-4">'+
+                                            '<input type="file" name="file" class="form-control" id="file">'+
+                                        '</div>'+
+                                        '<p class="help-block col-sm-5">文件不大于5M</p>'+
+                                    '</div>'+
+
+                                    '<div class="form-group">';
+
+                                    if(type==1){
+                                        html+='<label for="inputshebeiid" class="col-sm-3 control-label"><i class="required_fields">*</i>设备编号：</label>'+
+                                                '<div class="col-sm-9">'+
+                                                '<input type="text" name="connet" class="form-control" id="connet" placeholder="输入关联的设备编号">'+
+                                                '</div>'+
+                                                '</div>';
+                                    }else if(type==2){
+                                        html+='<label for="inputshebeiid" class="col-sm-3 control-label"><i class="required_fieldsf">*</i>终端编号：</label>'+
+                                                '<div class="col-sm-9">'+
+                                                '<input type="text" name="connet" class="form-control" id="connet" placeholder="输入关联的终端编号">'+
+                                                '</div>'+
+                                                '</div>';
+                                    }
+                                    html+='<div class="form-group">'+
+                                        '<label  class="col-sm-3 control-label"></label>'+
+                                        '<a id="save" type="add" href="" class="opass equipfinish">保存</a>'+
+                                        '<a href="" id="cancel" class="opass equipfinish">取消</a>'+
+                                    '</div>'+
+
+                                '</form>'+
+                            '</div>';
+
+                layer.open({
+                    title: '添加资料',
+                    type: 1,
+                    skin: 'layui-layer-demo', //加上边框
+                    anim: 5,
+                    area: ['420px', '300px'], //宽高
+                    content: html
+                });
+                return false;
+
+            })
+
+            $(document).on('click','#search',function(){
+
+                _this.name1 = $('#name1').val();
+                _this.name2 = $('#name2').val();
+                _this.name3 = $('#name3').val();
+                _this.fac_code = $('#fac_code').val();
+                _this.fac_type = $('#fac_type').val();
+                _this.ter_code = $('#ter_code').val();
+                _this.ter_type = $('#ter_type').val();
+
+
+
+                _this.renderTable();
+            })
+
+            $(document).on('click','.type',function(){
+                if($(this).attr('data')==1){
+                    return false;
+                }
+
+                $('.type').each(function(){
+                    $(this).attr('data',0);
+                })
+
+
+                $('#myTab li').each(function(){
+                    $(this).removeAttr('class');
+                })
+                $(this).parent().attr('class','active');
+                $(this).attr('data',1);
+
+                var type = $(this).attr('for');
+                if(type==1){
+                    $('#t_name').text('关联设备编号');
+                    $('#t_type').text('关联设备类型');
+                    $('#new').text('新建设备资料');
+                    $('#new').attr('type',1);
+                    $('#search1').css('display','block');
+                    $('#search2').css('display','none');
+                    $('#search3').css('display','none');
+                }else if(type==2){
+                    $('#t_name').text('关联终端编号');
+                    $('#t_type').text('关联终端类型');
+                    $('#new').text('新建终端资料');
+                    $('#new').attr('type',2);
+                    $('#search1').css('display','none');
+                    $('#search2').css('display','block');
+                    $('#search3').css('display','none');
+                }else if(type==3){
+                    $('#t_name').text('企业名称');
+                    $('#t_type').text('企业类型');
+                    $('#new').text('新建企业资料');
+                    $('#new').attr('type',3);
+                    $('#search1').css('display','none');
+                    $('#search2').css('display','none');
+                    $('#search3').css('display','block');
+                }
+
+                _this.type = type;
+                _this.renderTable();
+
+                return false;
+            })
+
+
+        },
+        type:1,
+        name1:'',
+        name2:'',
+        name3:'',
+        fac_code:'',
+        fac_type:'',
+        ter_code:'',
+        ter_type:'',
+
+        renderTable: function(){
+            layer.load(1, {
+                shade: [0.1,'#fff'] //0.1透明度的白色背景
+            });
+            var _this = this;
+            if(this.tableInit){
+                $('#data-table').DataTable().ajax.reload();
+                return;
+            }
+            this.tableInit = true;
+            _this.table = $('#data-table').DataTable({
+                "ajax": {
+                            <?php if(ACTION_NAME == 'file_list'): ?>
+                            url : '{:U('File/file_list',array('do'=>'listTableData'))}',
+                            <?php else: ?>
+                            url : '{:U('File/c_file_list',array('do'=>'listTableData'))}',
+                            <?php endif; ?>
+                        data: function(){
+                            return {
+
+                                type:_this.type,
+                                name1:_this.name1,
+                                name2:_this.name2,
+                                name3:_this.name3,
+                                fac_code:_this.fac_code,
+                                fac_type:_this.fac_type,
+                                ter_code:_this.ter_code,
+                                ter_type:_this.ter_type,
+
+
+                            }
+                        }
+                    },
+                    "dom":'f<t>ip',
+                //'searching':true,
+                //多语言配置
+                "language": Base.oLanguage,
+                //默认排序列
+                "aaSorting": [[ 0, "asc" ]],
+                "drawCallback": function(){
+                    layer.closeAll();
+                },
+                // "searching":false,
+                // "deferLoading":10000,
+                "initComplete":function(row, data, start, end, display){
+                    $('#manage-right').append($('#data-table_filter'));
+                },
+                });
+
+
+                }
+    }
+    $(document).ready(function() {
+        Page.init();
+    });
+</script>
+
+<include file="Public:footer"/>

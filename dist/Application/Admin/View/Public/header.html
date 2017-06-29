@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+  <title>{:C('SYSTEM_TITLE')}-{$title}</title>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+  <meta content="" name="description" />
+  <meta content="" name="author" />
+  
+  <!-- ================== BEGIN BASE CSS STYLE ================== -->
+  <!-- <link href="http://fonts.useso.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" /> -->
+  <link href="__PUBLIC__/assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
+  <link href="__PUBLIC__/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="__PUBLIC__/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+  <link href="__PUBLIC__/assets/css/animate.min.css" rel="stylesheet" />
+  <link href="__PUBLIC__/assets/css/style.min.css" rel="stylesheet" />
+
+  <!-- 自定义css -->
+  <link href="__PUBLIC__/assets/css/common.css" rel="stylesheet" />
+  <link href="__PUBLIC__/assets/css/style.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/bootstrap-select/2.0.0-beta1/css/bootstrap-select.css">  
+  <link rel="stylesheet" href="__PUBLIC__/assets/demo/css/staff.css" type="text/css">
+  <link rel="stylesheet" href="__PUBLIC__/assets/demo/css/wenjuan_ht.css" type="text/css">
+	<link rel="stylesheet" href="__PUBLIC__/assets/css/layui.css" type="text/css">
+	<link rel="stylesheet" href="__PUBLIC__/assets/demo/css/dist/zoomify.min.css" type="text/css">
+  <link href="__PUBLIC__/assets/css/style-responsive.min.css" rel="stylesheet" />
+  <link href="__PUBLIC__/assets/css/theme/default.css" rel="stylesheet" id="theme" />
+  <!-- ================== END BASE CSS STYLE ================== -->
+  
+  <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+  <!-- <link href="__PUBLIC__/assets/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" /> -->
+  <link href="__PUBLIC__/assets/plugins/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
+  <link href="__PUBLIC__/assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" />
+  <link href="__PUBLIC__/assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
+  <!-- ================== END PAGE LEVEL STYLE ================== -->
+  
+  <!-- ================== BEGIN BASE JS ================== -->
+  <script src="__PUBLIC__/assets/plugins/pace/pace.min.js"></script>
+  <script src="__PUBLIC__/assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+  <script src="__PUBLIC__/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+  <js file="__PUBLIC__/assets/js/layer/layer.js"/>
+  <js file="__PUBLIC__/assets/js/base.js"/>
+  <js file="__PUBLIC__/assets/js/moment-with-locales.js"/>
+  <js file="__PUBLIC__/assets/js/DataTables-1.10.12/media/js/jquery.dataTables.min.js"/>
+  <css file="__PUBLIC__/assets/js/DataTables-1.10.12/media/css/jquery.dataTables.min.css"/>
+
+  <js file="__PUBLIC__/assets/js/nice-validator-0.8.1/jquery.validator.js"/>
+    <js file="__PUBLIC__/assets/js/nice-validator-0.8.1/local/zh-CN.js"/>
+    <css file="__PUBLIC__/assets/js/nice-validator-0.8.1/jquery.validator.css"/>
+    
+    <js file="__PUBLIC__/assets/js/pickerDateRange/dateRange.js"/>
+    <css file="__PUBLIC__/assets/js/pickerDateRange/dateRange.css"/>
+
+    <js file="__PUBLIC__/assets/js/chosen/chosen.jquery.min.js"/>
+    <css file="__PUBLIC__/assets/js/chosen/chosen.min.css" />
+
+    <js file="__PUBLIC__/assets/js/jquery.form.js" />
+    <js file="__PUBLIC__/assets/js/ajaxupload.js" />
+    <js href="__PUBLIC__/assets/js/ueditor/ueditor.config.js" />    
+    <js href="__PUBLIC__/assets/js/ueditor/ueditor.all.min.js" />
+    <!-- 自定义js -->
+    <script src="__PUBLIC__/assets/js/echarts.js"></script>
+    <script src="__PUBLIC__/assets/js/china.js"></script>
+    <script src="__PUBLIC__/assets/demo/css/dist/zoomify.min.js"></script>
+    <script src="__PUBLIC__/assets/js/common.js"></script>
+    <script src="__PUBLIC__/assets/js/qiniu/qiniu.min.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/Plupload/2.1.1/moxie.min.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/Plupload/2.1.1/plupload.full.min.js"></script>
+    <js file="__PUBLIC__/assets/js/bootstrap-switch.js"/>
+    <css file="__PUBLIC__/assets/css/bootstrap-switch.css" />
+		
+		 <!--引用百度地图API-->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZQOCPE1rsfVNsaeidFlti1aN"></script>
+		<!--加载鼠标绘制工具-->
+		<script type="text/javascript" src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
+		<link rel="stylesheet" href="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.css" />
+		<!--加载检索信息窗口-->
+		<script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.4/src/SearchInfoWindow_min.js"></script>
+		<link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.4/src/SearchInfoWindow_min.css" />
+
+	<script type="text/javascript" src="http://cdn.bootcss.com/bootstrap-select/2.0.0-beta1/js/bootstrap-select.js"></script>    
+  <script language="javascript" type="text/javascript" src="__PUBLIC__/assets/date/WdatePicker.js"></script>
+  <!-- ================== END BASE JS ================== -->
+</head>
+<body>
+  <!-- begin #page-loader -->
+  <div id="page-loader" class="fade in"><span class="spinner"></span></div>
+  <!-- end #page-loader -->
+  
+  <!-- begin #page-container -->
+  <div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+    <!-- begin #header -->
+    <div id="header" class="header navbar navbar-default navbar-fixed-top">
+      <!-- begin container-fluid -->
+      <div class="container-fluid">
+        <!-- begin mobile sidebar expand / collapse button -->
+        <div class="navbar-header">
+          <a href="/" class="navbar-brand"><span class="navbar-logos"></span> 飞达建筑起重机械安全监管物联网平台</a>
+          <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <!-- end mobile sidebar expand / collapse button -->
+        
+        <!-- begin header navigation right -->
+        <ul class="nav navbar-nav navbar-right">
+          <if condition="(session('userinfo.brand_id') gt 0 && session('userinfo.groupid') eq 3) || (session('userinfo.brand_id') gt 0  && session('userinfo.groupid') eq 4)">
+            <li><a style="cursor: default;">当前品牌商：{:session('brandinfo.brand_name')}</a></li>
+            <li>
+              <a href="{:U('Member/Story/index')}" target='_blank' >进入客户端</a>
+            </li>
+          </if>
+          <li>
+            <a href="javascript:;" >
+              <!-- <img src="__PUBLIC__/assets/img/user-13.jpg" alt="" />  -->
+              <span class="hidden-xs"><i class="fa fa-user mr5"></i>{:session('userinfo.username')}</span>
+            </a>
+
+
+          </li>
+          <li>
+              <a href="{:U('Admin/Login/logout')}">
+              <!-- <img src="__PUBLIC__/assets/img/user-13.jpg" alt="" />  -->
+              <span class="hidden-xs"><i class="fa fa-sign-out mr5"></i>退出</span>            </a>
+          </li>
+        </ul>
+        <!-- end header navigation right -->
+      </div>
+      <!-- end container-fluid -->
+    </div>
+    <!-- end #header -->
+    
+    <include file="Public:sidebar"/>

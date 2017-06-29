@@ -1,0 +1,64 @@
+/* 头部样式 */
+.common-header{background-color: #000;}
+.common-header .header-top{padding-top:12px;}
+.common-header .person a{font-size: 12px;color:#5a5a5a;margin-right: 5px;}
+.common-header .person a:hover{text-decoration: none;color:#fff;}
+.common-header .loginA{margin-left: 20px;font-size: 12px;color:#5a5a5a;}
+.common-header .loginA:hover{text-decoration: none;color:#fff;}
+.common-header .header-logo{height: 48px;text-align: center;}
+.common-header .header-bottom{position: relative; height: 54px;}
+.common-header .header-bottom .hamburg{width: 44px;height: 44px; background: url('../images/fixed/hamburg-f.png') 0 0 no-repeat;cursor: pointer;margin-top: 10px;}
+.common-header .header-bottom .menu{z-index: 99; position: absolute;top: 54px;left: 0px; width: 136px;box-shadow: 0px 0px 2px #999;background-color: #fff;}
+.common-header .header-bottom .logoBox-menu{width: 78px;height: 38px;margin:40px 30px;}
+.common-header .header-bottom .list{border-top: 1px solid #7d7d7d;}
+.common-header .header-bottom .menuA{display: block; width: 136px;height: 30px;border-bottom: 1px solid #ebebeb;line-height: 30px;text-align: center;font-size: 12px;color:#000;}
+.common-header .header-bottom .menuA.current{text-decoration: none;}
+.common-header .header-bottom .menuA:hover{text-decoration: none;color:#fb6c2c;}
+.common-header .header-bottom .list .current{background-color: #f5f5f5;color:#fb6c2c;}
+.common-header .header-bottom .shopingCar{float: right;margin-top:18px;font-size: 12px;color: #5a5a5a; }
+.common-header .header-bottom .shopingCar a{font-size: 12px;color:#fff;}
+.common-header .header-bottom .shopingCar a:hover{text-decoration: none;color:#fff;}
+.common-header .header-bottom .shopingCar span{font-family: "Arial Regular" ;font-size: 14px;color:#fff;}
+.common-header .header-bottom .shopingCar span.hot{font-size: 12px;color:#fb6c2c;}
+.common-header .header-bottom .car{margin-right: 10px; vertical-align:middle;}
+.common-header .header-bottom .navUl{position: absolute;bottom:0px;left:50%;margin-left: -125px;}
+.common-header .header-bottom .navLi{float: left; padding-bottom: 10px;margin-right: 50px;}
+.common-header .header-bottom .navLi a{font-size: 12px;color:#fff;}
+.common-header .header-bottom .navLi.current a{text-decoration: none;}
+.common-header .header-bottom .navLi a:hover{text-decoration: none;color:#fff;}
+.common-header .header-bottom .navLi.current{border-bottom: 2px solid #fb6c2c;}
+
+/* 底部样式 */
+.common-footer{background-color: #000;}
+.common-footer .footer-serve{text-align: center;}
+.common-footer .serveUl{display: inline-block;}
+.common-footer .serveLi{width: 196px;margin-right: 0px; padding:40px 0;}
+.common-footer .serveLi .txtBox{margin-top: 10px;text-align:center;font-size: 14px;color:#fff;}
+.common-footer .serveLi:nth-child(1) .imgBox{width: 62px;height: 62px;border: 1px solid #fff;border-radius: 50%;  margin:0 auto;background: url('../images/fixed/cap.png') center center no-repeat;}
+.common-footer .serveLi:nth-child(1):hover .imgBox{border: 1px solid #fb6c2c;background: url('../images/fixed/cap-h.png') center center no-repeat;}
+.common-footer .serveLi:nth-child(1):hover .txt{color:#fb6c2c;}
+.common-footer .serveLi:nth-child(2) .imgBox{width: 62px;height: 62px;border: 1px solid #fff;border-radius: 50%;  margin:0 auto;background: url('../images/fixed/seven.png') center center no-repeat;}
+.common-footer .serveLi:nth-child(2):hover .imgBox{border: 1px solid #fb6c2c;background: url('../images/fixed/seven-h.png') center center no-repeat;}
+.common-footer .serveLi:nth-child(2):hover .txt{color:#fb6c2c;}
+.common-footer .serveLi:nth-child(3) .imgBox{width: 62px;height: 62px;border: 1px solid #fff;border-radius: 50%;  margin:0 auto;background: url('../images/fixed/bus.png') center center no-repeat;}
+.common-footer .serveLi:nth-child(3):hover .imgBox{border: 1px solid #fb6c2c;background: url('../images/fixed/bus-h.png') center center no-repeat;}
+.common-footer .serveLi:nth-child(3):hover .txt{color:#fb6c2c;}
+.common-footer .serveLi:nth-child(4) .imgBox{width: 62px;height: 62px;border: 1px solid #fff;border-radius: 50%;  margin:0 auto;background: url('../images/fixed/home.png') center center no-repeat;}
+.common-footer .serveLi:nth-child(4):hover .imgBox{border: 1px solid #fb6c2c;background: url('../images/fixed/home-h.png') center center no-repeat;}
+.common-footer .serveLi:nth-child(4):hover .txt{color:#fb6c2c;}
+.common-footer .serveLi:nth-child(5) .imgBox{width: 62px;height: 62px;border: 1px solid #fff;border-radius: 50%;  margin:0 auto;background: url('../images/fixed/tel.png') center center no-repeat;}
+.common-footer .serveLi:nth-child(5):hover .imgBox{border: 1px solid #fb6c2c;background: url('../images/fixed/tel-h.png') center center no-repeat;}
+.common-footer .serveLi:nth-child(5):hover .txt{color:#fb6c2c;}
+.common-footer .line{height: 1px;background-color: #141414;}
+.common-footer .footer-link{padding:30px 0;}
+.common-footer .footer-link .link{ text-align: center;}
+.common-footer .footer-link .link a{display: inline-block; font-size: 12px;color:#5a5a5a;margin:0 25px 15px 0;}
+.common-footer .footer-link .link a:hover{color:#fff;}
+.common-footer .footer-link .copyright{text-align: center;}
+.common-footer .footer-link .copyIn span{font-size: 12px;color:#5a5a5a;}
+
+/* 必须放在最底部的样式 */
+.block{display: block;}
+.none{display: none;}
+.dib{display: inline-block;}
+

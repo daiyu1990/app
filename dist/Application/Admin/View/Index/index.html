@@ -1,0 +1,298 @@
+<include file="Public:header"/>
+	<style>
+		.hy{font-size:36px;text-align:center;margin:120px auto auto auto;font-family:微软雅黑;color:#1a64c1}
+	</style>
+	<div class="hy">欢迎您，{:session('userinfo.username')}（{:session('userinfo.nicename')}）登录系统！</div>
+	<!-- begin #content -->
+	<!--<div  style="width:87%; height:1050px; margin-left:180px ;">-->
+		<div  class="content content_index" id="allmap" style="min-width:82%;overflow:hidden;zoom:1;position:relative;min-height: 2000px; padding: 0 !important;">
+			<div id="map" style="height:100%;height: 2000px;-webkit-transition: all 0.5s ease-in-out;transition: all 0.5s ease-in-out;"></div>
+			
+			<div class="index_top" style="position: absolute; top: 25px; left: 20px;">
+				<div class="seek_content">
+					<label class="fl index_select">
+						<select class="organ-info check_inpld check_inpf" >
+                            <option value="">设备 </option>
+                            <option value="">工程</option>
+                            <option value="">人员</option>
+                            <option value="">报警</option>
+			            </select>
+					</label>
+					<label class="fl index_input">
+						<input type="text" class="organ-info check_inpld check_inpf" placeholder=" 搜索">	
+					</label>
+					<i class="fl index_serach">
+						<img  src="__PUBLIC__/assets/demo/image/search_index.png"/>
+					</i>
+					<i class="fl index_end"></i>
+				</div>
+				<div class="seek_content seek_contents">
+					<label class="fl index_select">
+						<select class="organ-info check_inpld check_inpf" >
+                            <option value="">全国 </option>
+                            <option value="">省</option>
+                            <option value="">市</option>
+			            </select>
+					</label>
+				</div>
+				<div class="index_logo">
+					<img  src="__PUBLIC__/assets/demo/image/map_function.png"/>
+				</div>
+			</div>
+			<div class="index_body" style="position: absolute; right: 20px; top: 154px;">
+				<div class="index_item">
+					<div class="index_item_title">
+						<i class="index_item_i">
+							<img  src="__PUBLIC__/assets/demo/image/3.png"/>
+						</i>
+						当前接入设备数量（台）
+					</div>
+					<div class="index_item_con">
+						<div class="index_con_top">
+							1980
+						</div>
+						<div class="index_con_bottom">
+							<div class="index_con_bottom_item row">
+								<div class="col-md-6">
+									<span>开机</span>
+									<span><a class="index_xuhao">1620</a></span>
+								</div>
+								<div class="col-md-6">
+									<span>停机</span>
+									<span><a class="index_xuhaos">360</a></span>
+								</div>
+							</div>
+							<div class="index_con_bottom_item row">
+								<div class="col-md-6">
+									<span>在线</span>
+									<span><a class="index_xuhao">1620</a></span>
+								</div>
+								<div class="col-md-6">
+									<span>离线</span>
+									<span><a class="index_xuhaos">360</a></span>
+								</div>
+							</div>
+						</div>
+					</div><!--index_item_con-->
+				</div><!--index_item-->
+				<div class="index_item">
+					<div class="index_item_title">
+						<i class="index_item_i">
+							<img  src="__PUBLIC__/assets/demo/image/4.png"/>
+						</i>
+						当前报警总量（条）
+					</div>
+					<div class="index_item_con">
+						<div class="index_con_top">
+							456461980
+						</div>
+						<div class="index_con_bottom">
+							<div class="index_con_bottom_item row">
+								<div class="col-md-6">
+									<span>今日报警</span>
+								</div>
+								<div class="col-md-6">
+									<span>1676587686</span>
+								</div>
+							</div>
+							<div class="index_con_bottom_item row">
+								<div class="col-md-6">
+									<span>昨日报警</span>
+								</div>
+								<div class="col-md-6">
+									<span>4354656757</span>
+								</div>
+							</div>
+						</div>
+					</div><!--index_item_con-->
+				</div><!--index_item-->
+				<div class="index_item index_items">
+					<div class="index_item_title index_item_titles">
+						<i class="index_item_i" style="margin-right: 18px;">
+							<img  src="__PUBLIC__/assets/demo/image/5.png"/>
+						</i>
+						一级报警实时排名
+					</div>
+					<div class="index_item_con index_item_cons">
+						<ul class="waring_lists">
+							<li><span>1</span> 郑州绿地御蓝湾项目二期</li>
+							<li><span>2</span> 武汉黄兴新天地广场</li>
+							<li><span>3</span> 长沙绿地项目二期</li>
+							<li><span>4</span> 武汉黄兴新天地广场</li>
+							<li><span>5</span> 郑州绿地御蓝湾二期</li>
+							<li><span>6</span> 武汉黄兴新天地广场</li>
+							<li><span>7</span> 郑州绿地御蓝湾项目二期</li>
+							<li><span>8</span> 武汉黄兴新天地广场</li>
+							<li><span>9</span> 郑州绿地御蓝湾四期</li>
+							<li><span style="padding-right:4px ;">10</span> 武汉黄兴新天地广场</li>
+						</ul>
+					</div><!--index_item_con-->
+				</div><!--index_item-->
+			</div>
+			<!--地图调用-->
+			<!--<div style="width: 75%;height: 843px;border:#ccc solid 1px;font-size:12px; float: left;">
+				<div id="allmap" style="width:100%;overflow:hidden;zoom:1;position:relative;">
+    			<div id="map" style="height:100%;height: 843px;-webkit-transition: all 0.5s ease-in-out;transition: all 0.5s ease-in-out;"></div>
+			</div>-->
+		</div>
+	<!--</div>	-->
+		
+<!--content-->
+<include file="Public:footer"/>
+<script>
+	// 百度地图API功能
+	var map = new BMap.Map('map');
+	//取一个点进行缩放
+	var poi = new BMap.Point(116.331398,39.897445);
+	map.centerAndZoom(poi, 16);
+	map.enableScrollWheelZoom();
+	
+	function myFun(result){
+		var cityName = result.name;
+		map.setCenter(cityName);
+		//alert("当前定位城市:"+cityName);
+	}
+	var myCity = new BMap.LocalCity();
+	myCity.get(myFun);
+	
+	
+	var local = new BMap.LocalSearch(map, {
+	  renderOptions:{map: map}
+	});
+	local.searchInBounds("银行", map.getBounds());
+	
+	map.addEventListener("dragend",function(){
+	    map.clearOverlays();
+	    local.searchInBounds("银行", map.getBounds());
+	});
+	var overlays = [];
+	var overlaycomplete = function(e) {
+	    overlays.push(e.overlay);
+	    //覆盖物删除事件
+	    var removeMarker = function(e, ee, overlay) {
+	        map.removeOverlay(overlay);
+	    }
+    
+	//缩放比例尺
+      var scaleControl = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+      scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
+      map.addControl(scaleControl);
+      var navControl = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+      map.addControl(navControl);
+      var overviewControl = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:true});
+      map.addControl(overviewControl);
+    
+    //信息窗口
+    var info = "";
+    if (e.overlay instanceof BMap.Polygon) {
+        //var pol=(BMap.Polygon)e.overlay;
+        var poi_arr = e.overlay.getPath();
+        for (var i = 0; i < poi_arr.length; i++) {
+            info += "坐标" + i + ":经度为" + poi_arr[i].lng + ",纬度为" + poi_arr[i].lat + "\n";
+
+        }
+        var infoWindow = new BMap.InfoWindow(info); // 创建信息窗口对象
+        map.openInfoWindow(infoWindow, poi_arr[0]); //开启信息窗口
+        //alert(info);
+    } else if (e.overlay instanceof BMap.Marker) {
+
+        info += "坐标:经度为" + e.overlay.getPosition().lng + ",纬度为" + e.overlay.getPosition().lat + "\n";
+        var infoWindow = new BMap.InfoWindow(info); // 创建信息窗口对象
+        map.openInfoWindow(infoWindow, e.overlay.getPosition()); //开启信息窗口
+
+    }
+
+    //创建右键菜单
+    var markerMenu = new BMap.ContextMenu();
+    markerMenu.addItem(new BMap.MenuItem('删除', removeMarker.bind(e.overlay)));
+    e.overlay.addContextMenu(markerMenu);
+};
+
+var styleOptions = {
+    strokeColor: "red", //边线颜色。
+    fillColor: "red", //填充颜色。当参数为空时，圆形将没有填充效果。
+    strokeWeight: 3, //边线的宽度，以像素为单位。
+    strokeOpacity: 0.8, //边线透明度，取值范围0 - 1。
+    fillOpacity: 0.6, //填充的透明度，取值范围0 - 1。
+    strokeStyle: 'solid' //边线的样式，solid或dashed。
+}
+//实例化鼠标绘制工具
+//var drawingManager = new BMapLib.DrawingManager(map, {
+//  isOpen: false, //是否开启绘制模式
+//  enableDrawingTool: true, //是否显示工具栏
+//  drawingToolOptions: {
+//      anchor: BMAP_ANCHOR_TOP_RIGHT, //位置
+//      offset: new BMap.Size(5, 5), //偏离值
+//  },
+//  circleOptions: styleOptions, //圆的样式
+//  polylineOptions: styleOptions, //线的样式
+//  polygonOptions: styleOptions, //多边形的样式
+//  rectangleOptions: styleOptions //矩形的样式
+//});
+////添加鼠标绘制工具监听事件，用于获取绘制结果
+//drawingManager.addEventListener('overlaycomplete', overlaycomplete);
+//
+//function clearAll() {
+//  for (var i = 0; i < overlays.length; i++) {
+//      map.removeOverlay(overlays[i]);
+//  }
+//  overlays.length = 0;
+//}
+
+
+
+
+//json初始化多边形覆盖物
+//var json_data = {
+//  "Point": [{
+//          "lng": 116.298438,
+//          "lat": 40.054905
+//      },
+//      {
+//          "lng": 116.303217,
+//          "lat": 40.055126
+//      },
+//      {
+//          "lng": 116.303037,
+//          "lat": 40.05253
+//      },
+//      {
+//          "lng": 116.295743,
+//          "lat": 40.053303
+//      }
+//  ]
+//};
+//
+//
+//var obj = eval(json_data);
+////alert(obj.Point[0].lat);
+//
+////point数组
+//var point_array = obj.Point;
+////array初始化多边形覆盖物
+///*var point1=new BMap.Point(116.298438,40.054905);
+//var point2=new BMap.Point(116.303217,40.055126);
+//var point3=new BMap.Point(116.303037,40.05253);
+//var point4=new BMap.Point(116.295743,40.053303);
+//var point_array=new Array();
+//point_array.push(point1);
+//point_array.push(point2);
+//point_array.push(point3);
+//point_array.push(point4);*/
+//
+//var polygon = new BMap.Polygon(point_array, {
+//  strokeColor: "blue",
+//  strokeWeight: 2,
+//  strokeOpacity: 0.5
+//});
+//map.addOverlay(polygon);
+//
+//var p_arr = polygon.getPath();
+//var init_info = "";
+//for (var i = 0; i < p_arr.length; i++) {
+//  init_info += "坐标" + i + ":经度为" + p_arr[i].lng + ",纬度为" + p_arr[i].lat + "\n";
+//}
+//var infoWindow1 = new BMap.InfoWindow(init_info); // 创建信息窗口对象
+//var point1 = new BMap.Point(obj.Point[0].lng, obj.Point[0].lat);
+//map.openInfoWindow(infoWindow1, point1); //开启信息窗口
+</script>

@@ -1,0 +1,193 @@
+<include file="Public:header"/>
+<!-- begin #content -->
+<div id="content" class="content content_waring">
+    <h1 class="page-header page_warging">
+    	<a>设备管理 </a>》<a>{$title}</a>
+    	<a href="{:U('Admin/Terminal/term_add')}" class="organ-add">
+    		<i class="engin_add"></i>
+    		<span class="engin_add_text">添加终端</span>
+    	</a>
+    </h1>
+    <div class="row">
+        <!-- begin col-12 -->
+        <div class="col-md-12">
+            <!-- begin panel -->
+            <div class="panel panel-inverse">
+                <div class="panel-body">
+                    <div class="row organ-form_waring">
+                        <div class="clearfix fl oragan_infrl">
+                        	<label class="organ-item">
+                                <span class="organ-itemt">终端类型：</span>
+                                <select id="type" class="organ-info cen check_inpldt" >
+                                    <option value="" >全部</option>
+                                    <option value="1" >塔式起重机安全监控系统</option>
+                                    <option value="2" >施工升降机安全监控系统</option>
+                                </select>
+                            </label>
+                            <label class="organ-item">
+                                <span class="organ-itemt">终端编号：</span>
+                                <input type="text" id="code" class="organ-info cenz" placeholder="输入终端编号"/>
+                            </label>
+
+                        </div>
+                        <div class="organ-formlt fl oagan_checkt">
+                            <a id="search" class="refer_equiplist refer refer_sim">查询</a>
+                        </div>
+                    </div>
+                    <table id="data-table" class="table tj_table engin_table table-striped" style="margin-top: 12px;">
+		            	<thead>
+		                    <tr>
+		                        <th>序号</th>
+		                        <th>选择</th>
+		                        <th>终端编号</th>
+		                        <th>终端型号</th>
+		                        <th>关联设备产权编号</th>
+		                        <th>出厂日期</th>
+		                        <th>审核状态</th>
+		                        <th>在线状态</th>
+		                        <th>查看</th>
+		                        <th>编辑</th>
+		                    </tr>
+		            	</thead>
+						<tbody>
+
+                        </tbody>
+                    </table>
+                    <div class="paging_lister">
+                                <button id="del" class="btn btn-default btn-sm" style="margin-top:25px;float:left; background-color: #3c3c3c; color: white;">删除选中</button>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- end #content -->
+
+<script src="__PUBLIC__/assets/js/laydate/laydate.js"></script>
+<script>
+    var Page = {
+        init: function(){
+            this.bind();
+            this.renderTable();
+        },
+        bind: function(){
+            var _this = this;
+            //状态
+
+
+            $(document).on('click','#del',function(){
+
+                var id='';
+                $('.check-item').each(function(){
+                    if($(this).is(':checked')){
+                        id+=','+$(this).val();
+                    }
+                })
+
+                if(id==''){
+                    layer.msg('请至少选择一项', {time: 1500});
+                    return false;
+                }else{
+                    id = id.replace(',','');
+                    layer.load(1, {
+                        shade: [0.1,'#fff'] //0.1透明度的白色背景
+                    });
+
+                    $.ajax({
+                            <?php if(ACTION_NAME == 'term_list'): ?>
+                            url : '{:U('Terminal/term_list')}',
+                            <?php else: ?>
+                            url : '{:U('Terminal/c_term_list')}',
+                            <?php endif; ?>
+                        dataType:'json',
+                        type:'post',
+                        data:{
+                            'do':'del',
+                            'id':id
+                        },
+                        success:function(e){
+                            layer.closeAll();
+                            if(e.status!=1){
+                                layer.msg('删除失败，请重试', {time: 1500});
+                                return false;
+                            }
+
+                            layer.msg('删除成功', {time: 1500});
+                            _this.renderTable();
+                        }
+                    })
+
+                }
+            })
+
+
+            $(document).on('click','#search',function(){
+
+                var type = $('#type').val();
+                var code = $('#code').val();
+
+                _this.type = type;
+                _this.code = code;
+
+
+                _this.renderTable();
+            })
+
+
+        },
+        type:'',
+        code:'',
+
+        renderTable: function(){
+            layer.load(1, {
+                shade: [0.1,'#fff'] //0.1透明度的白色背景
+            });
+            var _this = this;
+            if(this.tableInit){
+                $('#data-table').DataTable().ajax.reload();
+                return;
+            }
+            this.tableInit = true;
+            _this.table = $('#data-table').DataTable({
+                "ajax": {
+                            <?php if(ACTION_NAME == 'term_list'): ?>
+                            url : '{:U('Terminal/term_list',array('do'=>'listTableData'))}',
+                            <?php else: ?>
+                            url : '{:U('Terminal/c_term_list',array('do'=>'listTableData'))}',
+                            <?php endif; ?>
+                        data: function(){
+                            return {
+
+                                type:_this.type,
+                                code:_this.code,
+
+                            }
+                        }
+                    },
+                    "dom":'f<t>ip',
+                //'searching':true,
+                //多语言配置
+                "language": Base.oLanguage,
+                //默认排序列
+                "aaSorting": [[ 0, "asc" ]],
+                "drawCallback": function(){
+                    layer.closeAll();
+                },
+                // "searching":false,
+                // "deferLoading":10000,
+                "initComplete":function(row, data, start, end, display){
+                    $('#manage-right').append($('#data-table_filter'));
+                },
+                });
+
+
+                }
+    }
+    $(document).ready(function() {
+        Page.init();
+    });
+</script>
+<include file="Public:footer"/>

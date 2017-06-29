@@ -1,0 +1,163 @@
+                    <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
+                        <div class="panel-body">
+                            <form class="form-horizontal" method='post' action='{:U("Auth/".ACTION_NAME)}'>
+                              <input type='hidden' name='do' value='save'/>
+                              <input type='hidden' name='id' value='{$info.id}'/>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">上级菜单</label>
+                                    <div class="col-md-5">
+                                        <select name='pid' class='form-control'>
+                                            <option value='0'>顶级菜单</option>
+                                            <php>echo \Admin\Model\AuthModel::treeOpiton($trees,ACTION_NAME=='add'?I('get.pid'):$info['pid']);</php>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">菜单名称</label>
+                                    <div class="col-md-5">
+                                        <input type="text" class="form-control" name='title' value='{$info.title}' placeholder="菜单名称" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">权限规则</label>
+                                    <div class="col-md-5">
+                                        <input type="text" class="form-control" name='name' value='{$info.name}' placeholder="权限规则" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">显示／隐藏</label>
+                                    <div class="col-md-5">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="is_show" value="1" {:ACTION_NAME == 'edit'?($info['is_show']== 1?'checked':''):(ACTION_NAME == 'add'?'checked':'')}>
+                                            显示
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="is_show" value="0" {:ACTION_NAME == 'edit'?($info['is_show']== 0?'checked':''):''}>
+                                            隐藏
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">打开／关闭</label>
+                                    <div class="col-md-5">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="is_open" value="1" {:ACTION_NAME == 'edit'?($info['is_open']== 1?'checked':''):(ACTION_NAME == 'add'?'checked':'')}>
+                                            打开
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="is_open" value="0" {:ACTION_NAME == 'edit'?($info['is_open']== 0?'checked':''):''}>
+                                            关闭
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">图标</label>
+                                    <div class="col-md-5">
+                                        <input type='hidden' name='class' value='{$info.class}' id='class' />
+                                        <if condition="!empty($info['class'])">
+                                        <div id='icon_sel'><i class="fa fa-2x {$info.class}"></i></div><div class="hidden-xs">{$info.class}</div>
+                                        <else />
+                                        <div id='icon_sel'><i class="fa fa-2x"></i></div><div class="hidden-xs"></div>
+                                        </if>
+                                        <a id='chose' href='javascript:;'>选择图标</a>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">排序</label>
+                                    <div class="col-md-5">
+                                        <input type="number" min='1' class="form-control" name='ord' value='{$info.ord|default=1}' placeholder="排序" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">附加参数</label>
+                                    <div class="col-md-5">
+                                        <input type="text" class="form-control" name='condition' value='{$info.condition}' placeholder="附加参数" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-3 col-sm-2">
+                                      <btn onclick="layer.closeAll()" class='btn btn-sm btn-default m-r-5 btn-block'>返 回</btn>
+                                    </div>
+                                    <div class="col-sm-2">
+                                      
+                                      <button type="submit" class="btn btn-sm btn-danger btn-block">提 交</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- end panel -->
+    <script type='text/javascript'>
+    var addPage = {
+        init:function(){
+            this.bind();
+        },
+        bind:function(){
+            var _this = this;
+            $(document).on('click','#chose',function(){
+                var that = $(this);
+                $('.layui-layer-iframe,.layui-layer-shade').remove();
+                _this.openLayer(that.text(),"{:U('Auth/add',array('do'=>'choice_icon'))}",'','');
+                
+                return false;
+            })
+            $('form').validator({
+                theme:'yellow_top',
+                msgClass:'n-right',
+                msgIcon:'',
+                msgMaker: function(opt){
+                  if(!opt.msg){
+                    return '';
+                  }
+                  return '<span class="msg-wrap n-error" role="alert"><span class="n-msg">'+opt.msg+'</span></span>'
+                },
+                fields: {
+                    'title': "菜单名称:required;"
+                },
+                valid: function(form){
+                    var loading = layer.load(1, {
+                        shade: [0.1,'#fff'] //0.1透明度的白色背景
+                    });
+                    $(form).ajaxSubmit({
+                        dataType:'json',
+                        success:function(res){
+                        layer.close(loading);
+                        if(res.status !=1){
+                            var confirm_alert = layer.confirm(res.msg, {
+                                btn: ['确定'], //按钮
+                                closeBtn:0
+                            }, function() {
+                                layer.close(confirm_alert);
+                                
+                            });
+                        } else {
+                            layer.closeAll();
+                            Page.renderTable();
+                        }
+                    }
+                    });
+                }
+            });
+        },
+        openLayer: function(title,url,width,height){
+            if(width == ''){
+                width = '1200px';
+            }
+            if(height == ''){
+                height = '650px';
+            }
+            layer.open({
+                type: 2,
+                title: title,
+                area: [width, height], //宽高
+                closeBtn: 1, //不显示关闭按钮
+                shift: 2,
+                shadeClose: true, //开启遮罩关闭
+                content: url
+            });
+        },
+    }
+      $(function(){
+        addPage.init();
+      })
+    </script>

@@ -1,0 +1,284 @@
+<include file="Public:header"/>
+<!-- begin #content -->
+<div id="content" class="content content_waring">
+     <h1 class="page-header page_warging">
+    	<!--{$title}-->
+    	<a>维保管理 </a>》<a>{$title}</a>
+    </h1>
+    <div class="row">
+        <!-- begin col-12 -->
+        <div class="col-md-12">
+            <!-- begin panel -->
+            <div class="panel panel-inverse">
+                <div class="panel-body">
+                    <div class="row organ-form_waring">
+                        <div class="clearfix fl oragan_infrl">
+                            <label class="organ-item">
+                                <span class="organ-itemt">配件型号：</span>
+                                <input type="text" class="organ-info cenz" placeholder=" 请输入配件型号"/>
+                            </label>
+                            <label class="organ-item">
+                                <span class="organ-itemt">配件名称：</span>
+                                <input type="text" class="organ-info cenz" placeholder=" 请输入配件名称"/>
+                            </label>
+                            <label class="organ-item">
+                                <span class="organ-itemt">配件编号：</span>
+                                <input type="text" class="organ-info" placeholder=" 请输入配件编号"/>
+                            </label>
+	                       	<label class="organ-item">
+                                <span class="organ-itemt">维保单号：</span>
+                                <input type="text" class="organ-info cen" placeholder=" 请输入维保单号"/>
+                            </label>
+                            <label class="organ-item">
+	                            <span class="organ-itemt">单位类型：</span>
+	                            <select class="organ-info cen check_inpldt" >
+	                                <option value="">全部</option>
+	                                <option value="">未审核</option>
+	                                <option value="">已审核</option>
+	                            </select>
+	                       	</label>
+                            <label class="organ-item">
+                                <span class="organ-itemt">单位名称：</span>
+                                <input type="text" class="organ-info cen" placeholder=" 请输入单位名称"/>
+                            </label>
+                            <label class="organ-item">
+								    <div class="btn-group">
+		                               <label style="display: block; float: left; " for="from"><span  class="fl organ-itemt datail-date">登记日期：</span></label>
+	                                   <label class="start-tims">
+	                                        <span class="engine_date_position"><i class="fa engine_date"></i></span>
+	                                        <input id="from" name="from" onclick="laydate()" placeholder='开始日期' value="" class="fl organ-info_engin picker-date">
+	                                   </label>
+	                                    <label class="engin_label" for="to">－</label>
+	                                    <label class="start-tims">
+	                                        <span class="engine_date_position"><i class="fa engine_date"></i></span>
+	                                        <input id="to" name="from" onclick="laydate()" placeholder='截止日期' value="" class="fl organ-info_engin picker-date">
+	                                   </label>
+		                            </div>
+							</label> 
+							<label class="organ-item">
+                                <span class="organ-itemt">记录人：</span>
+                                <input type="text" class="organ-info cen" placeholder=" 请输入姓名"/>
+                            </label>
+                        </div>
+                        <div class="organ-formlt fl oagan_checkt">
+                            <a class="refer_equiplist refer">查询</a>
+                        </div>
+                    </div>
+                    <table id="data-table" class="table tj_table engin_table table-striped" style="margin-top: 12px;">
+                  		<thead>
+		                    <tr>
+			                    <th>序号</th>
+			                    <th>选择</th>
+			                    <th>配件编号</th>
+			                    <th>配件名称</th>
+			                    <th>规格</th>
+			                    <th>数量</th>
+			                    <th>单位</th>
+			                    <th>维保单号</th>
+			                    <th>关联设备编号</th>
+			                    <th>记录时间</th>
+			                    <th>记录人</th>
+			                    <th>审核</th>
+		                    </tr>
+                  		</thead>
+						<tbody>
+	                        <tr>
+		                        <td>1</td>
+		                        <td>
+		                            <label class="select-checkwaring">
+		                                <input type="checkbox" class="fl check-item_waring"  name="check-item_waring">
+		                            </label>
+		                        </td>
+		                        <td>12TC128967843243</td>
+		                        <td>螺栓</td>
+		                        <td>20#</td>
+		                        <td>1</td>
+		                        <td>套</td>
+		                        <td>SB2016788</td>
+		                        <td>FDFD18455974489</td>
+		                        <td>2017-06-05 14:23:56</td>
+		                        <td>李立行</td>
+				                <td><!--审核--><a href="#"><i class="organ-audit"></i></a></td>   
+	                        </tr>
+	                        <tr>
+		                        <td>1</td>
+		                        <td>
+		                            <label class="select-checkwaring">
+		                                <input type="checkbox" class="fl check-item_waring"  name="check-item_waring">
+		                            </label>
+		                        </td>
+		                        <td>12TC128967843243</td>
+		                        <td>螺栓</td>
+		                        <td>20#</td>
+		                        <td>1</td>
+		                        <td>套</td>
+		                        <td>SB2016788</td>
+		                        <td>FDFD18455974489</td>
+		                        <td>2017-06-05 14:23:56</td>
+		                        <td>李立行</td>
+				                <td><!--审核--><a href="#"><i class="organ-audit"></i></a></td>   
+	                        </tr>
+	                        <tr>
+		                        <td>1</td>
+		                        <td>
+		                            <label class="select-checkwaring">
+		                                <input type="checkbox" class="fl check-item_waring"  name="check-item_waring">
+		                            </label>
+		                        </td>
+		                        <td>12TC128967843243</td>
+		                        <td>螺栓</td>
+		                        <td>20#</td>
+		                        <td>1</td>
+		                        <td>套</td>
+		                        <td>SB2016788</td>
+		                        <td>FDFD18455974489</td>
+		                        <td>2017-06-05 14:23:56</td>
+		                        <td>李立行</td>
+				                <td><!--审核--><a href="#"><i class="organ-audit"></i></a></td>   
+	                        </tr>
+						</tbody>
+                    </table>
+					<div class="paging_lister">
+                                <button class="btn btn-default btn-sm" style="margin-top:25px;float:left; background-color: #3c3c3c; color: white;">删除选中</button>
+
+                                <ul class="pagination pagination-sm">
+                                    <li>
+                                        <a href="#" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <li><a href="#" style="background: #2164ff; color:#fff;">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li>
+                                        <a href="#" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <p style="margin-top:25px;float:right;">每页10条，共{}条</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- end #content -->
+
+<script src="__PUBLIC__/assets/js/laydate/laydate.js"></script>
+<script>
+    var Page = {
+        init: function(){
+            this.bind();
+            this.renderTable();
+        },
+        bind: function(){
+            var _this = this;
+            //状态
+            $(document).on('change', '.del_status', function() {
+                _this.start_stop = $(this).val();
+                $('#dropdownMenu2').text($(this).text());
+                _this.renderTable();
+            })
+            $(document).on('click','.del',function(){
+                var href = $(this).attr('href');
+                var text = $(this).text();
+                layer.confirm('确定'+text+'？', {
+                    btn: ['确定','取消'] //按钮
+                }, function(){
+                    $.ajax({
+                        url : href,
+                        dataType:'json',
+                        success: function(e){
+                            // _this.renderTable();
+                            if(e.status==0)
+                            {
+                                layer.alert(e.msg);
+                                return false;
+                            }
+                            _this.renderTable();
+                        }
+                    })
+                }, function(){
+                    // 取消
+                });
+                return false;
+            })
+            $(document).on('click','#addcode',function(){
+                var that = $(this);
+                $.ajax({
+                    url : that.attr('href'),
+                    success:function(result){
+                        _this.openLayer(that.text(),result,'600px','400px');
+                    }
+                })
+                return false;
+            })
+        },
+        openLayer: function(title,html,width,height){
+            if(width == ''){
+                width = '1000px';
+            }
+            if(height == ''){
+                height = '650px';
+            }
+            layer.open({
+                type: 1,
+                title: title,
+                area: [width, height], //宽高
+                closeBtn: 1, //不显示关闭按钮
+                shift: 2,
+                shadeClose: true, //开启遮罩关闭
+                content: html
+            })
+
+//        start_stop:0,
+//        renderTable: function(){
+//            layer.load(1, {
+//                shade: [0.1,'#fff'] //0.1透明度的白色背景
+//            });
+//            var _this = this;
+//            if(this.tableInit){
+//                $('#data-table').DataTable().ajax.reload();
+//                return;
+//            }
+//            this.tableInit = true;
+//            _this.table = $('#data-table').DataTable({
+//                    "ajax": {
+//                        url : '{:U('Facility/index',array('do'=>'listTableData'))}',
+//                    data: function(){
+//                        return {
+//                            start_stop: _this.start_stop,
+//                        }
+//                    }
+//                },
+//                "dom":'f<t>ip',
+//                //'searching':true,
+//                //多语言配置
+//                "language": Base.oLanguage,
+//                //默认排序列
+//                //"aaSorting": [[ 3, "asc" ]],
+//                "drawCallback": function(){
+//                layer.closeAll();
+//            },
+//            // "searching":false,
+//            // "deferLoading":10000,
+//            "initComplete":function(row, data, start, end, display){
+//                $('#manage-right').append($('#data-table_filter'));
+//            },
+//        });
+//
+//
+//        }
+//    }
+//    $(document).ready(function() {
+//        Page.init();
+//    });
+</script>
+<include file="Public:footer"/>

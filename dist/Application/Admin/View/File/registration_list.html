@@ -1,0 +1,289 @@
+<include file="Public:header"/>
+<!-- begin #content -->
+<div id="content" class="content content_waring">
+     <h1 class="page-header page_warging">
+    	<!--{$title}-->
+    	<a>档案管理 </a>》<a>{$title}</a>
+    	<a href="{:U('Admin/File/registration_add')}" class="organ-add">
+    		<i class="engin_add"></i>
+    		<span class="engin_add_text">新增使用登记</span>
+    	</a>
+    </h1>
+    <div class="row">
+        <!-- begin col-12 -->
+        <div class="col-md-12">
+            <!-- begin panel -->
+            <div class="panel panel-inverse">
+                <div class="panel-body">
+                    <div class="row organ-form_waring">
+                        <div class="clearfix fl oragan_infrl">
+                            <label class="organ-item">
+                                <span class="organ-itemt">设备类型：</span>
+                                <select id="type" class="organ-info cenz check_inpldt" >
+                                    <option value="">全部</option>
+                                    <option value="1">塔机</option>
+                                    <option value="2">升降机</option>
+                                </select>
+                            </label>
+
+                            <label class="organ-item">
+                                <span class="organ-itemt">产权备案编号：</span>
+                                <input id="fac_code" type="text" class="organ-info" placeholder="输入产权备案编号"/>
+                            </label>
+                            <label class="organ-item">
+	                            <span class="organ-itemt">审核状态：</span>
+	                            <select id="status" class="organ-info cenz check_inpldt" >
+	                                <option value="">全部</option>
+	                                <option value="0">待审核</option>
+	                                <option value="1">已审核</option>
+	                                <option value="2">被驳回</option>
+	                            </select>
+	                       </label>
+
+                            <label class="organ-item">
+                                <span class="organ-itemt">所在地区：</span>
+                                <div class="layui-input-inline">
+                                    <select id="sheng" name="quiz1" class="organ-info check_inpld" >
+                                        <option value="">省（全部）</option>
+                                        <?php foreach($sheng as $k=>$v){ ?>
+                                        <option value="{$v['id']}">{$v['name']}</option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                                <div class="layui-input-inline">
+                                    <select id="shi" name="quiz2" class="organ-info check_inpld" >
+                                        <option value="">请先选择省份</option>
+
+                                    </select>
+                                </div>
+                            </label>
+
+							<label class="organ-item">
+                                <span class="organ-itemt">备案状态：</span>
+                                <select id="beian" class="organ-info cenz check_inpldt" >
+                                    <option value="">全部</option>
+                                    <option value="2">未备案</option>
+                                    <option value="1">已备案</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="organ-formlt fl oagan_checkt">
+                            <a id="search" class="refer_equiplist refer">查询</a>
+                        </div>
+                    </div>
+                    <table id="data-table" class="table tj_table engin_table table-striped" style="margin-top: 12px;">
+                  		<thead>
+		                    <tr>
+
+			                    <th>选择</th>
+                                <th>序号</th>
+			                    <th>产权备案编号</th>
+			                    <th>设备类型</th>
+			                    <th>设备型号</th>
+			                    <th>工程名称</th>
+                                <th>地区</th>
+			                    <th>使用单位</th>
+			                    <th>审核状态</th>
+			                    <th>备案状态</th>
+			                    <th>查看</th>
+			                    <th>编辑</th>
+		                    </tr>
+                  		</thead>
+						<tbody>
+
+						</tbody>
+                    </table>
+					<div class="paging_lister">
+                                <button id="del" class="btn btn-default btn-sm" style="margin-top:25px;float:left; background-color: #3c3c3c; color: white;">删除选中</button>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- end #content -->
+
+<script src="__PUBLIC__/assets/js/laydate/laydate.js"></script>
+<script>
+    var Page = {
+        init: function(){
+            this.bind();
+            this.renderTable();
+        },
+        bind: function(){
+            var _this = this;
+            //状态
+
+
+            $(document).on('click','#del',function(){
+
+                var id='';
+                $('.check-item_waring').each(function(){
+                    if($(this).is(':checked')){
+                        id+=','+$(this).val();
+                    }
+                })
+
+                if(id==''){
+                    layer.msg('请至少选择一项', {time: 1500});
+                    return false;
+                }else{
+                    id = id.replace(',','');
+                    layer.load(1, {
+                        shade: [0.1,'#fff'] //0.1透明度的白色背景
+                    });
+
+                    $.ajax({
+                            <?php if(ACTION_NAME == 'registration_list'): ?>
+                            url : '{:U('File/registration_list',array('do'=>'listTableData'))}',
+                            <?php else: ?>
+                            url : '{:U('File/c_registration_list',array('do'=>'listTableData'))}',
+                            <?php endif; ?>
+                        dataType:'json',
+                        type:'post',
+                        data:{
+                            'do':'del',
+                            'id':id
+                        },
+                        success:function(e){
+                            layer.closeAll();
+                            if(e.status!=1){
+                                layer.msg('删除失败，请重试', {time: 1500});
+                                return false;
+                            }
+
+                            layer.msg('删除成功', {time: 1500});
+                            _this.renderTable();
+                        }
+                    })
+
+                }
+            })
+
+
+            $(document).on('click','#search',function(){
+
+                var type = $('#type').val();
+                var fac_code = $('#fac_code').val();
+                var sheng = $('#sheng').val();
+                var shi = $('#shi').val();
+                var status = $('#status').val();
+                var beian = $('#beian').val();
+
+                _this.type = type;
+                _this.fac_code = fac_code;
+                _this.sheng = sheng;
+                _this.shi = shi;
+                _this.status = status;
+                _this.beian = beian;
+
+                _this.renderTable();
+            })
+
+            $('#sheng').change(function(){
+                var sheng = $('#sheng').val();
+                if(sheng==''){
+                    $('#shi').html("<option value=''>请先选择省份</option>");
+                    return false;
+                }if(sheng=='47494' || sheng=='47495'){
+                    $('#shi').html("<option value='0'>---</option>");
+                    return false;
+                }else{
+                    layer.load(1, {
+                        shade: [0.1,'#fff'] //0.1透明度的白色背景
+                    });
+                    $.ajax({
+                        url:"{:U('Admin/Engineering/engin_add')}",
+                        dataType:'json',
+                        type:'post',
+                        data:{
+                            'sheng':sheng,
+                            'do':'get_shi'
+                        },
+                        success:function(e){
+                            if(e.status !=1){
+                                layer.closeAll();
+                                layer.msg(e.msg, {time: 1500});
+                                return false;
+                            }
+
+                            var html = "<option value=''>请选择城市</option>";
+
+                            for(i=0;i<e.data.length;i++){
+                                html+='<option value="'+ e.data[i].id+'">'+e.data[i].name+'</option>';
+                            }
+
+                            $('#shi').html(html);
+                            layer.closeAll();
+                        }
+                    })
+                }
+
+            })
+        },
+        type: "",
+        fac_code: "",
+        sheng: "",
+        shi: "",
+        status: "",
+        beian: "",
+
+        renderTable: function(){
+            layer.load(1, {
+                shade: [0.1,'#fff'] //0.1透明度的白色背景
+            });
+            var _this = this;
+            if(this.tableInit){
+                $('#data-table').DataTable().ajax.reload();
+                return;
+            }
+            this.tableInit = true;
+            _this.table = $('#data-table').DataTable({
+                "ajax": {
+                            <?php if(ACTION_NAME == 'registration_list'): ?>
+                            url : '{:U('File/registration_list',array('do'=>'listTableData'))}',
+                            <?php else: ?>
+                            url : '{:U('File/c_registration_list',array('do'=>'listTableData'))}',
+                            <?php endif; ?>
+                        data: function(){
+                            return {
+
+                                type:_this.type,
+                                fac_code:_this.fac_code,
+                                sheng:_this.sheng,
+                                shi:_this.shi,
+                                status:_this.status,
+                                beian:_this.beian,
+
+                            }
+                        }
+                    },
+                    "dom":'f<t>ip',
+                //'searching':true,
+                //多语言配置
+                "language": Base.oLanguage,
+                //默认排序列
+                "aaSorting": [[ 0, "asc" ]],
+                "drawCallback": function(){
+                    layer.closeAll();
+                },
+                // "searching":false,
+                // "deferLoading":10000,
+                "initComplete":function(row, data, start, end, display){
+                    $('#manage-right').append($('#data-table_filter'));
+                },
+                });
+
+
+                }
+    }
+    $(document).ready(function() {
+        Page.init();
+    });
+</script>
+<include file="Public:footer"/>

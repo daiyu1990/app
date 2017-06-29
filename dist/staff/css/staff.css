@@ -1,0 +1,617 @@
+.content{
+	padding:0 16px ;
+	font-weight: 0 !important;
+}
+.organ-header{
+	height:62px ;
+	line-height: 62px;
+}
+.organ-index{
+	display: inline-block;
+	float: left;
+	font-size: 18px;
+	color:#191a1c ;
+}
+.organ-add{
+	display: inline-block;
+	float: right;
+	color:#309aff ;
+}
+.organ-form{
+    border-radius: 2px;
+    background-color: #2d353c;
+	padding:22px 0 ;
+	font-size:14px ;
+	margin-left:0 !important;
+	margin-right: 0 !important;
+}
+
+.organ-info{
+	height: 32px;
+	float: left;
+	line-height: 32px;
+	border: none;
+	outline: none;
+	text-indent:11px ;
+	/*background: #fff;
+	opacity: 0.1;*/
+	background: rgba(255, 255, 255, 0.1);
+	zoom: 1;
+	font-weight:inherit !important;
+	filter:alpha(opcity=10) ;
+	color: rgba(255, 255, 255, 0.7);
+}
+.organ-infot{
+	margin-left:16px ;
+}
+.cen{
+	width:200px ;
+}
+.cent{
+	width:280px ;
+}
+
+.cenz{
+	width: 160px;
+}
+
+.oragan_infrl{
+	width: 80%;
+}
+.oagan_checkt{
+	line-height:40px !important ;
+}
+.organ-itemt{
+	color: #fff;
+	float: left;
+	line-height: 32px;
+	font-weight: 0 !important;
+	font-weight: normal !important;
+}
+.organ-item{
+	float: left;
+	margin-left: 21px;
+	margin-bottom:16px ;
+}
+.refer{
+	
+	line-height: 40px;
+
+	background: #3399ff;
+	color: #fff!important;
+
+	border-radius:30px;
+	padding: 0px 60px;
+	display: inline-block;
+	margin-top:45px ;
+	
+}
+
+@media screen and (min-width: 1731px) {
+	.refer{
+   		margin-top:0 ;
+ 	}   
+}
+.panel{
+	margin-top:24px ;
+}
+.tj_table{
+	border-bottom: 1px solid #e6e6e6;
+}
+.tj_table thead {
+	background:#3399fe ;
+}
+.yin{
+	
+}
+@media all and (min-width:1200px){
+	.yin{
+		opacity: 1;
+	
+	}
+}
+@media all and (max-width:1200px){
+	.yin{
+		display: none;
+		opacity: 0;
+	
+	}
+}
+.tj_table thead th{
+
+	border-bottom: none !important;
+	color:#fff ;
+	text-align: center;
+	font-weight: normal !important;
+}
+#data-table tbody tr{
+	border-bottom:none !important ;
+}
+
+.tj_table tbody td{
+
+	vertical-align: middle !important;
+	border-bottom: none !important;
+	color:##2d353c ;
+	text-align: center;
+	font-weight: normal !important;
+}
+
+.tj_table tbody td span{
+	line-height: 20px;
+}
+
+.select-check{
+	text-indent:6px ;
+	margin-bottom: 0;
+    vertical-align: top;
+	
+}
+.fl{
+	float: left;
+}
+.check-item{
+	width: 16px;
+	height: 16px;
+	margin-top:2px !important ;
+	background-color: #fff;
+	/*appearance: none;
+	-webkit-appearance:none ;*/
+  	border: solid 1px #808080;
+}
+.organ-look{
+	display: inline-block;
+	width: 17px;
+  	height: 20px;
+  	background:url(../image/check.png ) no-repeat center center;
+}
+.organ-editt{
+	display: inline-block;
+	width: 20px;
+  	height: 20px;
+  	background:url(../image/edit02.png ) no-repeat center center;
+}
+/*查看详情*/
+.detail-main{
+	height: 560px;
+	padding: 28px 36px;
+  	border-radius: 2px;
+  	background-color: #ffffff;
+}
+.detail-head{
+	padding:22px 0 19px 0 ;
+}
+.detail-head .agency-det{
+  font-family: MicrosoftYaHei;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 32px;
+  text-align: left;
+  color: #1a1a1a;
+  float: left;
+}
+.opass{
+	display: inline-block;
+	float: right;
+	padding: 0 30px;
+	line-height: 32px;
+	border-radius:30px ;
+	background:#3399ff;
+	color: #fff;
+}
+.detail-table{
+	width: 49.8%;
+
+	/*width:100%;*/
+
+	float: left;
+  	border-top: solid 1px #e6e6e6;
+  	border-right: solid 1px #e6e6e6;
+}
+
+@media all and (max-width:767px ) {
+	.detail-table{
+		width: 100%;
+		margin-top:15px ;
+	}
+
+}
+.tab-l{
+	width:30% ;
+	float: left;
+	background-color: #e8edf1;
+
+	margin-bottom: 0;
+
+}
+.tab-r{
+	width:70% ;
+	float: left;
+
+	margin-bottom: 0;
+
+}
+.tab-r li{
+	width: 100%;
+	line-height: 48px;
+	text-indent: 24px;
+	text-align: left;
+	overflow: hidden; 
+	text-overflow: ellipsis;
+	white-space:nowrap;
+	border-bottom: solid 1px #e6e6e6;
+}
+.tab-l li{
+	line-height: 48px;
+	padding:0 20px ;
+	text-align: center;
+	overflow: hidden; 
+	text-overflow: ellipsis; 
+	white-space:nowrap;
+	border-bottom: solid 1px #e6e6e6;
+}
+.detail-title{
+	height: 62px;
+	line-height:62px ;
+}
+.detail-title .titl-l{
+	float: left;
+	font-size:14px ;
+	padding:29px 0 17px 0  ;
+	line-height:16px ;
+	color: #1a1a1a;
+	display: inline-block;
+}
+.detail-edit{
+	float: right;
+	padding:29px 0 16px 0  ;
+	line-height:16px ;
+	color: #666;
+	display: inline-block;
+}
+.id_relative{
+	position: relative;
+}
+.detail-ftitem{
+
+	width: 100%;
+	float: left;
+	/*margin-right:2.3% ;*/
+
+	border: solid 1px #e6e6e6;
+	/*height: 44px;*/
+	padding-top:28px ;
+	padding-bottom:28px ;
+	text-align: center;
+	position: relative;
+}
+
+@media all and (max-width:767px ) {
+	.detail_edit{
+		width: 100%;
+	}
+}
+.detail-ftitems{
+	width: 31.8%;
+	float: left;
+	/*margin-right:2.3% ;*/
+	border: solid 1px #e6e6e6;
+	/*height: 44px;*/
+	padding-top:28px ;
+	padding-bottom:28px ;
+	text-align: center;
+	position: relative;
+}
+
+@media all and (min-width:768px ) {
+	.detail_edit{
+		width: 23.2%;
+		margin-right:2% ;
+	}
+}
+@media all and (max-width:767px ) {
+	.detail_edit{
+		width: 100%;
+		margin-top:15px ;
+	}
+
+}
+.detail_edit:nth-child(4n+4){
+	margin-right: 0;
+	float: right;
+}
+.detail_edit:nth-child(3n+3){
+	margin-right: 2% !important;
+	float: left !important;
+}
+.detail-ftitem:nth-child(3n+3){
+	margin-right: 0;
+	float: right;
+}
+
+.detail-ftitems:nth-child(3n+3){
+	margin-right: 0;
+	float: right;
+}
+.detail-ftitems:nth-child(2n+2){
+	margin-right: 1.6%;
+	margin-left: 1.9%;
+	float: left;
+}
+
+.detail-ftitem span{
+	line-height:22px ;
+}
+.detail-ftitem p{
+	line-height:22px ;
+}
+.detail-log{
+	display: inline-block;
+	width: 50px;
+	height: 31px;
+	line-height: 31px;
+	text-align: center;
+	color:#fff ;
+	background:url(../image/certified.png ) no-repeat center center;
+	position: absolute;
+	left:11px ;
+	top: 0;
+}
+.detail-edt{
+	width: 16px;
+	height: 16px;
+	float: left;
+	display: inline-block;
+	background:url(../image/edit.png ) no-repeat center center ;
+	background-size:cover ;
+}
+.dei{
+	float: left;
+	text-indent:5px ;
+	display: inline-block;
+}
+.check_bd{
+	border-top:1px solid #e6e6e6;
+	border-bottom:1px solid #e6e6e6; 
+}
+.check-infol{
+	width: 50%;
+	float: left;
+	padding-bottom:27px ;
+}
+
+@media all and (max-width:767px ) {
+	.check-infol{
+		width: 100%;
+		padding-bottom:27px ;
+	}
+}
+.ie_item{
+	float: left\9;
+	box-sizing: border-box;
+}
+.check-infol .cheitm{
+
+	/*display: inline-block;*/
+	height: 32px;
+	line-height: 32px;
+	padding-top: 17px;
+
+	box-sizing: content-box;
+}
+label.ifro_item{
+	display: block!important;
+
+}
+.ifro_item .info_man{
+	display: inline-block;
+	width: 30%;
+	float: left;
+	color: #333333;
+
+	overflow: hidden; 
+	text-overflow: ellipsis;
+	white-space:nowrap;
+	text-align: right;
+}
+.explain{
+	display:inline-block;
+	margin-left:108px ; 
+	color:#666 ; 
+}
+
+.ifro_item .check_inp{
+	display: inline-block;
+	width: 64%;
+	height: 32px;
+	outline: none;
+	text-indent: 10px;
+	margin-left:13px ;
+	line-height: 32px;
+	float: left;
+	color:#666 ;
+    border-radius: 2px;
+    background-color:rgba(51,51,51,0.1);
+    zoom: 1; 
+}
+.ifro_item .check_edit{
+	width:49% !important ;
+}
+.check_upload{
+	opacity: 0 !important;
+	position: absolute;
+	z-index: 1;
+}
+.idcardupload{
+
+	/*position: absolute;
+	z-index: 3;
+	left:13px ;
+	top: 3px;*/
+	width: 80px ;	
+	height: 26px ;
+	margin-left:13px ;
+	line-height: 26px;
+	color: #666;
+	text-align: center;
+	white-space: nowrap;
+
+	border-radius: 2px;
+	background-color:rgba(51,51,51,0.1); 
+	 zoom: 1;
+	float: left;
+}
+
+.idcardupload:after{
+	position: absolute;
+	content:'文件不大于5M' ;
+	color:#666 ;
+	text-indent:22px ;
+	
+}
+
+.idcarduploadrg{
+	width: 80px ;	
+	height: 26px ;
+	margin-right:4% ;
+	line-height: 26px;
+	color: #666;
+	text-align: center;
+	border-radius: 2px;
+	background-color:rgba(51,51,51,0.1); 
+	zoom: 1;
+	float: right;
+}
+
+.item_li{
+	width: 100%;
+	display: block;
+	margin: auto;
+	padding-bottom: 0;
+}
+.item_li li{
+	width:100% ;
+	
+}
+.item_li li .info_man{
+	text-align: left;
+	line-height:32px ;
+	padding-left: 11px;
+	width: auto;
+}
+.item_li li .check_inp{
+	width:62% ;
+}
+.del_check{
+	width: 14px;
+	height: 16px;
+	display: inline-block;
+	position: absolute;
+	top: 7px;
+	right:16px ;
+	background:url(../image/del.png ) no-repeat center center ;
+	background-size:cover ;
+	float: right;
+}
+.check_area{
+	width:30.5% !important;
+	float: left !important;
+}
+
+.check_areat{
+	float: right;
+	/*margin-left: 25px;*/
+
+}
+.remove_select{
+	display: inline-block;
+	padding: 5px 11px;
+	text-align: center;
+	border-radius: 2px;
+	line-height:14px ;
+  	background-color: #666666;
+  	color: #fff;
+}
+.check_all{
+	display: inline-block;
+
+	background: rgba(25,25,25,0);
+	zoom: 1;
+	outline: none!important;
+	border: none!important;
+
+	padding-left: 9px;
+	padding-right: 17px;
+}
+.organ-footer{
+	line-height:32px ;
+
+	padding-left:2%;
+}
+.organ_footrg{
+	text-align: center;
+}
+.organ_footlf{
+	padding-top:20px ;
+}
+nav{
+	display: inline-block;
+
+}
+.organ-checkAll{
+	margin:2px 0 0 0  !important ;
+	vertical-align: sub;
+}
+.organ_label{
+	font-weight: inherit !important;
+	
+}
+.gpagination{
+	justify-content: center;
+}
+.detail-ftall{
+	padding-bottom:40px ;
+}
+.detatl_editadd{
+	text-align: center;
+}
+.det_addet{
+	display: inline-block;
+	width:18px ;
+	height:18px ;
+	background:url(../image/add.png ) no-repeat center center ;
+	background-size:cover ;
+	margin-bottom: 14px;
+}
+.edit_add{
+	display: inline-block;
+
+	color: #333;
+	
+}
+.ofinish{
+	float: none;
+	 letter-spacing: 13px;
+	 text-indent: 10px;
+}
+.detailedit_add{
+	padding:39px 0!important ;
+
+}
+.add_finish{
+	text-align: center;
+	clear: both;
+}
+
+.check_inpld{
+	width: 32%!important;
+	float: left;
+}
+.sampleimage{
+	display: inline-block;
+	position: absolute;
+	left: 20px;
+	top: 16px;
+	z-index: 10;
+}
+

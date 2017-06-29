@@ -1,0 +1,464 @@
+<include file="Public:header"/>
+
+<!-- begin #content -->
+		<div id="content" class="content content_waring">	
+			 <!-- begin page-header -->
+		    <h1 class="page-header page_warging">
+			    	<a>设备管理 </a>》<a>终端列表</a>》<a>{$title}</a>
+			    	<a onclick="javascript:history.go(-1);" class="organ_back">
+			    		<i class="engin_back"></i>
+    					<span class="engin_add_text">返回</span>
+			    	</a>
+			</h1>
+			<!--总标题-->
+			<div class="equip_head engin_head">
+				{$title}
+			</div>
+			<!--基本信息-->
+			<div class="equip_info engin_item ">
+				<div class="equip_title engin_title">
+					<i class="equip_i"></i>
+					<span>基本工程信息</span>
+				</div>
+
+				<?php if(ACTION_NAME == 'term_edit'): ?>
+				<input type="hidden" value="{$info.id}" id="id">
+				<?php endif; ?>
+
+				<div class="equip_infomation">
+					<!--基本工程信息编辑-->
+						<div class="detail-body engin_edit_box clearfix">
+							<div class="equip_list engin_boxt clearfix row">
+								<div class="col-md-4">
+									<div class="cheitm">
+										<label class="ifro_item">
+											<span class="info_man engin_span"><i class="required_fields">*</i>终端编号：</span>
+											<input type="text" id="code" value="{$info.terminal_number}" name="code" class="check_inp" placeholder="  输入终端编号" />
+										</label>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="cheitm">
+										<label class="ifro_item">
+											<span class="info_man engin_span"><i class="required_fields">*</i>终端类型：</span>
+											<select name='name' id="type" class="check_inp" >
+												<option value="">全部</option>
+												<option <?php if($info['type']==1): ?>selected="selected"<?php endif; ?> value="1">塔式起重机安全监控系统</option>
+												<option <?php if($info['type']==2): ?>selected="selected"<?php endif; ?> value="2">施工升降机安全监控系统</option>
+											</select>
+										</label>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="cheitm">
+										<label class="ifro_item">
+											<span class="info_man engin_span"><i class="required_fields">*</i>终端型号：</span>
+											<input type="text" value="{$info.terminal_model_number}" id="xinghao" class="check_inp" placeholder="  输入终端型号"  />
+										</label>
+									</div>
+								</div>
+							</div>
+							<div class="equip_list engin_boxt clearfix row">
+								<div class="col-md-4">
+									<div class="cheitm">
+										<label class="ifro_item">
+											<span class="info_man engin_span"><i class="required_fields">*</i>产品合格证号：</span>
+											<input type="text" value="{$info.qualified_number}" id="hege" name="address" class="check_inp"  placeholder="  输入产品合格证号" />
+										</label>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="cheitm">
+										<label class="ifro_item">
+											<span class="info_man engin_span"><i class="required_fields">*</i>终端制造单位：</span>
+											<select id="zhizao" name="zhizao" class="check_inp chosen-select" >
+												<option value="">请选择设备制造单位</option>
+												<?php foreach($company as $k=>$v){ ?>
+												<?php if($v['id'] == $info['terminal_company']): ?>
+												<option selected="selected" value="{$v.id}">{$v.name}</option>
+												<?php else: ?>
+												<option value="{$v.id}">{$v.name}</option>
+												<?php endif; ?>
+												<?php } ?>
+
+											</select>
+										</label>
+									</div>
+								</div>
+							</div>
+							<div class="equip_list engin_boxt clearfix row">
+								<div class="col-md-4">
+									<div class="cheitm">
+										<label class="ifro_item">
+											<span class="info_man engin_span"><i class="required_fields">*</i>出厂日期：</span>
+											<label class="start-tims" style="float: none;">
+		                                        <span class="engine_date_positiont"><i class="fa fa-calendar engine_datet"></i></span>
+		                                        <input id="chuchang" value="{$info.factory_date}" onclick="laydate()" name="start_time"  placeholder='请选择时间' value="" class="fl check_inp check_inp_date picker-date">
+		                                   	</label>
+										</label>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="cheitm">
+										<label class="ifro_item">
+											<span class="info_man engin_span"><i class="required_fields">*</i>登记日期：</span>
+											<label class="start-tims" style="float: none;">
+		                                        <span class="engine_date_positiont"><i class="fa fa-calendar engine_datet"></i></span>
+		                                        <input id="dengji" value="{$info.record_date}" name='end_time' onclick="laydate()" placeholder='请选择时间' value="" class="fl check_inp check_inp_date picker-date">
+		                                   </label>
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--完成-->
+						<!--<div class="add_finish equip_finish">-->
+							<!--<a href="javascript:0" id="save" class="opass equipfinish engin_finish">保存</a>-->
+							<!--<a href="{:U('Admin/Engineering/engin_list')}" class="opass equipfinish engin_finish_exit">取消</a>-->
+
+
+						<!--</div>-->
+				</div><!--equip_infomation-->
+			</div><!--equip_info-->
+			
+			<!--设备参数-->
+			<div class="equip_info engin_item">
+				<div class="equip_title engin_title">
+					<i class="equip_i"></i>
+					<span>终端组件</span>
+					<a class="organ-add">
+			    		<i class="engin_add"></i>
+			    		<span class="engin_add_text" id="new_builds">新建设备参数</span>
+			    	</a>
+				</div>
+				<div class="equip_infomation">
+					<!--设备参数表格-->
+						<div class="detail-body engin_edit_box clearfix">
+							<div class="table">
+								<table class="layui-table fac_table" lay-skin="line">
+									<thead>
+										<tr>
+											<th>序号</th>
+											<th></th>
+											<th><i class="required_fields">*</i>组件名称</th>
+											<th><i class="required_fields">*</i>数量</th>
+											<th>备注</th>
+											<th>删除</th>
+										</tr>
+									</thead>
+									<tbody class="fac_tbody">
+										<?php foreach($info['ass'] as $k=>$v){ ?>
+										<tr class="fac_edittr">
+											<td>{$k+1}</td>
+											<td><input type="hidden" value="{$v.id}" class="fac_edittr_input z_id" /></td>
+											<td><input type="text" value="{$v.name}" class="fac_edittr_input z_name" /></td>
+											<td><input type="text" value="{$v.count}" class="fac_edittr_input z_count" /></td>
+											<td><input type="text" value="{$v.mark}" class="fac_edittr_input z_mark" /></td>
+											<td data="{$v.id}" class="del_edittim"><i class="del_edits" id="detail_del"></i></td>
+										</tr>
+										<?php } ?>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!--完成-->
+						<div class="add_finish equip_finish">
+							<a href="javascript:0" id="fac_save" class="opass equipfinish engin_finish">保存</a>
+							<a href="" onclick="javascript:history.go(-1);" class="opass equipfinish engin_finish_exit">取消</a>
+						</div>
+				</div><!--equip_infomation-->
+			</div><!--equip_info-->
+			<!--终端信息-->
+			<!--<div class="equip_info equip_infot">-->
+				<!--<div class="equip_title engin_title">-->
+					<!--<i class="equip_i"></i>-->
+					<!--<span>终端信息</span>-->
+				<!--</div>-->
+				<!--<div class="equip_infomation">-->
+					<!--<div class="equip_list clearfix">-->
+						<!--<ul class="equip_ul">-->
+							<!--<li>-->
+								<!--<div class="equip_iteml">终端编号</div>-->
+								<!--<div class="equip_itemr">VGDFGFHFGHJHKHJKLJ</div>-->
+							<!--</li>-->
+							<!--<li>-->
+								<!--<div class="equip_iteml">终端型号</div>-->
+								<!--<div class="equip_itemr">TXL-860</div>-->
+							<!--</li>-->
+						<!--</ul>-->
+					<!--</div>-->
+				<!--</div>&lt;!&ndash;equip_infomation&ndash;&gt;-->
+			<!--</div>&lt;!&ndash;equip_info&ndash;&gt;-->
+			<!--&lt;!&ndash;备案信息&ndash;&gt;-->
+			<!--<div class="equip_info equip_infot">-->
+				<!--<div class="equip_title engin_title">-->
+					<!--<span>备案信息</span>-->
+				<!--</div>-->
+				<!--<div class="equip_infomation">-->
+					<!--<div class="equip_list clearfix">-->
+						<!--<ul class="equip_ul">-->
+							<!--<li>-->
+								<!--<div class="equip_iteml">产权编号</div>-->
+								<!--<div class="equip_itemr">赣AA-T02805</div>-->
+							<!--</li>-->
+							<!--<li>-->
+								<!--<div class="equip_iteml">产权单位</div>-->
+								<!--<div class="equip_itemr">宜春市中天机械设备租赁有限公司</div>-->
+							<!--</li>-->
+							<!--<li>-->
+								<!--<div class="equip_iteml">检测报告编号</div>-->
+								<!--<div class="equip_itemr">LGNC-1705-5947</div>-->
+							<!--</li>-->
+							<!--<li>-->
+								<!--<div class="equip_iteml">检测单位</div>-->
+								<!--<div class="equip_itemr">将西方圆设备检测有限公司</div>-->
+							<!--</li>-->
+						<!--</ul>-->
+					<!--</div>-->
+				<!--</div>&lt;!&ndash;equip_infomation&ndash;&gt;-->
+			<!--</div>&lt;!&ndash;equip_info&ndash;&gt;-->
+
+			<!--&lt;!&ndash;项目信息&ndash;&gt;-->
+			<!--<div class="equip_info equip_infot">-->
+				<!--<div class="equip_title engin_title">-->
+					<!--<i class="equip_i"></i>-->
+					<!--<span>项目信息</span>-->
+				<!--</div>-->
+				<!--<div class="equip_infomation">-->
+					<!--<div class="equip_list clearfix">-->
+						<!--<ul class="equip_ul">-->
+							<!--<li>-->
+								<!--<div class="equip_iteml">项目名称</div>-->
+								<!--<div class="equip_itemr">南仓希尔顿酒店二期</div>-->
+							<!--</li>-->
+							<!--<li>-->
+								<!--<div class="equip_iteml">使用单位</div>-->
+								<!--<div class="equip_itemr">中国建筑第二工程局有限公司</div>-->
+							<!--</li>-->
+							<!--<li>-->
+								<!--<div class="equip_iteml">工地自编号</div>-->
+								<!--<div class="equip_itemr">1#</div>-->
+							<!--</li>-->
+							<!--<li>-->
+								<!--<div class="equip_iteml">监理单位</div>-->
+								<!--<div class="equip_itemr">江西方圆检测工程监理有限公司</div>-->
+							<!--</li>-->
+
+							<!--<li>-->
+								<!--<div class="equip_iteml">项目地址</div>-->
+								<!--<div class="equip_itemr">江西省南昌市青山湖区高新大道天沐国际A座2901</div>-->
+							<!--</li>-->
+							<!--<li>-->
+								<!--<div class="equip_iteml">政府监管单位</div>-->
+								<!--<div class="equip_itemr">江西省宜春市建筑工程局安全监督管理站</div>-->
+							<!--</li>-->
+						<!--</ul>-->
+					<!--</div>-->
+				<!--</div>&lt;!&ndash;equip_infomation&ndash;&gt;-->
+			<!--</div>&lt;!&ndash;equip_info&ndash;&gt;-->
+		</div>
+<!--content-->
+
+<script src="__PUBLIC__/assets/js/laydate/laydate.js"></script>
+<script>
+
+	$('#fac_save').click(function(){
+		<?php if(ACTION_NAME == 'term_edit'): ?>
+		var id = $('#id').val();
+		<?php endif; ?>
+		var code = $('#code').val();
+		var type = $('#type').val();
+		var xinghao = $('#xinghao').val();
+		var hege = $('#hege').val();
+		var zhizao = $('#zhizao').val();
+		var chuchang = $('#chuchang').val();
+		var dengji = $('#dengji').val();
+
+		if(code==''){
+			layer.msg('终端编号不能为空', {time: 2000});
+			return false;
+		}
+
+		if(type==''){
+			layer.msg('终端类型不能为空', {time: 2000});
+			return false;
+		}
+
+		if(xinghao==''){
+			layer.msg('终端型号不能为空', {time: 2000});
+			return false;
+		}
+
+		if(hege==''){
+			layer.msg('产品合格证号不能为空', {time: 2000});
+			return false;
+		}
+
+		if(zhizao==''){
+			layer.msg('终端制造单位不能为空', {time: 2000});
+			return false;
+		}
+
+		if(chuchang==''){
+			layer.msg('出厂日期不能为空', {time: 2000});
+			return false;
+		}
+
+		if(dengji==''){
+			layer.msg('登记日期不能为空', {time: 2000});
+			return false;
+		}
+
+		if(dengji<chuchang){
+			layer.msg('登记日期不能早于出厂时间', {time: 2000});
+			return false;
+		}
+
+		var z_id = '';
+		var z_name = '';
+		var z_count = '';
+		var z_mark = '';
+
+		var fal = 0;
+
+		$('.z_id').each(function(){
+
+			z_id+=','+$(this).val();
+		})
+
+
+		$('.z_name').each(function(){
+			if($(this).val()==''){
+				fal=1;
+			}
+			z_name+=','+$(this).val();
+		})
+
+		if(fal==1){
+			layer.msg('组件名称不能为空', {time: 2000});
+			return false;
+		}
+
+		$('.z_count').each(function(){
+			if($(this).val()==''){
+				fal = 1;
+			}
+			z_count+=','+$(this).val();
+		})
+
+		if(fal==1){
+			layer.msg('数量不能为空', {time: 2000});
+			return false;
+		}
+
+
+		$('.z_mark').each(function(){
+
+			z_mark+=','+$(this).val();
+		})
+
+
+
+		z_id=z_id.replace(',','');
+		z_mark=z_mark.replace(',','');
+		z_count=z_count.replace(',','');
+		z_name=z_name.replace(',','');
+
+
+		layer.load(1, {
+			shade: [0.1,'#fff'] //0.1透明度的白色背景
+		});
+
+		$.ajax({
+			url:"{:U('Admin/Terminal/')}"+'/'+"{:ACTION_NAME}",
+			dataType:'json',
+			type:'post',
+			data:{
+				do:'save',
+				<?php if(ACTION_NAME == 'term_edit'): ?>
+				id:id,
+				<?php endif; ?>
+				code:code,
+				type:type,
+				xinghao:xinghao,
+				hege:hege,
+				zhizao:zhizao,
+				chuchang:chuchang,
+				dengji:dengji,
+				z_id:z_id,
+				z_name:z_name,
+				z_count:z_count,
+				z_mark:z_mark
+
+				},
+				success:function(e){
+					layer.closeAll();
+					layer.msg(e.msg, {time: 2000});
+					if(e.status!=1){
+					return false;
+				}
+
+				javascript:history.go(-1);
+			}
+		})
+
+
+		return false;
+	})
+
+	$(document).on('click','.fac_table tr .del_edittim',function(){
+		var id=$(this).attr('data');
+		if(id==0){
+			$(this).parent().remove();
+			return false;
+		}else{
+			layer.load(1, {
+				shade: [0.1,'#fff'] //0.1透明度的白色背景
+			});
+
+			$.ajax({
+				url:"{:U('Admin/Terminal/')}"+'/'+"{:ACTION_NAME}",
+				dataType:'json',
+				type:'post',
+				data:{
+					do:'del_ass',
+					id:id
+				},
+				success:function(e){
+					layer.closeAll();
+					layer.msg(e.msg, {time: 2000});
+					if(e.status!=1){
+						return false;
+					}
+
+				}
+			})
+		}
+		$(this).parent().remove();
+	})
+
+	$(document).on('click','#new_builds',function(){
+
+		var num = 1;
+		$('.z_name').each(function(){
+			num++;
+		})
+
+		var fac_html='<tr class="fac_edittr">'+
+						'<td>'+num+'</td>'+'<td><input type="hidden" class="fac_edittr_input z_id" /></td>'+
+						'<td><input type="text" class="fac_edittr_input z_name" /></td>'+
+						'<td><input type="text" class="fac_edittr_input z_count" /></td>'+
+						'<td><input type="text" class="fac_edittr_input z_mark" /></td>'+
+						'<td data="0" class="del_edittim"><i class="del_edits" id="detail_del"></i></td>'+
+					'</tr>';
+		$('.fac_table .fac_tbody').append(fac_html);
+	})
+
+	window.onload=function(){
+
+		$('.chosen-single').css('background-color','rgba(51,51,51,0.1)');
+		$('.chosen-container-single').css('margin-left','13px');
+	}
+
+</script>
+<include file="Public:footer"/>
