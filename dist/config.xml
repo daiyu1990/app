@@ -3,5 +3,5 @@
     <description>
         feida App.
     </description>
-    <content src="./index.html"/>
+    <content src=".\index.html"/>
 </widget>
