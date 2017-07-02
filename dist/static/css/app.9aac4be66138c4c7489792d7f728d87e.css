@@ -659,25 +659,53 @@ span[data-v-0aeb01c2]{
 	color: grey;
 }
 
-.root[data-v-45a60b09]{
+.root[data-v-e00f42b8] {
 	height: 100%;
 }
-input[data-v-45a60b09]{
+input[data-v-e00f42b8] {
 	border: none;
 	text-align: right;
 }
-.logo_top[data-v-45a60b09] {
+.logo_top[data-v-e00f42b8] {
 	text-align: center;
 	padding: 30px 0;
 }
-.logo_top img[data-v-45a60b09]{
-width: 70px;
+.logo_top img[data-v-e00f42b8] {
+	width: 70px;
 }
 
+.root[data-v-12bb3070] {
+	height: 100%;
+}
+input[data-v-12bb3070] {
+	border: none;
+	text-align: right;
+}
+.logo_top[data-v-12bb3070] {
+	text-align: center;
+	padding: 30px 0;
+}
+.logo_top img[data-v-12bb3070] {
+	width: 70px;
+}
 
+.root[data-v-877b38b6] {
+	height: 100%;
+}
+input[data-v-877b38b6] {
+	border: none;
+	text-align: right;
+}
+.logo_top[data-v-877b38b6] {
+	text-align: center;
+	padding: 30px 0;
+}
+.logo_top img[data-v-877b38b6] {
+	width: 70px;
+}
 
 .root[data-v-fc0d785a]{
-	padding-bottom: 50px;
+	padding-bottom: 80px;
 }
 .logo_top[data-v-fc0d785a] {
 	text-align: center;
@@ -2423,301 +2451,58 @@ p[data-v-5650837a] {
 	font-size: 20px;
 }
 
-.codeImg[data-v-0a63b194] {
-	display: inline-block;
+.res_lo[data-v-4c8b00f0]{
+	background: url(/static/img/bg.cfc99f1.jpg) 100% 100%;
 }
-.wechat[data-v-0a63b194] {
-	background: #01C853;
-	margin-bottom: 50px;
+.codeImg[data-v-4c8b00f0] {
+		display: inline-block;
 }
-.forget[data-v-0a63b194] {
-	float: right;
-	margin-top: -20px;
+.wechat[data-v-4c8b00f0] {
+		background: #01C853;
+		margin-bottom: 50px;
 }
-.red[data-v-0a63b194] {
-	border: 1px solid red;
-	color: red;
+.forget[data-v-4c8b00f0] {
+		float: right;
+		margin-top: -20px;
 }
-.code_set[data-v-0a63b194] {
-	display: inline-block;
-	margin-top: 22px;
+.red[data-v-4c8b00f0] {
+		border: 1px solid red;
+		color: red;
+}
+.code_set[data-v-4c8b00f0] {
+		display: inline-block;
+		margin-top: 22px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.btn[data-v-1d95bbf7] {
-	height: 60px;
-	line-height: 45px;
-	width: 90%;
-	margin: 25px auto;
-	color: #2164ff;
-	font-size: 20px;
-	border-radius: 30px;
-	background: white;
+.res_lo[data-v-67a5fe66]{
+	background: url(/static/img/bg.cfc99f1.jpg) 100% 100%;
 }
-.fir[data-v-1d95bbf7] {
-	margin-top: 100px;
+
+.res_lo[data-v-ea6b3688] {
+	background: url(/static/img/bg.cfc99f1.jpg) 100% 100%;
 }
-p[data-v-1d95bbf7] {
-	color: white;
+
+.res_lo[data-v-9e0761a2]{
+	background: url(/static/img/bg.cfc99f1.jpg) 100% 100%;
 }
-.res_lo button img[data-v-1d95bbf7] {
-	width: 25px;
+.btn[data-v-9e0761a2] {
+		height: 60px;
+		line-height: 45px;
+		width: 90%;
+		margin: 25px auto;
+		color: #2164ff;
+		font-size: 20px;
+		border-radius: 30px;
+		background: white;
+}
+.fir[data-v-9e0761a2] {
+		margin-top: 100px;
+}
+p[data-v-9e0761a2] {
+		color: white;
+}
+.res_lo button img[data-v-9e0761a2] {
+		width: 25px;
 }
 
 input[data-v-c83cb582] {
@@ -5310,7 +5095,7 @@ a:visited {
 /*   注册登录页面   */
 
 .res_lo {
-	background: url(/static/img/bg.cfc99f1.jpg) 100% 100%;
+	/*background: url('../../../static/flyda_img/login/bg.jpg') 100% 100%;*/
 	padding: 75px 20px;
 	text-align: center;
 	height: 100vh;
@@ -14539,4 +14324,4 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
   color: #f8fdff;
 }
 
-/*# sourceMappingURL=app.d52d43ec1d20b7908b3f3fe7778cd017.css.map*/
+/*# sourceMappingURL=app.9aac4be66138c4c7489792d7f728d87e.css.map*/
